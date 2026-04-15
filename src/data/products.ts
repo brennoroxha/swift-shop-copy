@@ -16,7 +16,7 @@ export const allProducts: Product[] = [
   {
     id: "1",
     name: "Escada Alumínio 5 Degraus 1,53m 120kg Prata e Vermelho Reisam",
-    image: "https://cdn.leroymerlin.com.br/products/escada_aluminio_5_degraus_1,53m_120kg_prata_e_vermelho_reisam_91713286_7dde_600x600.png",
+    image: escadaCapa,
     originalPrice: 249.00,
     salePrice: 199.90,
     installments: 10,

@@ -47,7 +47,7 @@ const ShippingCalculator = () => {
 
       {showResult && (
         <div className="flex items-center justify-between text-sm pt-1">
-          <span className="text-foreground">Entrega econômica em até 5 dias úteis</span>
+          <span className="text-foreground">Transportadora — entrega em 3 a 6 dias úteis</span>
           <span className="text-foreground font-medium ml-4 whitespace-nowrap">Grátis</span>
         </div>
       )}

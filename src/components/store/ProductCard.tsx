@@ -17,9 +17,6 @@ const formatPrice = (price: number) => {
 
 const ProductCard = ({ product }: ProductCardProps) => {
   const { addItem } = useCart();
-  const discount = Math.round(
-    ((product.originalPrice - product.salePrice) / product.originalPrice) * 100
-  );
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();

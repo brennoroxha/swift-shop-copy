@@ -5,6 +5,7 @@ export type CategorySlug = "escadas";
 export interface Product {
   id: string;
   name: string;
+  brand: string;
   image: string;
   originalPrice: number;
   salePrice: number;
@@ -16,6 +17,7 @@ export const allProducts: Product[] = [
   {
     id: "1",
     name: "Escada Alumínio 5 Degraus 1,53m 120kg Prata e Vermelho Reisam",
+    brand: "Reisam",
     image: escadaCapa,
     originalPrice: 249.00,
     salePrice: 199.90,

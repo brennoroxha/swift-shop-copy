@@ -46,14 +46,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Frete info */}
-        <div className="text-center text-sm mb-6">
-          <span className="font-bold text-foreground">*Frete Grátis: </span>
-          <span className="text-primary">
-            Em compras acima de R$299 para as regiões Sul e Sudeste e capitais do Nordeste e Centro Oeste.
-          </span>
-        </div>
-
         {/* Copyright */}
         <div className="border-t border-border pt-4 text-center text-xs text-muted-foreground">
           <p>© 2025 Todos os direitos reservados.</p>

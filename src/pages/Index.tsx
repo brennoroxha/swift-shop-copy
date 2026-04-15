@@ -2,10 +2,8 @@ import TopBar from "@/components/store/TopBar";
 import Header from "@/components/store/Header";
 import HeroBanner from "@/components/store/HeroBanner";
 import ProductSection from "@/components/store/ProductSection";
-import BannerImage from "@/components/store/BannerImage";
 import Footer from "@/components/store/Footer";
 import { bestSellers, kits, lastUnits } from "@/data/products";
-import bannerSpotscan from "@/assets/banner-spotscan.jpg";
 
 const Index = () => {
   return (
@@ -14,11 +12,20 @@ const Index = () => {
       <Header />
       <main className="flex-1">
         <HeroBanner />
-        <ProductSection title="Os Mais Vendidos" products={bestSellers} />
-        <ProductSection title="Kits em Oferta" products={kits} bgAlt />
-        <BannerImage src={bannerSpotscan} alt="Descubra sua rotina de cuidados" />
-        <ProductSection title="Últimas Unidades" products={lastUnits} />
-        <ProductSection title="Ofertas 70% OFF" products={[...lastUnits].reverse()} bgAlt />
+        {bestSellers.length > 0 && (
+          <ProductSection title="Os Mais Vendidos" products={bestSellers} />
+        )}
+        {kits.length > 0 && (
+          <ProductSection title="Kits em Oferta" products={kits} bgAlt />
+        )}
+        {lastUnits.length > 0 && (
+          <ProductSection title="Últimas Unidades" products={lastUnits} />
+        )}
+        {bestSellers.length === 0 && kits.length === 0 && lastUnits.length === 0 && (
+          <div className="container py-20 text-center">
+            <p className="text-muted-foreground text-lg">Nenhum produto cadastrado ainda.</p>
+          </div>
+        )}
       </main>
       <Footer />
     </div>

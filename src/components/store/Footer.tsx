@@ -8,9 +8,13 @@ const Footer = () => {
             <h4 className="font-heading font-bold text-sm mb-1">Institucional</h4>
             <div className="w-8 h-0.5 bg-primary mb-4" />
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-foreground transition-colors">Quem Somos</a></li>
-              <li><a href="#" className="hover:text-foreground transition-colors">Políticas de Privacidade</a></li>
-              <li><a href="#" className="hover:text-foreground transition-colors">Fale Conosco</a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors">Sobre Nós</a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors">Política de Privacidade</a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors">Política de Envio e Prazo de Entrega</a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors">Política de Reembolso</a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors">Política de Trocas e Devoluções</a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors">Termos e Condições</a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors">Formas de Pagamento</a></li>
             </ul>
           </div>
 

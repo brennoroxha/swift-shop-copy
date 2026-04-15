@@ -182,7 +182,13 @@ const ProductPage = () => {
                 </div>
               )}
 
-              {description.howToUse && (
+              {product.ean && (
+                <div className="mb-6">
+                  <h4 className="font-heading font-bold text-base text-foreground mb-2">Código EAN:</h4>
+                  <p className="text-muted-foreground text-sm">{product.ean}</p>
+                </div>
+              )}
+
                 <div className="mb-6">
                   <h4 className="font-heading font-bold text-base text-foreground mb-3">Como Usar:</h4>
                   <p className="text-muted-foreground leading-relaxed text-sm">{description.howToUse}</p>

@@ -45,9 +45,6 @@ const ProductCard = ({ product }: ProductCardProps) => {
           {product.name}
         </h3>
         <div className="space-y-0.5">
-          <p className="text-xs text-muted-foreground line-through">
-            R${formatPrice(product.originalPrice)}
-          </p>
           <p className="text-base font-bold text-foreground">
             R$ {formatPrice(product.salePrice)}
           </p>

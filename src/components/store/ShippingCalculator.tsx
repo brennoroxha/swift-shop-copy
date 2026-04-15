@@ -46,9 +46,12 @@ const ShippingCalculator = () => {
       </button>
 
       {showResult && (
-        <div className="flex items-center justify-between text-sm pt-1">
-          <span className="text-foreground">Transportadora — entrega em 3 a 6 dias úteis</span>
-          <span className="text-foreground font-medium ml-4 whitespace-nowrap">Grátis</span>
+        <div className="border border-border rounded-md p-3 space-y-1">
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-bold text-background bg-primary px-2 py-0.5 rounded">GRÁTIS</span>
+            <span className="text-sm font-semibold text-foreground">Transportadora</span>
+          </div>
+          <p className="text-xs text-muted-foreground">Entrega em 3 a 6 dias úteis</p>
         </div>
       )}
     </div>

@@ -189,6 +189,7 @@ const ProductPage = () => {
                 </div>
               )}
 
+              {description.howToUse && (
                 <div className="mb-6">
                   <h4 className="font-heading font-bold text-base text-foreground mb-3">Como Usar:</h4>
                   <p className="text-muted-foreground leading-relaxed text-sm">{description.howToUse}</p>

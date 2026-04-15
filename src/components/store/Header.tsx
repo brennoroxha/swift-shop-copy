@@ -1,7 +1,7 @@
 import { Search, User, ShoppingCart, Menu, X, ChevronRight, MapPin } from "lucide-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "@/assets/logo.jpg";
+import logo from "@/assets/logo-kompleta.png";
 import { useCart } from "@/contexts/CartContext";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { categories } from "@/data/products";

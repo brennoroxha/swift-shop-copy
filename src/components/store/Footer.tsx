@@ -1,4 +1,6 @@
 import metodospag from "@/assets/metodospag.png";
+import correios from "@/assets/correios.png";
+import totalexpress from "@/assets/totalexpress.png";
 
 const Footer = () => {
   return (
@@ -37,6 +39,16 @@ const Footer = () => {
           <h4 className="font-heading font-bold text-sm mb-1">Formas de Pagamento</h4>
           <div className="w-8 h-0.5 bg-primary mb-4" />
           <img src={metodospag} alt="Formas de pagamento: American Express, Visa, Mastercard, Elo, Pix" className="h-8 object-contain" />
+        </div>
+
+        {/* Formas de Envio */}
+        <div className="mb-6">
+          <h4 className="font-heading font-bold text-sm mb-1">Formas de Envio</h4>
+          <div className="w-8 h-0.5 bg-primary mb-4" />
+          <div className="flex items-center gap-4">
+            <img src={correios} alt="Correios" className="h-8 object-contain" />
+            <img src={totalexpress} alt="Total Express" className="h-8 object-contain" />
+          </div>
         </div>
 
         {/* Copyright */}

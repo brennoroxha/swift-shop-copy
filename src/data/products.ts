@@ -6,6 +6,7 @@ export interface Product {
   id: string;
   name: string;
   brand: string;
+  ean: string;
   image: string;
   originalPrice: number;
   salePrice: number;

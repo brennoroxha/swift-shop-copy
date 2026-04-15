@@ -88,9 +88,6 @@ const ProductPage = () => {
             {/* Info */}
             <div className="flex flex-col justify-center space-y-6">
               <div>
-                {product.brand && (
-                  <p className="text-sm font-medium text-primary mb-1">{product.brand}</p>
-                )}
                 <h1 className="font-heading font-bold text-xl md:text-2xl lg:text-3xl text-foreground leading-tight">
                   {product.name}
                 </h1>

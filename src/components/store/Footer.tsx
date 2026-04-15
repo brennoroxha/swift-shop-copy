@@ -28,9 +28,9 @@ const Footer = () => {
             <h4 className="font-heading font-bold text-sm mb-1">Navegação</h4>
             <div className="w-8 h-0.5 bg-primary mb-4" />
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-foreground transition-colors">Minha Conta</a></li>
-              <li><a href="#" className="hover:text-foreground transition-colors">Rastrear Pedido</a></li>
-              <li><a href="#" className="hover:text-foreground transition-colors">Fale Conosco</a></li>
+              <li><Link to="/minha-conta" className="hover:text-foreground transition-colors">Minha Conta</Link></li>
+              <li><Link to="/rastrear-pedido" className="hover:text-foreground transition-colors">Rastrear Pedido</Link></li>
+              <li><Link to="/fale-conosco" className="hover:text-foreground transition-colors">Fale Conosco</Link></li>
             </ul>
           </div>
         </div>

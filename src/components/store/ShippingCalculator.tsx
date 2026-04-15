@@ -18,36 +18,37 @@ const ShippingCalculator = () => {
   };
 
   return (
-    <div className="space-y-3">
-      <div className="flex items-center gap-4 border border-border rounded-md px-4 py-3 bg-background">
-        <Truck className="w-6 h-6 text-primary shrink-0" />
-        <input
-          type="text"
-          placeholder="00000-000"
-          value={cep}
-          onChange={(e) => { setCep(formatCep(e.target.value)); setShowResult(false); }}
-          onKeyDown={(e) => e.key === "Enter" && handleCalc()}
-          className="flex-1 border border-border rounded px-3 py-1.5 text-sm bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary min-w-0"
-        />
+    <div className="space-y-4">
+      <p className="text-sm font-medium text-foreground">Consulte o prazo de entrega</p>
+
+      <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 flex-1 border border-border rounded-md px-3 py-2.5 bg-background">
+          <Truck className="w-4 h-4 text-muted-foreground shrink-0" />
+          <input
+            type="text"
+            placeholder="00000-000"
+            value={cep}
+            onChange={(e) => { setCep(formatCep(e.target.value)); setShowResult(false); }}
+            onKeyDown={(e) => e.key === "Enter" && handleCalc()}
+            className="flex-1 text-sm bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none min-w-0"
+          />
+        </div>
         <button
           onClick={handleCalc}
-          className="text-primary text-xs font-bold uppercase tracking-wide hover:opacity-70 transition-opacity whitespace-nowrap"
+          className="px-6 py-2.5 bg-foreground text-background text-sm font-medium rounded-md hover:opacity-90 transition-opacity whitespace-nowrap"
         >
-          CALCULAR<br />FRETE
+          Calcular
         </button>
       </div>
 
+      <button className="text-xs text-primary underline hover:opacity-70 transition-opacity">
+        Não sei meu CEP
+      </button>
+
       {showResult && (
-        <div className="border border-border rounded-md p-4 space-y-2">
-          <p className="text-xs text-muted-foreground">O prazo de entrega não contabiliza feriados.</p>
-          <div className="flex items-start gap-2">
-            <Truck className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-            <div>
-              <p className="text-sm font-bold text-foreground">Grátis</p>
-              <p className="text-sm text-muted-foreground">Chega em 3 a 6 dias úteis</p>
-              <p className="text-xs text-muted-foreground">Transportadora</p>
-            </div>
-          </div>
+        <div className="flex items-center justify-between text-sm pt-1">
+          <span className="text-foreground">Entrega econômica em até 5 dias úteis</span>
+          <span className="text-foreground font-medium ml-4 whitespace-nowrap">Grátis</span>
         </div>
       )}
     </div>

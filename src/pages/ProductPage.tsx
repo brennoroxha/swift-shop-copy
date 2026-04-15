@@ -67,6 +67,8 @@ const ProductPage = () => {
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Link to="/" className="hover:text-primary transition-colors">Início</Link>
               <ChevronRight className="w-3 h-3" />
+              <Link to={`/categoria/${product.categories[0]}`} className="hover:text-primary transition-colors capitalize">{product.categories[0]}</Link>
+              <ChevronRight className="w-3 h-3" />
               <span className="text-foreground font-medium line-clamp-1">{product.name}</span>
             </div>
           </div>

@@ -189,6 +189,13 @@ const ProductPage = () => {
                 </div>
               )}
 
+              {product.brand && (
+                <div className="mb-6">
+                  <h4 className="font-heading font-bold text-base text-foreground mb-2">Marca:</h4>
+                  <p className="text-muted-foreground text-sm">{product.brand}</p>
+                </div>
+              )}
+
               {description.howToUse && (
                 <div className="mb-6">
                   <h4 className="font-heading font-bold text-base text-foreground mb-3">Como Usar:</h4>

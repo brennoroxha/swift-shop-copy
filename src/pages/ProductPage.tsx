@@ -89,16 +89,8 @@ const ProductPage = () => {
                 </h1>
               </div>
 
-              {/* Prices */}
-              <div className="space-y-1">
-                <div className="flex items-center gap-3">
-                  <span className="line-through text-muted-foreground text-base">
-                    R${formatPrice(product.originalPrice)}
-                  </span>
-                  <span className="bg-destructive text-destructive-foreground text-xs font-bold px-2 py-0.5 rounded">
-                    -{discount}% OFF
-                  </span>
-                </div>
+              {/* Price */}
+              <div>
                 <p className="text-3xl md:text-4xl font-bold text-foreground">
                   R${formatPrice(product.salePrice)}
                 </p>

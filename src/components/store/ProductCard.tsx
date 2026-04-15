@@ -17,9 +17,6 @@ const formatPrice = (price: number) => {
 
 const ProductCard = ({ product }: ProductCardProps) => {
   const { addItem } = useCart();
-  const discount = Math.round(
-    ((product.originalPrice - product.salePrice) / product.originalPrice) * 100
-  );
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -34,12 +31,6 @@ const ProductCard = ({ product }: ProductCardProps) => {
     >
       {/* Image container with discount badge */}
       <div className="relative bg-background p-4 flex items-center justify-center aspect-square">
-        {discount > 0 && (
-          <span className="absolute top-3 left-3 z-10 w-12 h-12 flex flex-col items-center justify-center rounded-full bg-[hsl(220,60%,30%)] text-primary-foreground text-[10px] font-bold leading-tight shadow-md">
-            <span>{discount}%</span>
-            <span>OFF</span>
-          </span>
-        )}
         <img
           src={product.image}
           alt={product.name}
@@ -54,9 +45,6 @@ const ProductCard = ({ product }: ProductCardProps) => {
           {product.name}
         </h3>
         <div className="space-y-0.5">
-          <p className="text-xs text-muted-foreground line-through">
-            R${formatPrice(product.originalPrice)}
-          </p>
           <p className="text-base font-bold text-foreground">
             R$ {formatPrice(product.salePrice)}
           </p>

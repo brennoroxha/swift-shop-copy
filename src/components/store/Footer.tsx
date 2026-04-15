@@ -34,10 +34,9 @@ const Footer = () => {
 
         {/* Formas de Pagamento */}
         <div className="mb-6">
-          <h4 className="font-heading font-bold text-sm mb-3 text-center">Formas de Pagamento</h4>
-          <div className="flex justify-center">
-            <img src={metodospag} alt="Formas de pagamento: American Express, Visa, Mastercard, Elo, Pix" className="h-8 object-contain" />
-          </div>
+          <h4 className="font-heading font-bold text-sm mb-1">Formas de Pagamento</h4>
+          <div className="w-8 h-0.5 bg-primary mb-4" />
+          <img src={metodospag} alt="Formas de pagamento: American Express, Visa, Mastercard, Elo, Pix" className="h-8 object-contain" />
         </div>
 
         {/* Copyright */}

@@ -99,7 +99,7 @@ const ProductPage = () => {
                   Em até 3x de R$ {formatPrice(product.salePrice / 3)} sem juros
                 </p>
                 <p className="text-sm text-green-700 bg-green-100 dark:bg-green-900/30 dark:text-green-400 px-3 py-1.5 rounded-md mt-2 inline-flex items-center gap-1.5">
-                  💎 À vista R$ {formatPrice(product.salePrice * 0.9)} no Pix com 10% de desconto
+                  <img src={pixIcon} alt="Pix" className="w-4 h-4" /> À vista R$ {formatPrice(product.salePrice * 0.9)} no Pix com 10% de desconto
                 </p>
               </div>
               {/* Buy Button */}

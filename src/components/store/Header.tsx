@@ -40,7 +40,7 @@ const Header = () => {
             </button>
 
             <Link to="/" className="absolute left-1/2 -translate-x-1/2">
-              <img src={logo} alt="Logo" className="h-11 w-auto" />
+              <img src={logo} alt="Logo" className="h-14 w-auto" />
             </Link>
 
             <div className="flex items-center gap-4">
@@ -105,7 +105,7 @@ const Header = () => {
     <header className="bg-background sticky top-0 z-50">
       <div className="container flex items-center justify-between py-4">
         <Link to="/" className="shrink-0">
-          <img src={logo} alt="Logo" className="h-14 w-auto" />
+          <img src={logo} alt="Logo" className="h-[4.5rem] w-auto" />
         </Link>
 
         <div className="flex-1 max-w-lg mx-8">

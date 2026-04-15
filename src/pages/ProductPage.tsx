@@ -106,7 +106,7 @@ const ProductPage = () => {
               {/* Buy Button */}
               <div className="space-y-3">
                 <button
-                  onClick={() => addItem(product)}
+                  onClick={() => { addItem(product); navigate("/carrinho"); }}
                   className="w-full bg-primary text-primary-foreground font-heading font-bold text-base uppercase tracking-wider py-4 rounded-sm hover:opacity-90 transition-opacity"
                 >
                   Comprar Agora

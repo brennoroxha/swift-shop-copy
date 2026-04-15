@@ -26,6 +26,7 @@ export const getProductSlug = (product: Product) => slugify(product.name);
 const ProductPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const { addItem } = useCart();
+  const navigate = useNavigate();
 
   const product = allProducts.find((p) => getProductSlug(p) === slug);
 

@@ -9,6 +9,7 @@ import { productDescriptions } from "@/data/productDescriptions";
 import { productGalleryImages } from "@/data/productImages";
 import { ShieldCheck, Truck, ChevronRight, RefreshCw } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
+import pixIcon from "@/assets/pix-icon.png";
 
 const formatPrice = (price: number) =>
   price.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });

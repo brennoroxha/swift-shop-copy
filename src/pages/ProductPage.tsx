@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import TopBar from "@/components/store/TopBar";
 import Header from "@/components/store/Header";
 import Footer from "@/components/store/Footer";
@@ -26,6 +26,7 @@ export const getProductSlug = (product: Product) => slugify(product.name);
 const ProductPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const { addItem } = useCart();
+  const navigate = useNavigate();
 
   const product = allProducts.find((p) => getProductSlug(p) === slug);
 
@@ -105,7 +106,7 @@ const ProductPage = () => {
               {/* Buy Button */}
               <div className="space-y-3">
                 <button
-                  onClick={() => addItem(product)}
+                  onClick={() => { addItem(product); navigate("/carrinho"); }}
                   className="w-full bg-primary text-primary-foreground font-heading font-bold text-base uppercase tracking-wider py-4 rounded-sm hover:opacity-90 transition-opacity"
                 >
                   Comprar Agora

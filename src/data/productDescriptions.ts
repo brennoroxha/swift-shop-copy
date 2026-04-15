@@ -65,4 +65,18 @@ export const productDescriptions: Record<string, ProductDescription> = {
       "Garantia de 12 meses do fabricante",
     ],
   },
+  "5": {
+    title: "Banqueta Escada Alumínio 3 Degraus Reisam",
+    intro: "Um aliado para o seu dia para maior segurança e facilidade. Ideal para alcançar locais altos como prateleiras e armários, realizar pequenos reparos como trocar lâmpadas e arrumar chuveiros, além de ser perfeita para faxinas em áreas de difícil alcance.",
+    details: "Prática, compacta e leve, a Banqueta Reisam é confeccionada em alumínio e apropriada para uso doméstico. Com ela você consegue alcançar prateleiras, armários e outros locais mais altos com mais segurança, suporta até 120 kg. Permite praticidade para armazenar, por seu tamanho compacto, além de possuir alças que auxiliam no transporte. Contém pés antiderrapantes, degraus mais largos e confortáveis e sistema de articulação com travamento de segurança.",
+    benefits: [
+      "3 degraus antiderrapantes",
+      "Suporta até 120 Kg",
+      "Apenas 2 Kg — ultraleve e compacta",
+      "Pés antiderrapantes para maior estabilidade",
+      "Altura: 0,65 m",
+      "Degraus largos e confortáveis",
+      "Sistema de articulação com trava de segurança",
+    ],
+  },
 };

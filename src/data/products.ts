@@ -59,13 +59,24 @@ export const allProducts: Product[] = [
     installments: 10,
     categories: ["escadas"],
   },
+  {
+    id: "5",
+    name: "Banqueta Escada Alumínio 3 Degraus 0,65m 120kg Prata e Vermelho Reisam",
+    brand: "Reisam",
+    ean: "7898943046141",
+    image: "https://cdn.leroymerlin.com.br/products/banqueta_escada_aluminio_3_degraus_0,65m_120kg_91713265_0001_1800x1800.jpg",
+    originalPrice: 139.00,
+    salePrice: 109.90,
+    installments: 10,
+    categories: ["escadas"],
+  },
 ];
 
 export const getProductsByCategory = (slug: CategorySlug): Product[] => {
   return allProducts.filter((p) => p.categories.includes(slug));
 };
 
-export const bestSellers: Product[] = allProducts.filter((p) => ["1", "2", "3", "4"].includes(p.id));
+export const bestSellers: Product[] = allProducts.filter((p) => ["1", "2", "3", "4", "5"].includes(p.id));
 export const kits: Product[] = [];
 export const lastUnits: Product[] = [];
 

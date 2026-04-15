@@ -1,3 +1,5 @@
+import escadaCapa from "@/assets/escada-5-degraus-capa.png";
+
 export type CategorySlug = "escadas";
 
 export interface Product {

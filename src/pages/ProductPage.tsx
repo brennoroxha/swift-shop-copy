@@ -94,6 +94,9 @@ const ProductPage = () => {
                 <p className="text-3xl md:text-4xl font-bold text-foreground">
                   R${formatPrice(product.salePrice)}
                 </p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Em até 3x de R$ {formatPrice(product.salePrice / 3)} sem juros
+                </p>
               </div>
               {/* Buy Button */}
               <div className="space-y-3">

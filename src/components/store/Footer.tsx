@@ -1,3 +1,5 @@
+import metodospag from "@/assets/metodospag.png";
+
 const Footer = () => {
   return (
     <footer className="border-t border-border bg-background text-foreground pt-10 pb-6">
@@ -18,17 +20,24 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Login */}
+          {/* Navegação */}
           <div>
-            <h4 className="font-heading font-bold text-sm mb-1">Login</h4>
+            <h4 className="font-heading font-bold text-sm mb-1">Navegação</h4>
             <div className="w-8 h-0.5 bg-primary mb-4" />
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-foreground transition-colors">Login</a></li>
-              <li><a href="#" className="hover:text-foreground transition-colors">Meus Pedidos</a></li>
-              <li><a href="#" className="hover:text-foreground transition-colors">Troca e Devolução</a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors">Minha Conta</a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors">Rastrear Pedido</a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors">Fale Conosco</a></li>
             </ul>
           </div>
+        </div>
 
+        {/* Formas de Pagamento */}
+        <div className="mb-6">
+          <h4 className="font-heading font-bold text-sm mb-3 text-center">Formas de Pagamento</h4>
+          <div className="flex justify-center">
+            <img src={metodospag} alt="Formas de pagamento: American Express, Visa, Mastercard, Elo, Pix" className="h-8 object-contain" />
+          </div>
         </div>
 
         {/* Copyright */}

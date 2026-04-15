@@ -1,4 +1,5 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
+import ShippingCalculator from "@/components/store/ShippingCalculator";
 import TopBar from "@/components/store/TopBar";
 import Header from "@/components/store/Header";
 import Footer from "@/components/store/Footer";
@@ -123,6 +124,8 @@ const ProductPage = () => {
                 </button>
               </div>
 
+              {/* Calcular Frete */}
+              <ShippingCalculator />
               {/* Trust badges */}
               <div className="grid grid-cols-3 gap-3 pt-2">
                 <div className="flex flex-col items-center text-center gap-1.5 p-3 bg-secondary/50 rounded-md">

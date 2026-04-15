@@ -40,7 +40,7 @@ const Header = () => {
             </button>
 
             <Link to="/" className="absolute left-1/2 -translate-x-1/2">
-              <img src={logo} alt="Logo" className="h-14 w-auto" />
+              <img src={logo} alt="Logo" className="h-[4.5rem] w-auto" />
             </Link>
 
             <div className="flex items-center gap-4">

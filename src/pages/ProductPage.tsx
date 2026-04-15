@@ -124,6 +124,8 @@ const ProductPage = () => {
                 </button>
               </div>
 
+              {/* Calcular Frete */}
+              <ShippingCalculator />
               {/* Trust badges */}
               <div className="grid grid-cols-3 gap-3 pt-2">
                 <div className="flex flex-col items-center text-center gap-1.5 p-3 bg-secondary/50 rounded-md">

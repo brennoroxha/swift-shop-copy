@@ -34,12 +34,6 @@ const ProductCard = ({ product }: ProductCardProps) => {
     >
       {/* Image container with discount badge */}
       <div className="relative bg-background p-4 flex items-center justify-center aspect-square">
-        {discount > 0 && (
-          <span className="absolute top-3 left-3 z-10 w-12 h-12 flex flex-col items-center justify-center rounded-full bg-[hsl(220,60%,30%)] text-primary-foreground text-[10px] font-bold leading-tight shadow-md">
-            <span>{discount}%</span>
-            <span>OFF</span>
-          </span>
-        )}
         <img
           src={product.image}
           alt={product.name}

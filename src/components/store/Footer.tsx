@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import metodospag from "@/assets/metodospag.png";
 import correios from "@/assets/correios.png";
 import totalexpress from "@/assets/totalexpress.png";
@@ -12,12 +13,12 @@ const Footer = () => {
             <h4 className="font-heading font-bold text-sm mb-1">Informações Comerciais</h4>
             <div className="w-8 h-0.5 bg-primary mb-4" />
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-foreground transition-colors">Sobre Nós</a></li>
-              <li><a href="#" className="hover:text-foreground transition-colors">Política de Privacidade</a></li>
-              <li><a href="#" className="hover:text-foreground transition-colors">Política de Envio e Prazo de Entrega</a></li>
-              <li><a href="#" className="hover:text-foreground transition-colors">Política de Reembolso</a></li>
-              <li><a href="#" className="hover:text-foreground transition-colors">Política de Trocas e Devoluções</a></li>
-              <li><a href="#" className="hover:text-foreground transition-colors">Termos e Condições</a></li>
+              <li><Link to="/sobre-nos" className="hover:text-foreground transition-colors">Sobre Nós</Link></li>
+              <li><Link to="/politica-privacidade" className="hover:text-foreground transition-colors">Política de Privacidade</Link></li>
+              <li><Link to="/politica-envio" className="hover:text-foreground transition-colors">Política de Envio e Prazo de Entrega</Link></li>
+              <li><Link to="/politica-reembolso" className="hover:text-foreground transition-colors">Política de Reembolso</Link></li>
+              <li><Link to="/politica-trocas" className="hover:text-foreground transition-colors">Política de Trocas e Devoluções</Link></li>
+              <li><Link to="/termos-condicoes" className="hover:text-foreground transition-colors">Termos e Condições</Link></li>
               <li><a href="#" className="hover:text-foreground transition-colors">Formas de Pagamento</a></li>
             </ul>
           </div>

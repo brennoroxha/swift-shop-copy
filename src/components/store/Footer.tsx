@@ -3,9 +3,9 @@ const Footer = () => {
     <footer className="border-t border-border bg-background text-foreground pt-10 pb-6">
       <div className="container">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-          {/* Institucional */}
+          {/* Informações Comerciais */}
           <div>
-            <h4 className="font-heading font-bold text-sm mb-1">Institucional</h4>
+            <h4 className="font-heading font-bold text-sm mb-1">Informações Comerciais</h4>
             <div className="w-8 h-0.5 bg-primary mb-4" />
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li><a href="#" className="hover:text-foreground transition-colors">Sobre Nós</a></li>

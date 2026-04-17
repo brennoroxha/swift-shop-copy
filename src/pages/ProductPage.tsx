@@ -5,6 +5,7 @@ import Header from "@/components/store/Header";
 import Footer from "@/components/store/Footer";
 import ProductCard from "@/components/store/ProductCard";
 import ProductGallery from "@/components/store/ProductGallery";
+import SEO, { SITE_URL, SITE_NAME } from "@/components/SEO";
 import { allProducts, type Product } from "@/data/products";
 import { productDescriptions } from "@/data/productDescriptions";
 import { productGalleryImages } from "@/data/productImages";
@@ -57,8 +58,68 @@ const ProductPage = () => {
     .filter((p) => p.id !== product.id && p.categories.some((c) => product.categories.includes(c)))
     .slice(0, 4);
 
+  const productPath = `/produto/${slug}`;
+  const productImageAbs = product.image.startsWith("http") ? product.image : `${SITE_URL}${product.image}`;
+  const validUntil = new Date(new Date().getFullYear() + 1, 11, 31).toISOString().slice(0, 10);
+  const seoDescription = description?.intro
+    ? description.intro.slice(0, 160)
+    : `${product.name} da marca ${product.brand}. Original, novo, com nota fiscal e frete grátis.`;
+
+  const productJsonLd: Record<string, unknown> = {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    name: product.name,
+    image: [productImageAbs],
+    description: description?.intro || `${product.name} - ${product.brand}`,
+    sku: product.id,
+    mpn: `${product.brand.toUpperCase().replace(/[^A-Z0-9]/g, "")}-${product.id.padStart(4, "0")}`,
+    ...(product.ean ? { gtin13: product.ean } : {}),
+    brand: { "@type": "Brand", name: product.brand },
+    offers: {
+      "@type": "Offer",
+      url: `${SITE_URL}${productPath}`,
+      priceCurrency: "BRL",
+      price: product.salePrice.toFixed(2),
+      priceValidUntil: validUntil,
+      itemCondition: "https://schema.org/NewCondition",
+      availability: "https://schema.org/InStock",
+      seller: { "@type": "Organization", name: SITE_NAME },
+      shippingDetails: {
+        "@type": "OfferShippingDetails",
+        shippingRate: { "@type": "MonetaryAmount", value: "0.00", currency: "BRL" },
+        shippingDestination: { "@type": "DefinedRegion", addressCountry: "BR" },
+      },
+      hasMerchantReturnPolicy: {
+        "@type": "MerchantReturnPolicy",
+        applicableCountry: "BR",
+        returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+        merchantReturnDays: 7,
+        returnMethod: "https://schema.org/ReturnByMail",
+        returnFees: "https://schema.org/FreeReturn",
+      },
+    },
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Início", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: product.categories[0], item: `${SITE_URL}/categoria/${product.categories[0]}` },
+      { "@type": "ListItem", position: 3, name: product.name, item: `${SITE_URL}${productPath}` },
+    ],
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
+      <SEO
+        title={`${product.name} | ${SITE_NAME}`}
+        description={seoDescription}
+        path={productPath}
+        image={productImageAbs}
+        type="product"
+        jsonLd={[productJsonLd, breadcrumbJsonLd]}
+      />
       <TopBar />
       <Header />
       <main className="flex-1">

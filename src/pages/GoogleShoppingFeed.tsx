@@ -9,22 +9,23 @@ const generateXML = () => {
   const items = allProducts.map((p) => {
     const slug = slugify(p.name);
     const link = `${SITE_URL}/produto/${slug}`;
-    // Use absolute URL for image
     const imageUrl = p.image.startsWith("http") ? p.image : `${SITE_URL}${p.image}`;
+    const hasEan = p.ean && p.ean.trim().length > 0;
 
     return `    <item>
       <g:id>${p.id}</g:id>
       <title><![CDATA[${p.name}]]></title>
-      <description><![CDATA[${p.name} - La Roche-Posay Original com Frete Grátis]]></description>
+      <description><![CDATA[${p.name} - ${p.brand} Original com Frete Grátis]]></description>
       <link>${link}</link>
       <g:image_link>${imageUrl}</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:price>${p.originalPrice.toFixed(2)} BRL</g:price>
       <g:sale_price>${p.salePrice.toFixed(2)} BRL</g:sale_price>
-      <g:brand>La Roche-Posay</g:brand>
+      <g:brand>${p.brand}</g:brand>
       <g:condition>new</g:condition>
-      <g:google_product_category>Health &amp; Beauty &gt; Personal Care &gt; Cosmetics &gt; Skin Care</g:google_product_category>
-      <g:product_type><![CDATA[Cuidados com a Pele]]></g:product_type>
+      ${hasEan ? `<g:gtin>${p.ean}</g:gtin>` : `<g:identifier_exists>no</g:identifier_exists>`}
+      <g:google_product_category>Hardware &gt; Tools &gt; Ladders</g:google_product_category>
+      <g:product_type><![CDATA[Escadas]]></g:product_type>
       <g:shipping>
         <g:country>BR</g:country>
         <g:price>0.00 BRL</g:price>
@@ -35,9 +36,9 @@ const generateXML = () => {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">
   <channel>
-    <title>La Roche-Posay - Loja Oficial</title>
+    <title>Eletroferragens - Loja Online</title>
     <link>${SITE_URL}</link>
-    <description>Produtos La Roche-Posay com até 40% de desconto e Frete Grátis</description>
+    <description>Escadas e ferramentas com Frete Grátis</description>
 ${items.join("\n")}
   </channel>
 </rss>`;

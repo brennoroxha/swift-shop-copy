@@ -70,6 +70,11 @@ const CategoryPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEO
+        title={`${category.name} | ${SITE_NAME}`}
+        description={`Compre ${category.name.toLowerCase()} originais com frete grátis para todo o Brasil. ${products.length} produtos disponíveis com garantia do fabricante.`}
+        path={`/categoria/${slug}`}
+      />
       <TopBar />
       <Header />
       <main className="flex-1">

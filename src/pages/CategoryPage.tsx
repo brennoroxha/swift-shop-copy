@@ -4,6 +4,7 @@ import TopBar from "@/components/store/TopBar";
 import Header from "@/components/store/Header";
 import Footer from "@/components/store/Footer";
 import ProductCard from "@/components/store/ProductCard";
+import SEO, { SITE_NAME } from "@/components/SEO";
 import { getProductsByCategory, categories, allProducts, type CategorySlug } from "@/data/products";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 

@@ -212,8 +212,8 @@ const CheckoutPage = () => {
     return null;
   }
 
-  // alias para uso dentro de handleFinalizePix
-  const itemsList = items;
+
+
 
   return (
     <div className="min-h-screen flex flex-col bg-[#f5f5f5]">

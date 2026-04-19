@@ -82,11 +82,40 @@ const AdminPedidos = () => {
   const [search, setSearch] = useState("");
   const [dateFilter, setDateFilter] = useState<DateFilter>("all");
   const [customDate, setCustomDate] = useState<string>("");
+  const [authChecked, setAuthChecked] = useState(false);
 
+  // Checa sessão + role admin
   useEffect(() => {
-    if (sessionStorage.getItem("admin_logged") !== "1") {
-      navigate("/admin/login", { replace: true });
-    }
+    let cancelled = false;
+    const verify = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+        if (!cancelled) navigate("/admin/login", { replace: true });
+        return;
+      }
+      const { data } = await supabase
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", session.user.id)
+        .eq("role", "admin")
+        .maybeSingle();
+      if (cancelled) return;
+      if (!data) {
+        await supabase.auth.signOut();
+        navigate("/admin/login", { replace: true });
+        return;
+      }
+      setAuthChecked(true);
+    };
+    verify();
+
+    const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (!session) navigate("/admin/login", { replace: true });
+    });
+    return () => {
+      cancelled = true;
+      sub.subscription.unsubscribe();
+    };
   }, [navigate]);
 
   const fetchOrders = async () => {
@@ -101,10 +130,11 @@ const AdminPedidos = () => {
   };
 
   useEffect(() => {
+    if (!authChecked) return;
     fetchOrders();
     const t = setInterval(fetchOrders, 15000);
     return () => clearInterval(t);
-  }, []);
+  }, [authChecked]);
 
   const counts = useMemo(() => {
     const paidStatuses = ["paid", "approved", "succeeded", "completed"];
@@ -187,8 +217,8 @@ const AdminPedidos = () => {
     return groups;
   }, [filtered]);
 
-  const handleLogout = () => {
-    sessionStorage.removeItem("admin_logged");
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
     navigate("/admin/login");
   };
 

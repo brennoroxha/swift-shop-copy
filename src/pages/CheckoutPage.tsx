@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useCart } from "@/contexts/CartContext";
 import { Link, useNavigate } from "react-router-dom";
-import { ShieldCheck, ArrowLeft, ChevronDown, Lock, Truck, Copy, Check, Loader2 } from "lucide-react";
+import { ShieldCheck, ArrowLeft, ChevronDown, Lock, Truck, Copy, Check, Loader2, Clock } from "lucide-react";
 import { QRCodeSVG } from "qrcode.react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
@@ -58,8 +58,10 @@ const CheckoutPage = () => {
   const [cepLoading, setCepLoading] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState<"pix" | "cartao">("pix");
   const [generatingPix, setGeneratingPix] = useState(false);
-  const [pixData, setPixData] = useState<{ qr_code: string; expiration_date: string; amount: number } | null>(null);
+  const [pixData, setPixData] = useState<{ id: string; qr_code: string; expiration_date: string; amount: number } | null>(null);
   const [copied, setCopied] = useState(false);
+  const [secondsLeft, setSecondsLeft] = useState(600); // 10 minutos
+  const pollRef = useRef<number | null>(null);
 
   const [form, setForm] = useState({
     nome: "",

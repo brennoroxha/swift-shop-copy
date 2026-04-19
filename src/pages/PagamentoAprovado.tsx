@@ -4,7 +4,7 @@ import { CheckCircle2, Package, Mail, Upload, Image as ImageIcon, Check } from "
 import { useCart } from "@/contexts/CartContext";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import logo from "@/assets/logo.jpg";
+import logo from "@/assets/logo-kompleta.png";
 
 const PagamentoAprovado = () => {
   const [params] = useSearchParams();

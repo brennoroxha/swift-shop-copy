@@ -1,12 +1,13 @@
-import heroBanner from "@/assets/hero-banner.jpg";
+import heroBanner from "@/assets/banner-escada-extensiva.png";
 
 const HeroBanner = () => {
   return (
     <div className="w-full overflow-hidden">
       <img
         src={heroBanner}
-        alt="La Roche-Posay - Cuidados dermatológicos"
-        className="w-full h-[300px] md:h-[450px] lg:h-[550px] object-cover object-top"
+        alt="Escada Extensiva de Alumínio - Leve, Prática e Segura"
+        className="w-full h-auto object-cover"
+        loading="eager"
       />
     </div>
   );

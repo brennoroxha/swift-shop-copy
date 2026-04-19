@@ -266,6 +266,35 @@ const AdminPedidos = () => {
               Com comprovante
             </FilterChip>
           </div>
+
+          {/* Date filter */}
+          <div className="flex flex-wrap gap-2 items-center pt-1 border-t border-border">
+            <span className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground inline-flex items-center gap-1 mr-1 mt-2">
+              <CalendarIcon className="w-3.5 h-3.5" /> Período:
+            </span>
+            <FilterChip active={dateFilter === "all"} onClick={() => setDateFilter("all")}>
+              Todo período
+            </FilterChip>
+            <FilterChip active={dateFilter === "today"} onClick={() => setDateFilter("today")}>
+              Hoje
+            </FilterChip>
+            <FilterChip active={dateFilter === "yesterday"} onClick={() => setDateFilter("yesterday")}>
+              Ontem
+            </FilterChip>
+            <FilterChip active={dateFilter === "last7"} onClick={() => setDateFilter("last7")}>
+              Últimos 7 dias
+            </FilterChip>
+            <input
+              type="date"
+              value={customDate}
+              onChange={(e) => {
+                setCustomDate(e.target.value);
+                setDateFilter(e.target.value ? "custom" : "all");
+              }}
+              className="border border-border rounded px-3 py-1.5 text-xs outline-none focus:border-primary"
+            />
+          </div>
+
           <div className="relative">
             <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
             <input

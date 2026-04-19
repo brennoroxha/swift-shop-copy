@@ -54,6 +54,7 @@ const ProductPage = () => {
   const installmentValue = product.salePrice / product.installments;
   const discount = Math.round(((product.originalPrice - product.salePrice) / product.originalPrice) * 100);
   const description = productDescriptions[product.id];
+  const reviewSummary = getProductReviews(product.id);
 
   // Related products from same categories
   const related = allProducts
@@ -77,6 +78,26 @@ const ProductPage = () => {
     mpn: `${product.brand.toUpperCase().replace(/[^A-Z0-9]/g, "")}-${product.id.padStart(4, "0")}`,
     ...(product.ean ? { gtin13: product.ean } : {}),
     brand: { "@type": "Brand", name: product.brand },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: reviewSummary.average.toFixed(1),
+      reviewCount: reviewSummary.count,
+      bestRating: "5",
+      worstRating: "1",
+    },
+    review: reviewSummary.reviews.slice(0, 5).map((r) => ({
+      "@type": "Review",
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: r.rating,
+        bestRating: "5",
+        worstRating: "1",
+      },
+      author: { "@type": "Person", name: r.author },
+      datePublished: r.date,
+      name: r.title,
+      reviewBody: r.comment,
+    })),
     offers: {
       "@type": "Offer",
       url: `${SITE_URL}${productPath}`,

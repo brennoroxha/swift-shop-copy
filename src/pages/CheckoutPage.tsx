@@ -157,7 +157,7 @@ const CheckoutPage = () => {
     setGeneratingPix(true);
     try {
       const amountInCents = Math.round(totalWithDiscount * 100);
-      const items = itemsList.map(({ product, quantity }) => ({
+      const orderItems = items.map(({ product, quantity }) => ({
         title: product.name.slice(0, 100),
         unit_price: Math.round(product.salePrice * 100),
         quantity,
@@ -173,7 +173,7 @@ const CheckoutPage = () => {
             phone: form.celular,
             document: form.cpf,
           },
-          items,
+          items: orderItems,
           metadata: { source: "kompleta-checkout" },
         },
       });

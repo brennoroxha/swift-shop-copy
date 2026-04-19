@@ -71,7 +71,7 @@ const CheckoutPage = () => {
     estado: "",
   });
 
-  const pixDiscount = totalPrice * 0.07;
+  const pixDiscount = totalPrice * 0.10;
   const totalWithDiscount = totalPrice - pixDiscount;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -428,11 +428,7 @@ const CheckoutPage = () => {
                   <div className="space-y-3">
                     <label className="flex items-center gap-3 border border-border rounded px-4 py-3 cursor-pointer hover:border-primary transition-colors">
                       <input type="radio" name="payment" value="pix" defaultChecked className="accent-primary" />
-                      <span className="text-sm font-medium">PIX (7% de desconto)</span>
-                    </label>
-                    <label className="flex items-center gap-3 border border-border rounded px-4 py-3 cursor-pointer hover:border-primary transition-colors">
-                      <input type="radio" name="payment" value="boleto" className="accent-primary" />
-                      <span className="text-sm font-medium">Boleto Bancário</span>
+                      <span className="text-sm font-medium">PIX (10% de desconto)</span>
                     </label>
                     <label className="flex items-center gap-3 border border-border rounded px-4 py-3 cursor-pointer hover:border-primary transition-colors">
                       <input type="radio" name="payment" value="cartao" className="accent-primary" />
@@ -495,7 +491,7 @@ const CheckoutPage = () => {
                   <span>R$ {formatPrice(totalPrice)}</span>
                 </div>
                 <div className="flex justify-between text-primary">
-                  <span>Descontos (7% PIX)</span>
+                  <span>Descontos (10% PIX)</span>
                   <span>-R$ {formatPrice(pixDiscount)}</span>
                 </div>
               </div>

@@ -24,6 +24,8 @@ import MinhaConta from "./pages/MinhaConta";
 import RastrearPedido from "./pages/RastrearPedido";
 import FaleConosco from "./pages/FaleConosco";
 import NotFound from "./pages/NotFound";
+import AdminLogin from "./pages/AdminLogin";
+import AdminPedidos from "./pages/AdminPedidos";
 
 const queryClient = new QueryClient();
 
@@ -54,6 +56,8 @@ const App = () => (
               <Route path="/minha-conta" element={<MinhaConta />} />
               <Route path="/rastrear-pedido" element={<RastrearPedido />} />
               <Route path="/fale-conosco" element={<FaleConosco />} />
+              <Route path="/admin/login" element={<AdminLogin />} />
+              <Route path="/admin/pedidos" element={<AdminPedidos />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

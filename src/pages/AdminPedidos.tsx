@@ -130,10 +130,11 @@ const AdminPedidos = () => {
   };
 
   useEffect(() => {
+    if (!authChecked) return;
     fetchOrders();
     const t = setInterval(fetchOrders, 15000);
     return () => clearInterval(t);
-  }, []);
+  }, [authChecked]);
 
   const counts = useMemo(() => {
     const paidStatuses = ["paid", "approved", "succeeded", "completed"];

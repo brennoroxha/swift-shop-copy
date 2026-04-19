@@ -6,7 +6,7 @@ import { QRCodeSVG } from "qrcode.react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { getProductSlug } from "@/pages/ProductPage";
-import logo from "@/assets/logo.jpg";
+import logo from "@/assets/logo-kompleta.png";
 import seloRA1000 from "@/assets/selo-ra1000.png";
 import premioRA2025 from "@/assets/premio-ra2025.png";
 

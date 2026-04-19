@@ -700,18 +700,22 @@ const CheckoutPage = () => {
                 </span>
               </div>
 
-              <button
-                onClick={() => { setStep(3); handleFinalizePix(); }}
-                disabled={generatingPix}
-                className="w-full bg-primary text-primary-foreground font-heading font-bold text-sm uppercase tracking-wider py-4 rounded hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-              >
-                {generatingPix && <Loader2 className="w-4 h-4 animate-spin" />}
-                {generatingPix ? "Gerando PIX..." : "Finalizar Compra"}
-              </button>
+              {!pixData && (
+                <>
+                  <button
+                    onClick={() => { setStep(3); handleFinalizePix(); }}
+                    disabled={generatingPix}
+                    className="w-full bg-primary text-primary-foreground font-heading font-bold text-sm uppercase tracking-wider py-4 rounded hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  >
+                    {generatingPix && <Loader2 className="w-4 h-4 animate-spin" />}
+                    {generatingPix ? "Gerando PIX..." : "Finalizar Compra"}
+                  </button>
 
-              <p className="text-xs text-center text-muted-foreground uppercase tracking-wide">
-                Cálculo do frete realizado no checkout
-              </p>
+                  <p className="text-xs text-center text-muted-foreground uppercase tracking-wide">
+                    Cálculo do frete realizado no checkout
+                  </p>
+                </>
+              )}
             </div>
           </div>
         </div>

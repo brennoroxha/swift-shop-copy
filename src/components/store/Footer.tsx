@@ -52,9 +52,22 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Identidade Legal (exigido pelo Google Shopping) */}
+        <div className="border-t border-border pt-6 mb-4">
+          <h4 className="font-heading font-bold text-sm mb-1">Dados da Empresa</h4>
+          <div className="w-8 h-0.5 bg-primary mb-4" />
+          <div className="text-xs text-muted-foreground space-y-1 leading-relaxed">
+            <p><strong className="text-foreground">Kompleta Ferragens Construcao e Moveis LTDA</strong></p>
+            <p>CNPJ: 30.063.962/0001-50</p>
+            <p>Rua Nelson Viana, 180 – Loja 10 – Centro – Três Rios – RJ – CEP 25805-290</p>
+            <p>Telefone: (24) 2251-2189 · E-mail: contato@kompletaferragen.com.br</p>
+            <p>Horário de atendimento: Segunda a Sexta, 8h às 18h</p>
+          </div>
+        </div>
+
         {/* Copyright */}
         <div className="border-t border-border pt-4 text-center text-xs text-muted-foreground">
-          <p>© 2025 Todos os direitos reservados.</p>
+          <p>© 2025 Kompleta Ferragens. Todos os direitos reservados.</p>
         </div>
       </div>
     </footer>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useCart } from "@/contexts/CartContext";
 import { Link, useNavigate } from "react-router-dom";
-import { ShieldCheck, ArrowLeft, ChevronDown, Lock } from "lucide-react";
+import { ShieldCheck, ArrowLeft, ChevronDown, Lock, Truck } from "lucide-react";
 import { getProductSlug } from "@/pages/ProductPage";
 import logo from "@/assets/logo.jpg";
 import seloRA1000 from "@/assets/selo-ra1000.png";
@@ -368,6 +368,29 @@ const CheckoutPage = () => {
                       />
                     </div>
                   </div>
+
+                  {address.cep.replace(/\D/g, "").length === 8 &&
+                    address.endereco.trim() !== "" &&
+                    address.numero.trim() !== "" &&
+                    address.bairro.trim() !== "" &&
+                    address.cidade.trim() !== "" &&
+                    address.estado.trim() !== "" && (
+                      <div>
+                        <p className="text-sm font-semibold text-foreground mb-2">Opção de frete</p>
+                        <label className="flex items-center gap-3 border-2 border-primary bg-primary/5 rounded-md px-4 py-3 cursor-pointer">
+                          <input type="radio" name="frete" defaultChecked className="accent-primary" />
+                          <Truck className="w-5 h-5 text-primary shrink-0" />
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 flex-wrap">
+                              <span className="text-xs font-bold text-primary-foreground bg-primary px-2 py-0.5 rounded">GRÁTIS</span>
+                              <span className="text-sm font-semibold text-foreground">via Transportadora</span>
+                            </div>
+                            <p className="text-xs text-muted-foreground mt-0.5">Entrega em 3 a 6 dias úteis</p>
+                          </div>
+                          <span className="text-sm font-bold text-foreground">R$ 0,00</span>
+                        </label>
+                      </div>
+                    )}
 
                   <div className="flex justify-end pt-2">
                     <button

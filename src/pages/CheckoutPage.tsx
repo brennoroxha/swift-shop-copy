@@ -146,6 +146,16 @@ const CheckoutPage = () => {
 
   const isStep1Valid = form.nome.trim() !== "" && form.email.trim() !== "" && form.celular.trim() !== "" && form.cpf.trim() !== "";
 
+  const isAddressValid =
+    address.cep.replace(/\D/g, "").length === 8 &&
+    address.endereco.trim() !== "" &&
+    address.numero.trim() !== "" &&
+    address.bairro.trim() !== "" &&
+    address.cidade.trim() !== "" &&
+    address.estado.trim() !== "";
+
+  const isCheckoutValid = isStep1Valid && isAddressValid && validateCPF(form.cpf) && form.celular.replace(/\D/g, "").length >= 11;
+
   const handleFinalizePix = async () => {
     if (paymentMethod !== "pix") {
       toast.info("Pagamento por Cartão estará disponível em breve. Selecione PIX para continuar.");

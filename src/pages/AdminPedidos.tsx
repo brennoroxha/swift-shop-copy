@@ -43,7 +43,36 @@ const formatDate = (iso: string) =>
     minute: "2-digit",
   });
 
+const dayKey = (iso: string) => {
+  const d = new Date(iso);
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+};
+
+const todayKey = () => dayKey(new Date().toISOString());
+const yesterdayKey = () => {
+  const d = new Date();
+  d.setDate(d.getDate() - 1);
+  return dayKey(d.toISOString());
+};
+
+const formatDayLabel = (key: string) => {
+  if (key === todayKey()) return "Hoje";
+  if (key === yesterdayKey()) return "Ontem";
+  const [y, m, d] = key.split("-");
+  const date = new Date(Number(y), Number(m) - 1, Number(d));
+  return date.toLocaleDateString("pt-BR", {
+    weekday: "long",
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  });
+};
+
 type FilterKey = "all" | "suspicious" | "pending" | "paid" | "with_proof";
+type DateFilter = "all" | "today" | "yesterday" | "last7" | "custom";
 
 const AdminPedidos = () => {
   const navigate = useNavigate();
@@ -51,6 +80,8 @@ const AdminPedidos = () => {
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<FilterKey>("all");
   const [search, setSearch] = useState("");
+  const [dateFilter, setDateFilter] = useState<DateFilter>("all");
+  const [customDate, setCustomDate] = useState<string>("");
 
   useEffect(() => {
     if (sessionStorage.getItem("admin_logged") !== "1") {

@@ -211,6 +211,52 @@ const CheckoutPage = () => {
     }
   };
 
+  // Cronômetro de 10 minutos para pagar o PIX
+  useEffect(() => {
+    if (!pixData) return;
+    const timer = window.setInterval(() => {
+      setSecondsLeft((s) => (s > 0 ? s - 1 : 0));
+    }, 1000);
+    return () => window.clearInterval(timer);
+  }, [pixData]);
+
+  // Polling de status do pagamento (a cada 4s)
+  useEffect(() => {
+    if (!pixData?.id) return;
+    let cancelled = false;
+
+    const check = async () => {
+      try {
+        const { data, error } = await supabase
+          .from("orders")
+          .select("status")
+          .eq("transaction_id", pixData.id)
+          .maybeSingle();
+        if (cancelled || error || !data) return;
+        const paidStatuses = ["paid", "approved", "succeeded", "completed"];
+        if (paidStatuses.includes(String(data.status).toLowerCase())) {
+          if (pollRef.current) window.clearInterval(pollRef.current);
+          navigate(`/pagamento-aprovado?tx=${pixData.id}`);
+        }
+      } catch {
+        // silently retry
+      }
+    };
+
+    pollRef.current = window.setInterval(check, 4000);
+    check();
+    return () => {
+      cancelled = true;
+      if (pollRef.current) window.clearInterval(pollRef.current);
+    };
+  }, [pixData?.id, navigate]);
+
+  const formatTimer = (s: number) => {
+    const m = Math.floor(s / 60).toString().padStart(2, "0");
+    const sec = (s % 60).toString().padStart(2, "0");
+    return `${m}:${sec}`;
+  };
+
   if (items.length === 0) {
     navigate("/carrinho");
     return null;

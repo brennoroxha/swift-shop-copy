@@ -323,87 +323,108 @@ const AdminPedidos = () => {
           </div>
         )}
 
-        {/* Orders list */}
-        <div className="space-y-3">
+        {/* Orders grouped by day */}
+        <div className="space-y-6">
           {loading && orders.length === 0 && (
             <p className="text-center text-muted-foreground py-8">Carregando pedidos...</p>
           )}
           {!loading && filtered.length === 0 && (
             <p className="text-center text-muted-foreground py-8">Nenhum pedido encontrado.</p>
           )}
-          {filtered.map((order) => {
-            const paid = isPaid(order.status);
-            const suspicious = !paid && !!order.proof_url;
-            return (
-              <article
-                key={order.id}
-                className={`rounded-lg border p-4 space-y-3 ${
-                  suspicious
-                    ? "bg-destructive/5 border-destructive/50 ring-1 ring-destructive/30"
-                    : "bg-white border-border"
-                }`}
-              >
-                <div className="flex flex-wrap items-start justify-between gap-3">
-                  <div className="min-w-0">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <span className="font-mono text-xs text-muted-foreground">
-                        #{order.transaction_id.slice(0, 12)}
-                      </span>
-                      {paid ? (
-                        <span className="text-[11px] font-bold uppercase tracking-wide bg-green-100 text-green-700 px-2 py-0.5 rounded">
-                          Pago
-                        </span>
-                      ) : (
-                        <span className="text-[11px] font-bold uppercase tracking-wide bg-amber-100 text-amber-700 px-2 py-0.5 rounded">
-                          Pendente
-                        </span>
-                      )}
-                      {order.proof_url && (
-                        <span className="text-[11px] font-bold uppercase tracking-wide bg-primary/10 text-primary px-2 py-0.5 rounded inline-flex items-center gap-1">
-                          <ImageIcon className="w-3 h-3" /> Comprovante
-                        </span>
-                      )}
-                      {suspicious && (
-                        <span className="text-[11px] font-bold uppercase tracking-wide bg-destructive text-destructive-foreground px-2 py-0.5 rounded inline-flex items-center gap-1">
-                          <ShieldAlert className="w-3 h-3" /> Possível desvio
-                        </span>
-                      )}
-                    </div>
-                    <h3 className="font-heading font-bold text-foreground mt-1 truncate">
-                      {order.customer_name || "Sem nome"}
-                    </h3>
-                    <p className="text-xs text-muted-foreground truncate">
-                      {order.customer_email || "—"} • {order.customer_document || "—"}
-                    </p>
-                    <p className="text-xs text-muted-foreground mt-1">
-                      Criado em {formatDate(order.created_at)}
-                      {order.paid_at && ` • Pago em ${formatDate(order.paid_at)}`}
-                    </p>
-                  </div>
-                  <div className="text-right">
-                    <p className="font-heading font-bold text-lg text-foreground">
-                      {formatBRL(order.amount)}
-                    </p>
-                  </div>
+          {groupedByDay.map((group) => (
+            <section key={group.day} className="space-y-3">
+              <div className="flex flex-wrap items-center justify-between gap-2 sticky top-[64px] bg-[#f5f5f5] py-2 z-10">
+                <h2 className="font-heading font-bold text-foreground capitalize">
+                  {formatDayLabel(group.day)}
+                </h2>
+                <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                  <span>
+                    <strong className="text-foreground">{group.items.length}</strong> pedido(s)
+                  </span>
+                  <span>
+                    <strong className="text-green-700">{group.paidCount}</strong> pago(s)
+                  </span>
+                  <span>
+                    Total: <strong className="text-foreground">{formatBRL(group.total)}</strong>
+                  </span>
                 </div>
+              </div>
 
-                {order.proof_url && (
-                  <a
-                    href={order.proof_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block"
+              {group.items.map((order) => {
+                const paid = isPaid(order.status);
+                const suspicious = !paid && !!order.proof_url;
+                return (
+                  <article
+                    key={order.id}
+                    className={`rounded-lg border p-4 space-y-3 ${
+                      suspicious
+                        ? "bg-destructive/5 border-destructive/50 ring-1 ring-destructive/30"
+                        : "bg-white border-border"
+                    }`}
                   >
-                    <img
-                      src={order.proof_url}
-                      alt="Comprovante"
-                      className="max-h-56 rounded border border-border"
-                    />
-                  </a>
-                )}
-              </article>
-            );
-          })}
+                    <div className="flex flex-wrap items-start justify-between gap-3">
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className="font-mono text-xs text-muted-foreground">
+                            #{order.transaction_id.slice(0, 12)}
+                          </span>
+                          {paid ? (
+                            <span className="text-[11px] font-bold uppercase tracking-wide bg-green-100 text-green-700 px-2 py-0.5 rounded">
+                              Pago
+                            </span>
+                          ) : (
+                            <span className="text-[11px] font-bold uppercase tracking-wide bg-amber-100 text-amber-700 px-2 py-0.5 rounded">
+                              Pendente
+                            </span>
+                          )}
+                          {order.proof_url && (
+                            <span className="text-[11px] font-bold uppercase tracking-wide bg-primary/10 text-primary px-2 py-0.5 rounded inline-flex items-center gap-1">
+                              <ImageIcon className="w-3 h-3" /> Comprovante
+                            </span>
+                          )}
+                          {suspicious && (
+                            <span className="text-[11px] font-bold uppercase tracking-wide bg-destructive text-destructive-foreground px-2 py-0.5 rounded inline-flex items-center gap-1">
+                              <ShieldAlert className="w-3 h-3" /> Possível desvio
+                            </span>
+                          )}
+                        </div>
+                        <h3 className="font-heading font-bold text-foreground mt-1 truncate">
+                          {order.customer_name || "Sem nome"}
+                        </h3>
+                        <p className="text-xs text-muted-foreground truncate">
+                          {order.customer_email || "—"} • {order.customer_document || "—"}
+                        </p>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Criado em {formatDate(order.created_at)}
+                          {order.paid_at && ` • Pago em ${formatDate(order.paid_at)}`}
+                        </p>
+                      </div>
+                      <div className="text-right">
+                        <p className="font-heading font-bold text-lg text-foreground">
+                          {formatBRL(order.amount)}
+                        </p>
+                      </div>
+                    </div>
+
+                    {order.proof_url && (
+                      <a
+                        href={order.proof_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block"
+                      >
+                        <img
+                          src={order.proof_url}
+                          alt="Comprovante"
+                          className="max-h-56 rounded border border-border"
+                        />
+                      </a>
+                    )}
+                  </article>
+                );
+              })}
+            </section>
+          ))}
         </div>
       </main>
     </div>

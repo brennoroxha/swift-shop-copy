@@ -157,10 +157,6 @@ const CheckoutPage = () => {
   const isCheckoutValid = isStep1Valid && isAddressValid && validateCPF(form.cpf) && form.celular.replace(/\D/g, "").length >= 11;
 
   const handleFinalizePix = async () => {
-    if (paymentMethod !== "pix") {
-      toast.info("Pagamento por Cartão estará disponível em breve. Selecione PIX para continuar.");
-      return;
-    }
     if (!isStep1Valid) {
       toast.error("Preencha os dados pessoais antes de finalizar.");
       setStep(1);
@@ -556,35 +552,21 @@ const CheckoutPage = () => {
                 <div className="px-6 pb-6 space-y-5">
                   {!pixData ? (
                     <>
-                      <p className="text-sm text-muted-foreground">
-                        Selecione a forma de pagamento desejada:
+                      <p className="text-sm text-muted-foreground mb-3">
+                        Pagamento exclusivo via PIX com 10% de desconto:
                       </p>
 
-                      <div className="space-y-3">
-                        <label className={`flex items-center gap-3 border rounded px-4 py-3 cursor-pointer transition-colors ${paymentMethod === "pix" ? "border-primary bg-primary/5" : "border-border hover:border-primary"}`}>
-                          <input
-                            type="radio"
-                            name="payment"
-                            value="pix"
-                            checked={paymentMethod === "pix"}
-                            onChange={() => setPaymentMethod("pix")}
-                            className="accent-primary"
-                          />
-                          <span className="text-sm font-medium">PIX (10% de desconto)</span>
-                        </label>
-                        <label className={`flex items-center gap-3 border rounded px-4 py-3 cursor-pointer transition-colors ${paymentMethod === "cartao" ? "border-primary bg-primary/5" : "border-border hover:border-primary"}`}>
-                          <input
-                            type="radio"
-                            name="payment"
-                            value="cartao"
-                            checked={paymentMethod === "cartao"}
-                            onChange={() => setPaymentMethod("cartao")}
-                            className="accent-primary"
-                          />
-                          <span className="text-sm font-medium">Cartão de Crédito (até 3x sem juros)</span>
-                        </label>
-                      </div>
-
+                      <label className="flex items-center gap-3 border border-primary bg-primary/5 rounded px-4 py-3 cursor-pointer">
+                        <input
+                          type="radio"
+                          name="payment"
+                          value="pix"
+                          checked
+                          readOnly
+                          className="accent-primary"
+                        />
+                        <span className="text-sm font-medium">PIX (10% de desconto)</span>
+                      </label>
                     </>
                   ) : (
                     <div className="space-y-5 text-center">

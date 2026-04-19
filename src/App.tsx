@@ -24,6 +24,8 @@ import MinhaConta from "./pages/MinhaConta";
 import RastrearPedido from "./pages/RastrearPedido";
 import FaleConosco from "./pages/FaleConosco";
 import NotFound from "./pages/NotFound";
+import AdminLogin from "./pages/AdminLogin";
+import AdminPedidos from "./pages/AdminPedidos";
 
 const queryClient = new QueryClient();
 

@@ -81,7 +81,7 @@ const PagamentoAprovado = () => {
       <header className="bg-white border-b border-border">
         <div className="container py-4">
           <Link to="/" className="flex items-center">
-            <img src={logo} alt="Logo" className="h-8 md:h-9 w-auto" />
+            <img src={logo} alt="Logo" className="h-16 md:h-20 w-auto" />
           </Link>
         </div>
       </header>

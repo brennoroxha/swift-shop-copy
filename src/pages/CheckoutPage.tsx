@@ -494,26 +494,100 @@ const CheckoutPage = () => {
 
               {step === 3 && (
                 <div className="px-6 pb-6 space-y-5">
-                  <p className="text-sm text-muted-foreground">
-                    Selecione a forma de pagamento desejada:
-                  </p>
+                  {!pixData ? (
+                    <>
+                      <p className="text-sm text-muted-foreground">
+                        Selecione a forma de pagamento desejada:
+                      </p>
 
-                  <div className="space-y-3">
-                    <label className="flex items-center gap-3 border border-border rounded px-4 py-3 cursor-pointer hover:border-primary transition-colors">
-                      <input type="radio" name="payment" value="pix" defaultChecked className="accent-primary" />
-                      <span className="text-sm font-medium">PIX (10% de desconto)</span>
-                    </label>
-                    <label className="flex items-center gap-3 border border-border rounded px-4 py-3 cursor-pointer hover:border-primary transition-colors">
-                      <input type="radio" name="payment" value="cartao" className="accent-primary" />
-                      <span className="text-sm font-medium">Cartão de Crédito (até 3x sem juros)</span>
-                    </label>
-                  </div>
+                      <div className="space-y-3">
+                        <label className={`flex items-center gap-3 border rounded px-4 py-3 cursor-pointer transition-colors ${paymentMethod === "pix" ? "border-primary bg-primary/5" : "border-border hover:border-primary"}`}>
+                          <input
+                            type="radio"
+                            name="payment"
+                            value="pix"
+                            checked={paymentMethod === "pix"}
+                            onChange={() => setPaymentMethod("pix")}
+                            className="accent-primary"
+                          />
+                          <span className="text-sm font-medium">PIX (10% de desconto)</span>
+                        </label>
+                        <label className={`flex items-center gap-3 border rounded px-4 py-3 cursor-pointer transition-colors ${paymentMethod === "cartao" ? "border-primary bg-primary/5" : "border-border hover:border-primary"}`}>
+                          <input
+                            type="radio"
+                            name="payment"
+                            value="cartao"
+                            checked={paymentMethod === "cartao"}
+                            onChange={() => setPaymentMethod("cartao")}
+                            className="accent-primary"
+                          />
+                          <span className="text-sm font-medium">Cartão de Crédito (até 3x sem juros)</span>
+                        </label>
+                      </div>
 
-                  <button
-                    className="w-full bg-primary text-primary-foreground font-heading font-bold text-sm uppercase tracking-wider py-4 rounded hover:opacity-90 transition-opacity mt-2"
-                  >
-                    Finalizar Compra
-                  </button>
+                      <button
+                        onClick={handleFinalizePix}
+                        disabled={generatingPix}
+                        className="w-full bg-primary text-primary-foreground font-heading font-bold text-sm uppercase tracking-wider py-4 rounded hover:opacity-90 transition-opacity mt-2 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                      >
+                        {generatingPix && <Loader2 className="w-4 h-4 animate-spin" />}
+                        {generatingPix ? "Gerando PIX..." : "Finalizar Compra"}
+                      </button>
+                    </>
+                  ) : (
+                    <div className="space-y-5 text-center">
+                      <div>
+                        <h3 className="font-heading font-bold text-lg text-foreground">Pague com PIX</h3>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          Escaneie o QR Code abaixo ou copie o código para pagar
+                        </p>
+                      </div>
+
+                      <div className="flex justify-center">
+                        <div className="bg-white p-4 border border-border rounded-lg">
+                          <QRCodeSVG value={pixData.qr_code} size={220} level="M" />
+                        </div>
+                      </div>
+
+                      <div className="text-2xl font-bold text-primary">
+                        R$ {formatPrice(pixData.amount / 100)}
+                      </div>
+
+                      <div className="space-y-2 text-left">
+                        <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+                          PIX Copia e Cola
+                        </label>
+                        <div className="flex items-stretch gap-2">
+                          <div className="flex-1 border border-border rounded px-3 py-2 bg-muted/30 text-xs text-foreground break-all font-mono max-h-20 overflow-y-auto">
+                            {pixData.qr_code}
+                          </div>
+                          <button
+                            onClick={copyPixCode}
+                            className="shrink-0 px-4 bg-foreground text-background rounded hover:opacity-90 transition-opacity flex items-center justify-center"
+                            aria-label="Copiar código PIX"
+                          >
+                            {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                          </button>
+                        </div>
+                      </div>
+
+                      <div className="text-xs text-muted-foreground bg-muted/50 rounded p-3 text-left space-y-1">
+                        <p>1. Abra o app do seu banco e acesse a área PIX</p>
+                        <p>2. Escolha pagar com QR Code ou Pix Copia e Cola</p>
+                        <p>3. Confirme o pagamento</p>
+                        <p className="pt-2 text-foreground">
+                          Validade: {new Date(pixData.expiration_date).toLocaleString("pt-BR")}
+                        </p>
+                      </div>
+
+                      <button
+                        onClick={() => setPixData(null)}
+                        className="text-xs text-primary underline hover:opacity-70 transition-opacity"
+                      >
+                        Gerar novo PIX
+                      </button>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
@@ -577,9 +651,12 @@ const CheckoutPage = () => {
               </div>
 
               <button
-                className="w-full bg-primary text-primary-foreground font-heading font-bold text-sm uppercase tracking-wider py-4 rounded hover:opacity-90 transition-opacity"
+                onClick={() => { setStep(3); handleFinalizePix(); }}
+                disabled={generatingPix}
+                className="w-full bg-primary text-primary-foreground font-heading font-bold text-sm uppercase tracking-wider py-4 rounded hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
-                Finalizar Compra
+                {generatingPix && <Loader2 className="w-4 h-4 animate-spin" />}
+                {generatingPix ? "Gerando PIX..." : "Finalizar Compra"}
               </button>
 
               <p className="text-xs text-center text-muted-foreground uppercase tracking-wide">

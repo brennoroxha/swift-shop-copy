@@ -11,6 +11,7 @@ import CategoryPage from "./pages/CategoryPage";
 import ProductPage from "./pages/ProductPage";
 import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
+import PagamentoAprovado from "./pages/PagamentoAprovado";
 import SearchPage from "./pages/SearchPage";
 import GoogleShoppingFeed from "./pages/GoogleShoppingFeed";
 import SobreNos from "./pages/SobreNos";
@@ -41,6 +42,7 @@ const App = () => (
               <Route path="/produto/:slug" element={<ProductPage />} />
               <Route path="/carrinho" element={<CartPage />} />
               <Route path="/checkout" element={<CheckoutPage />} />
+              <Route path="/pagamento-aprovado" element={<PagamentoAprovado />} />
               <Route path="/busca" element={<SearchPage />} />
               <Route path="/feed" element={<GoogleShoppingFeed />} />
               <Route path="/sobre-nos" element={<SobreNos />} />

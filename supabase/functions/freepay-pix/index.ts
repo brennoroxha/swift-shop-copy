@@ -1,5 +1,6 @@
 // Edge function: cria cobrança PIX na Freepay e devolve QR Code + copia-e-cola
 // Autenticação Freepay: Basic Base64(PUBLIC_KEY:SECRET_KEY)
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -10,18 +11,18 @@ const corsHeaders = {
 
 interface CartItem {
   title: string;
-  unit_price: number; // em centavos
+  unit_price: number;
   quantity: number;
   tangible?: boolean;
 }
 
 interface RequestBody {
-  amount: number; // total em centavos
+  amount: number;
   customer: {
     name: string;
     email: string;
-    phone: string; // apenas dígitos
-    document: string; // apenas dígitos (CPF)
+    phone: string;
+    document: string;
   };
   items: CartItem[];
   metadata?: Record<string, unknown>;
@@ -35,6 +36,8 @@ Deno.serve(async (req) => {
   try {
     const PUBLIC_KEY = Deno.env.get("FREEPAY_PUBLIC_KEY");
     const SECRET_KEY = Deno.env.get("FREEPAY_SECRET_KEY");
+    const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
+    const SERVICE_ROLE = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 
     if (!PUBLIC_KEY || !SECRET_KEY) {
       throw new Error("Credenciais Freepay não configuradas");
@@ -42,31 +45,32 @@ Deno.serve(async (req) => {
 
     const body = (await req.json()) as RequestBody;
 
-    // Validação básica
     if (!body.amount || body.amount < 1) {
-      return new Response(
-        JSON.stringify({ error: "Valor inválido" }),
-        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-      );
+      return new Response(JSON.stringify({ error: "Valor inválido" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
     }
     if (!body.customer?.name || !body.customer?.email || !body.customer?.phone || !body.customer?.document) {
-      return new Response(
-        JSON.stringify({ error: "Dados do cliente incompletos" }),
-        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-      );
+      return new Response(JSON.stringify({ error: "Dados do cliente incompletos" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
     }
     if (!Array.isArray(body.items) || body.items.length === 0) {
-      return new Response(
-        JSON.stringify({ error: "Itens do pedido obrigatórios" }),
-        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-      );
+      return new Response(JSON.stringify({ error: "Itens do pedido obrigatórios" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
     }
 
     const auth = btoa(`${PUBLIC_KEY}:${SECRET_KEY}`);
+    const webhookUrl = `${SUPABASE_URL}/functions/v1/freepay-webhook`;
 
     const payload = {
       amount: body.amount,
       payment_method: "pix",
+      postback_url: webhookUrl,
       customer: {
         name: body.customer.name,
         email: body.customer.email,
@@ -112,13 +116,29 @@ Deno.serve(async (req) => {
       );
     }
 
+    // Salva pedido no banco para que webhook + polling possam atualizar / consultar
+    try {
+      const supabase = createClient(SUPABASE_URL, SERVICE_ROLE);
+      await supabase.from("orders").insert({
+        transaction_id: String(data.data.id),
+        amount: data.data.amount,
+        status: data.data.status ?? "pending",
+        customer_name: body.customer.name,
+        customer_email: body.customer.email,
+        customer_document: body.customer.document.replace(/\D/g, ""),
+        items: body.items,
+      });
+    } catch (dbErr) {
+      console.error("Erro ao salvar pedido:", dbErr);
+    }
+
     return new Response(
       JSON.stringify({
         id: data.data.id,
         amount: data.data.amount,
         status: data.data.status,
         pix: {
-          qr_code: data.data.pix.qr_code, // copia-e-cola
+          qr_code: data.data.pix.qr_code,
           expiration_date: data.data.pix.expiration_date,
         },
       }),
@@ -127,9 +147,9 @@ Deno.serve(async (req) => {
   } catch (err) {
     const message = err instanceof Error ? err.message : "Erro desconhecido";
     console.error("freepay-pix error:", message);
-    return new Response(
-      JSON.stringify({ error: message }),
-      { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-    );
+    return new Response(JSON.stringify({ error: message }), {
+      status: 500,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
   }
 });

@@ -144,10 +144,76 @@ const CheckoutPage = () => {
 
   const isStep1Valid = form.nome.trim() !== "" && form.email.trim() !== "" && form.celular.trim() !== "" && form.cpf.trim() !== "";
 
+  const handleFinalizePix = async () => {
+    if (paymentMethod !== "pix") {
+      toast.info("Pagamento por Cartão estará disponível em breve. Selecione PIX para continuar.");
+      return;
+    }
+    if (!isStep1Valid) {
+      toast.error("Preencha os dados pessoais antes de finalizar.");
+      setStep(1);
+      return;
+    }
+    setGeneratingPix(true);
+    try {
+      const amountInCents = Math.round(totalWithDiscount * 100);
+      const items = itemsList.map(({ product, quantity }) => ({
+        title: product.name.slice(0, 100),
+        unit_price: Math.round(product.salePrice * 100),
+        quantity,
+        tangible: true,
+      }));
+
+      const { data, error } = await supabase.functions.invoke("freepay-pix", {
+        body: {
+          amount: amountInCents,
+          customer: {
+            name: form.nome,
+            email: form.email,
+            phone: form.celular,
+            document: form.cpf,
+          },
+          items,
+          metadata: { source: "kompleta-checkout" },
+        },
+      });
+
+      if (error) throw new Error(error.message);
+      if (!data?.pix?.qr_code) throw new Error("Resposta inválida do gateway");
+
+      setPixData({
+        qr_code: data.pix.qr_code,
+        expiration_date: data.pix.expiration_date,
+        amount: data.amount,
+      });
+      toast.success("PIX gerado com sucesso!");
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "Erro ao gerar PIX";
+      toast.error(msg);
+    } finally {
+      setGeneratingPix(false);
+    }
+  };
+
+  const copyPixCode = async () => {
+    if (!pixData) return;
+    try {
+      await navigator.clipboard.writeText(pixData.qr_code);
+      setCopied(true);
+      toast.success("Código PIX copiado!");
+      setTimeout(() => setCopied(false), 2500);
+    } catch {
+      toast.error("Não foi possível copiar");
+    }
+  };
+
   if (items.length === 0) {
     navigate("/carrinho");
     return null;
   }
+
+  // alias para uso dentro de handleFinalizePix
+  const itemsList = items;
 
   return (
     <div className="min-h-screen flex flex-col bg-[#f5f5f5]">

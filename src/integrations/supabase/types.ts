@@ -24,6 +24,7 @@ export type Database = {
           id: string
           items: Json | null
           paid_at: string | null
+          proof_url: string | null
           status: string
           transaction_id: string
           updated_at: string
@@ -37,6 +38,7 @@ export type Database = {
           id?: string
           items?: Json | null
           paid_at?: string | null
+          proof_url?: string | null
           status?: string
           transaction_id: string
           updated_at?: string
@@ -50,6 +52,7 @@ export type Database = {
           id?: string
           items?: Json | null
           paid_at?: string | null
+          proof_url?: string | null
           status?: string
           transaction_id?: string
           updated_at?: string

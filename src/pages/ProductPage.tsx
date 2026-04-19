@@ -5,10 +5,12 @@ import Header from "@/components/store/Header";
 import Footer from "@/components/store/Footer";
 import ProductCard from "@/components/store/ProductCard";
 import ProductGallery from "@/components/store/ProductGallery";
+import ProductReviews from "@/components/store/ProductReviews";
 import SEO, { SITE_URL, SITE_NAME } from "@/components/SEO";
 import { allProducts, type Product } from "@/data/products";
 import { productDescriptions } from "@/data/productDescriptions";
 import { productGalleryImages } from "@/data/productImages";
+import { getProductReviews } from "@/data/productReviews";
 import { ShieldCheck, Truck, ChevronRight, RefreshCw } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import pixIcon from "@/assets/pix-icon.png";
@@ -52,6 +54,7 @@ const ProductPage = () => {
   const installmentValue = product.salePrice / product.installments;
   const discount = Math.round(((product.originalPrice - product.salePrice) / product.originalPrice) * 100);
   const description = productDescriptions[product.id];
+  const reviewSummary = getProductReviews(product.id);
 
   // Related products from same categories
   const related = allProducts
@@ -75,6 +78,26 @@ const ProductPage = () => {
     mpn: `${product.brand.toUpperCase().replace(/[^A-Z0-9]/g, "")}-${product.id.padStart(4, "0")}`,
     ...(product.ean ? { gtin13: product.ean } : {}),
     brand: { "@type": "Brand", name: product.brand },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: reviewSummary.average.toFixed(1),
+      reviewCount: reviewSummary.count,
+      bestRating: "5",
+      worstRating: "1",
+    },
+    review: reviewSummary.reviews.slice(0, 5).map((r) => ({
+      "@type": "Review",
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: r.rating,
+        bestRating: "5",
+        worstRating: "1",
+      },
+      author: { "@type": "Person", name: r.author },
+      datePublished: r.date,
+      name: r.title,
+      reviewBody: r.comment,
+    })),
     offers: {
       "@type": "Offer",
       url: `${SITE_URL}${productPath}`,
@@ -152,6 +175,29 @@ const ProductPage = () => {
                 <h1 className="font-heading font-bold text-xl md:text-2xl lg:text-3xl text-foreground leading-tight">
                   {product.name}
                 </h1>
+                <a
+                  href="#avaliacoes"
+                  className="inline-flex items-center gap-2 mt-3 text-sm hover:underline"
+                  aria-label={`${reviewSummary.average.toFixed(1)} de 5 estrelas, ${reviewSummary.count} avaliações`}
+                >
+                  <span className="inline-flex" aria-hidden>
+                    {[1, 2, 3, 4, 5].map((i) => (
+                      <svg
+                        key={i}
+                        viewBox="0 0 20 20"
+                        className={`w-4 h-4 ${i <= Math.round(reviewSummary.average) ? "fill-yellow-400" : "fill-muted"}`}
+                      >
+                        <path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.78L10 14.77l-5.2 2.73.99-5.78L1.58 7.62l5.82-.85L10 1.5z" />
+                      </svg>
+                    ))}
+                  </span>
+                  <span className="font-medium text-foreground">
+                    {reviewSummary.average.toFixed(1)}
+                  </span>
+                  <span className="text-muted-foreground">
+                    ({reviewSummary.count} avaliações)
+                  </span>
+                </a>
               </div>
 
               {/* Price */}
@@ -277,6 +323,11 @@ const ProductPage = () => {
             </div>
           </section>
         )}
+
+        {/* Reviews */}
+        <div id="avaliacoes" />
+        <ProductReviews productId={product.id} />
+
         {/* Related Products */}
         {related.length > 0 && (
           <section className="bg-secondary/20 py-12">

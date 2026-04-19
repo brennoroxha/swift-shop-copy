@@ -175,6 +175,29 @@ const ProductPage = () => {
                 <h1 className="font-heading font-bold text-xl md:text-2xl lg:text-3xl text-foreground leading-tight">
                   {product.name}
                 </h1>
+                <a
+                  href="#avaliacoes"
+                  className="inline-flex items-center gap-2 mt-3 text-sm hover:underline"
+                  aria-label={`${reviewSummary.average.toFixed(1)} de 5 estrelas, ${reviewSummary.count} avaliações`}
+                >
+                  <span className="inline-flex" aria-hidden>
+                    {[1, 2, 3, 4, 5].map((i) => (
+                      <svg
+                        key={i}
+                        viewBox="0 0 20 20"
+                        className={`w-4 h-4 ${i <= Math.round(reviewSummary.average) ? "fill-yellow-400" : "fill-muted"}`}
+                      >
+                        <path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.78L10 14.77l-5.2 2.73.99-5.78L1.58 7.62l5.82-.85L10 1.5z" />
+                      </svg>
+                    ))}
+                  </span>
+                  <span className="font-medium text-foreground">
+                    {reviewSummary.average.toFixed(1)}
+                  </span>
+                  <span className="text-muted-foreground">
+                    ({reviewSummary.count} avaliações)
+                  </span>
+                </a>
               </div>
 
               {/* Price */}

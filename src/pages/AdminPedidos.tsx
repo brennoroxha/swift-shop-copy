@@ -124,6 +124,26 @@ const AdminPedidos = () => {
   const filtered = useMemo(() => {
     const paidStatuses = ["paid", "approved", "succeeded", "completed"];
     let list = orders;
+
+    // filtro de data
+    if (dateFilter !== "all") {
+      const now = new Date();
+      if (dateFilter === "today") {
+        const k = todayKey();
+        list = list.filter((o) => dayKey(o.created_at) === k);
+      } else if (dateFilter === "yesterday") {
+        const k = yesterdayKey();
+        list = list.filter((o) => dayKey(o.created_at) === k);
+      } else if (dateFilter === "last7") {
+        const cutoff = new Date(now);
+        cutoff.setDate(cutoff.getDate() - 6);
+        cutoff.setHours(0, 0, 0, 0);
+        list = list.filter((o) => new Date(o.created_at) >= cutoff);
+      } else if (dateFilter === "custom" && customDate) {
+        list = list.filter((o) => dayKey(o.created_at) === customDate);
+      }
+    }
+
     if (filter === "suspicious") {
       list = list.filter(
         (o) => !!o.proof_url && !paidStatuses.includes(o.status.toLowerCase())
@@ -146,7 +166,26 @@ const AdminPedidos = () => {
       );
     }
     return list;
-  }, [orders, filter, search]);
+  }, [orders, filter, search, dateFilter, customDate]);
+
+  // agrupar por dia (mantendo ordem decrescente)
+  const groupedByDay = useMemo(() => {
+    const groups: { day: string; items: Order[]; total: number; paidCount: number }[] = [];
+    const map = new Map<string, Order[]>();
+    for (const o of filtered) {
+      const k = dayKey(o.created_at);
+      if (!map.has(k)) map.set(k, []);
+      map.get(k)!.push(o);
+    }
+    for (const [day, items] of map) {
+      const paidStatuses = ["paid", "approved", "succeeded", "completed"];
+      const total = items.reduce((s, i) => s + i.amount, 0);
+      const paidCount = items.filter((i) => paidStatuses.includes(i.status.toLowerCase())).length;
+      groups.push({ day, items, total, paidCount });
+    }
+    groups.sort((a, b) => (a.day < b.day ? 1 : -1));
+    return groups;
+  }, [filtered]);
 
   const handleLogout = () => {
     sessionStorage.removeItem("admin_logged");

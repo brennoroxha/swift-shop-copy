@@ -183,20 +183,6 @@ const PagamentoAprovado = () => {
             )}
           </div>
 
-          <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center">
-            <Link
-              to="/"
-              className="bg-primary text-primary-foreground font-heading font-bold text-sm uppercase tracking-wider px-8 py-3 rounded hover:opacity-90 transition-opacity"
-            >
-              Voltar para a loja
-            </Link>
-            <Link
-              to="/rastrear-pedido"
-              className="border border-border text-foreground font-heading font-bold text-sm uppercase tracking-wider px-8 py-3 rounded hover:bg-muted transition-colors"
-            >
-              Rastrear pedido
-            </Link>
-          </div>
         </div>
       </main>
     </div>

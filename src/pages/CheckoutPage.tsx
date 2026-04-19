@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { useCart } from "@/contexts/CartContext";
 import { Link, useNavigate } from "react-router-dom";
-import { ShieldCheck, ArrowLeft, ChevronDown, Lock, Truck } from "lucide-react";
+import { ShieldCheck, ArrowLeft, ChevronDown, Lock, Truck, Copy, Check, Loader2 } from "lucide-react";
+import { QRCodeSVG } from "qrcode.react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 import { getProductSlug } from "@/pages/ProductPage";
 import logo from "@/assets/logo.jpg";
 import seloRA1000 from "@/assets/selo-ra1000.png";
@@ -53,6 +56,10 @@ const CheckoutPage = () => {
   const [cpfError, setCpfError] = useState("");
   const [phoneError, setPhoneError] = useState("");
   const [cepLoading, setCepLoading] = useState(false);
+  const [paymentMethod, setPaymentMethod] = useState<"pix" | "cartao">("pix");
+  const [generatingPix, setGeneratingPix] = useState(false);
+  const [pixData, setPixData] = useState<{ qr_code: string; expiration_date: string; amount: number } | null>(null);
+  const [copied, setCopied] = useState(false);
 
   const [form, setForm] = useState({
     nome: "",

@@ -593,6 +593,16 @@ const CheckoutPage = () => {
                         </p>
                       </div>
 
+                      {/* Cronômetro de 10 minutos */}
+                      <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full font-mono font-bold text-base ${secondsLeft <= 60 ? "bg-destructive/10 text-destructive" : "bg-primary/10 text-primary"}`}>
+                        <Clock className="w-4 h-4" />
+                        {secondsLeft > 0 ? (
+                          <span>Tempo para pagar: {formatTimer(secondsLeft)}</span>
+                        ) : (
+                          <span>PIX expirado</span>
+                        )}
+                      </div>
+
                       <div className="flex justify-center">
                         <div className="bg-white p-4 border border-border rounded-lg">
                           <QRCodeSVG value={pixData.qr_code} size={220} level="M" />
@@ -624,18 +634,8 @@ const CheckoutPage = () => {
                       <div className="text-xs text-muted-foreground bg-muted/50 rounded p-3 text-left space-y-1">
                         <p>1. Abra o app do seu banco e acesse a área PIX</p>
                         <p>2. Escolha pagar com QR Code ou Pix Copia e Cola</p>
-                        <p>3. Confirme o pagamento</p>
-                        <p className="pt-2 text-foreground">
-                          Validade: {new Date(pixData.expiration_date).toLocaleString("pt-BR")}
-                        </p>
+                        <p>3. Confirme o pagamento — esta tela atualiza automaticamente.</p>
                       </div>
-
-                      <button
-                        onClick={() => setPixData(null)}
-                        className="text-xs text-primary underline hover:opacity-70 transition-opacity"
-                      >
-                        Gerar novo PIX
-                      </button>
                     </div>
                   )}
                 </div>

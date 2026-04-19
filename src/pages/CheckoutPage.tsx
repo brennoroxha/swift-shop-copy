@@ -455,7 +455,7 @@ const CheckoutPage = () => {
               <div className="flex items-center justify-between border border-border rounded px-4 py-3">
                 <div>
                   <p className="text-sm font-medium text-foreground">ENTREGA</p>
-                  <p className="text-xs text-muted-foreground">Veja as opções</p>
+                  <p className="text-xs text-muted-foreground">3 a 6 dias úteis</p>
                 </div>
                 <span className="text-sm font-semibold text-primary">Grátis</span>
               </div>

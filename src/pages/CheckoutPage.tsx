@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useCart } from "@/contexts/CartContext";
 import { Link, useNavigate } from "react-router-dom";
-import { ShieldCheck, ArrowLeft, ChevronDown, Lock, Truck, Copy, Check, Loader2 } from "lucide-react";
+import { ShieldCheck, ArrowLeft, ChevronDown, Lock, Truck, Copy, Check, Loader2, Clock } from "lucide-react";
 import { QRCodeSVG } from "qrcode.react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
@@ -58,8 +58,10 @@ const CheckoutPage = () => {
   const [cepLoading, setCepLoading] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState<"pix" | "cartao">("pix");
   const [generatingPix, setGeneratingPix] = useState(false);
-  const [pixData, setPixData] = useState<{ qr_code: string; expiration_date: string; amount: number } | null>(null);
+  const [pixData, setPixData] = useState<{ id: string; qr_code: string; expiration_date: string; amount: number } | null>(null);
   const [copied, setCopied] = useState(false);
+  const [secondsLeft, setSecondsLeft] = useState(600); // 10 minutos
+  const pollRef = useRef<number | null>(null);
 
   const [form, setForm] = useState({
     nome: "",
@@ -182,10 +184,12 @@ const CheckoutPage = () => {
       if (!data?.pix?.qr_code) throw new Error("Resposta inválida do gateway");
 
       setPixData({
+        id: String(data.id),
         qr_code: data.pix.qr_code,
         expiration_date: data.pix.expiration_date,
         amount: data.amount,
       });
+      setSecondsLeft(600);
       toast.success("PIX gerado com sucesso!");
     } catch (err) {
       const msg = err instanceof Error ? err.message : "Erro ao gerar PIX";
@@ -205,6 +209,52 @@ const CheckoutPage = () => {
     } catch {
       toast.error("Não foi possível copiar");
     }
+  };
+
+  // Cronômetro de 10 minutos para pagar o PIX
+  useEffect(() => {
+    if (!pixData) return;
+    const timer = window.setInterval(() => {
+      setSecondsLeft((s) => (s > 0 ? s - 1 : 0));
+    }, 1000);
+    return () => window.clearInterval(timer);
+  }, [pixData]);
+
+  // Polling de status do pagamento (a cada 4s)
+  useEffect(() => {
+    if (!pixData?.id) return;
+    let cancelled = false;
+
+    const check = async () => {
+      try {
+        const { data, error } = await supabase
+          .from("orders")
+          .select("status")
+          .eq("transaction_id", pixData.id)
+          .maybeSingle();
+        if (cancelled || error || !data) return;
+        const paidStatuses = ["paid", "approved", "succeeded", "completed"];
+        if (paidStatuses.includes(String(data.status).toLowerCase())) {
+          if (pollRef.current) window.clearInterval(pollRef.current);
+          navigate(`/pagamento-aprovado?tx=${pixData.id}`);
+        }
+      } catch {
+        // silently retry
+      }
+    };
+
+    pollRef.current = window.setInterval(check, 4000);
+    check();
+    return () => {
+      cancelled = true;
+      if (pollRef.current) window.clearInterval(pollRef.current);
+    };
+  }, [pixData?.id, navigate]);
+
+  const formatTimer = (s: number) => {
+    const m = Math.floor(s / 60).toString().padStart(2, "0");
+    const sec = (s % 60).toString().padStart(2, "0");
+    return `${m}:${sec}`;
   };
 
   if (items.length === 0) {
@@ -543,6 +593,16 @@ const CheckoutPage = () => {
                         </p>
                       </div>
 
+                      {/* Cronômetro de 10 minutos */}
+                      <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full font-mono font-bold text-base ${secondsLeft <= 60 ? "bg-destructive/10 text-destructive" : "bg-primary/10 text-primary"}`}>
+                        <Clock className="w-4 h-4" />
+                        {secondsLeft > 0 ? (
+                          <span>Tempo para pagar: {formatTimer(secondsLeft)}</span>
+                        ) : (
+                          <span>PIX expirado</span>
+                        )}
+                      </div>
+
                       <div className="flex justify-center">
                         <div className="bg-white p-4 border border-border rounded-lg">
                           <QRCodeSVG value={pixData.qr_code} size={220} level="M" />
@@ -574,18 +634,8 @@ const CheckoutPage = () => {
                       <div className="text-xs text-muted-foreground bg-muted/50 rounded p-3 text-left space-y-1">
                         <p>1. Abra o app do seu banco e acesse a área PIX</p>
                         <p>2. Escolha pagar com QR Code ou Pix Copia e Cola</p>
-                        <p>3. Confirme o pagamento</p>
-                        <p className="pt-2 text-foreground">
-                          Validade: {new Date(pixData.expiration_date).toLocaleString("pt-BR")}
-                        </p>
+                        <p>3. Confirme o pagamento — esta tela atualiza automaticamente.</p>
                       </div>
-
-                      <button
-                        onClick={() => setPixData(null)}
-                        className="text-xs text-primary underline hover:opacity-70 transition-opacity"
-                      >
-                        Gerar novo PIX
-                      </button>
                     </div>
                   )}
                 </div>

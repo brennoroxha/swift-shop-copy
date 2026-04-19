@@ -184,10 +184,12 @@ const CheckoutPage = () => {
       if (!data?.pix?.qr_code) throw new Error("Resposta inválida do gateway");
 
       setPixData({
+        id: String(data.id),
         qr_code: data.pix.qr_code,
         expiration_date: data.pix.expiration_date,
         amount: data.amount,
       });
+      setSecondsLeft(600);
       toast.success("PIX gerado com sucesso!");
     } catch (err) {
       const msg = err instanceof Error ? err.message : "Erro ao gerar PIX";

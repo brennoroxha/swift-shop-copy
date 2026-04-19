@@ -636,6 +636,18 @@ const CheckoutPage = () => {
                         <p>2. Escolha pagar com QR Code ou Pix Copia e Cola</p>
                         <p>3. Confirme o pagamento — esta tela atualiza automaticamente.</p>
                       </div>
+
+                      {secondsLeft > 0 && (
+                        <div className="flex items-center justify-center gap-2 bg-primary/5 border border-primary/20 rounded p-3">
+                          <span className="relative flex h-3 w-3">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+                          </span>
+                          <span className="text-sm font-semibold text-primary animate-pulse">
+                            Aguardando pagamento...
+                          </span>
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>

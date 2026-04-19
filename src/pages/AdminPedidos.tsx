@@ -217,8 +217,8 @@ const AdminPedidos = () => {
     return groups;
   }, [filtered]);
 
-  const handleLogout = () => {
-    sessionStorage.removeItem("admin_logged");
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
     navigate("/admin/login");
   };
 

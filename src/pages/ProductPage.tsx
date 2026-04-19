@@ -323,6 +323,11 @@ const ProductPage = () => {
             </div>
           </section>
         )}
+
+        {/* Reviews */}
+        <div id="avaliacoes" />
+        <ProductReviews productId={product.id} />
+
         {/* Related Products */}
         {related.length > 0 && (
           <section className="bg-secondary/20 py-12">

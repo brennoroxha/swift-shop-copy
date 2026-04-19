@@ -4,7 +4,7 @@ import HeroBanner from "@/components/store/HeroBanner";
 import ProductSection from "@/components/store/ProductSection";
 import Footer from "@/components/store/Footer";
 import SEO, { SITE_URL, SITE_NAME } from "@/components/SEO";
-import { bestSellers, kits, lastUnits } from "@/data/products";
+import { allProducts } from "@/data/products";
 
 const Index = () => {
   const orgJsonLd = {
@@ -27,16 +27,9 @@ const Index = () => {
       <Header />
       <main className="flex-1">
         <HeroBanner />
-        {bestSellers.length > 0 && (
-          <ProductSection title="Os Mais Vendidos" products={bestSellers} />
-        )}
-        {kits.length > 0 && (
-          <ProductSection title="Kits em Oferta" products={kits} bgAlt />
-        )}
-        {lastUnits.length > 0 && (
-          <ProductSection title="Últimas Unidades" products={lastUnits} />
-        )}
-        {bestSellers.length === 0 && kits.length === 0 && lastUnits.length === 0 && (
+        {allProducts.length > 0 ? (
+          <ProductSection title="Escadas" products={allProducts} />
+        ) : (
           <div className="container py-20 text-center">
             <p className="text-muted-foreground text-lg">Nenhum produto cadastrado ainda.</p>
           </div>

@@ -16,6 +16,9 @@ const PoliticaTrocas = () => {
 
           <h2 className="font-heading text-lg font-bold text-foreground mt-8 mb-3">1. Direito de Arrependimento</h2>
           <p>
+            <strong className="text-foreground">Quanto tempo um cliente tem para devolver um produto?</strong> O cliente tem <strong className="text-foreground">7 dias</strong> para devolver o produto.
+          </p>
+          <p>
             De acordo com o Art. 49 do CDC, você pode desistir da compra em até <strong className="text-foreground">7 dias corridos</strong> após o recebimento do produto, sem necessidade de justificativa. O produto deve ser devolvido em sua embalagem original, sem sinais de uso.
           </p>
 

@@ -11,9 +11,42 @@ const Index = () => {
     "@context": "https://schema.org",
     "@type": "OnlineStore",
     name: SITE_NAME,
+    legalName: "Kompleta Ferragens Construcao e Moveis LTDA",
     url: SITE_URL,
+    logo: `${SITE_URL}/favicon.png`,
+    image: `${SITE_URL}/favicon.png`,
     description: "Loja online de escadas, ferramentas e materiais de construção com frete grátis para todo o Brasil.",
     areaServed: "BR",
+    taxID: "30.063.962/0001-50",
+    vatID: "30.063.962/0001-50",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Rua Nelson Viana, 180 - Loja 10",
+      addressLocality: "Três Rios",
+      addressRegion: "RJ",
+      postalCode: "25805-290",
+      addressCountry: "BR",
+    },
+    contactPoint: [{
+      "@type": "ContactPoint",
+      telephone: "+55-24-2251-2189",
+      contactType: "customer service",
+      email: "contato@kompletaferragen.com.br",
+      areaServed: "BR",
+      availableLanguage: ["Portuguese"],
+    }],
+    sameAs: [],
+  };
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE_NAME,
+    url: SITE_URL,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${SITE_URL}/busca?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
   };
   return (
     <div className="min-h-screen flex flex-col">
@@ -21,7 +54,7 @@ const Index = () => {
         title={`${SITE_NAME} - Escadas e Ferramentas com Frete Grátis`}
         description="Compre escadas de alumínio, ferramentas e materiais de construção com frete grátis para todo o Brasil. Produtos originais, garantia do fabricante."
         path="/"
-        jsonLd={orgJsonLd}
+        jsonLd={[orgJsonLd, websiteJsonLd]}
       />
       <TopBar />
       <Header />

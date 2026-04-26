@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 
-export const SITE_URL = "https://storefront-soulmate.lovable.app";
+export const SITE_URL = "https://kompletaferragens.shop";
 export const SITE_NAME = "Kompleta Ferragens";
 
 interface SEOProps {

@@ -11,9 +11,16 @@ interface SEOProps {
   type?: "website" | "product" | "article";
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   noindex?: boolean;
+  product?: {
+    price: number;
+    currency?: string;
+    availability?: "in stock" | "out of stock";
+    brand?: string;
+    condition?: "new" | "used" | "refurbished";
+  };
 }
 
-const SEO = ({ title, description, path = "/", image, type = "website", jsonLd, noindex }: SEOProps) => {
+const SEO = ({ title, description, path = "/", image, type = "website", jsonLd, noindex, product }: SEOProps) => {
   const url = `${SITE_URL}${path}`;
   const fullTitle = title.length > 60 ? title.slice(0, 57) + "..." : title;
   const desc = description.length > 160 ? description.slice(0, 157) + "..." : description;
@@ -33,6 +40,18 @@ const SEO = ({ title, description, path = "/", image, type = "website", jsonLd, 
       <meta property="og:image" content={ogImage} />
       <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:locale" content="pt_BR" />
+
+      {product && (
+        <>
+          <meta property="product:price:amount" content={product.price.toFixed(2)} />
+          <meta property="product:price:currency" content={product.currency || "BRL"} />
+          <meta property="product:availability" content={product.availability || "in stock"} />
+          <meta property="product:condition" content={product.condition || "new"} />
+          {product.brand && <meta property="product:brand" content={product.brand} />}
+          <meta property="og:price:amount" content={product.price.toFixed(2)} />
+          <meta property="og:price:currency" content={product.currency || "BRL"} />
+        </>
+      )}
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />

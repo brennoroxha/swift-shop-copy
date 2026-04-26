@@ -142,6 +142,13 @@ const ProductPage = () => {
         image={productImageAbs}
         type="product"
         jsonLd={[productJsonLd, breadcrumbJsonLd]}
+        product={{
+          price: product.salePrice,
+          currency: "BRL",
+          availability: "in stock",
+          brand: product.brand,
+          condition: "new",
+        }}
       />
       <TopBar />
       <Header />

@@ -1,21 +1,38 @@
-import { Search, User, ShoppingCart, Menu, X, ChevronRight, MapPin } from "lucide-react";
+import { Search, User, ShoppingCart, Menu, X, ChevronRight, MapPin, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "@/assets/logo-kompleta.png";
 import { useCart } from "@/contexts/CartContext";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { categories } from "@/data/products";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const { totalItems, setIsOpen } = useCart();
   const isMobile = useIsMobile();
   const navigate = useNavigate();
 
-  const navItems = [
+  const navItems: { 
+    label: string; 
+    path: string; 
+    slug?: string; 
+    subcategories?: { slug: string; name: string; path: string }[] 
+  }[] = [
     { label: "Ver tudo", path: "/categoria/ver-tudo" },
-    ...categories.map((c) => ({ label: c.name, path: c.path })),
+    ...categories.map((c) => ({ 
+      label: c.name, 
+      path: c.path, 
+      slug: c.slug,
+      subcategories: c.subcategories 
+    })),
   ];
 
   const handleSearch = (e: React.FormEvent) => {
@@ -66,17 +83,49 @@ const Header = () => {
             <div className="absolute top-full left-0 right-0 bg-background border-b border-border shadow-lg z-50">
               <nav className="flex flex-col">
                 {navItems.map((item, i) => (
-                  <Link
-                    key={item.label}
-                    to={item.path}
-                    onClick={() => setMenuOpen(false)}
-                    className={`flex items-center justify-between px-4 py-3.5 text-sm font-medium text-foreground hover:bg-secondary/50 transition-colors ${
-                      i < navItems.length - 1 ? "border-b border-border" : ""
-                    }`}
-                  >
-                    {item.label}
-                    <ChevronRight className="w-4 h-4 text-muted-foreground" />
-                  </Link>
+                  <div key={item.label} className={i < navItems.length - 1 ? "border-b border-border" : ""}>
+                    {item.subcategories ? (
+                      <>
+                        <div 
+                          className="flex items-center justify-between px-4 py-3.5 text-sm font-medium text-foreground hover:bg-secondary/50 transition-colors cursor-pointer"
+                          onClick={() => setExpandedCategory(expandedCategory === item.label ? null : item.label)}
+                        >
+                          {item.label}
+                          <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform ${expandedCategory === item.label ? "rotate-180" : ""}`} />
+                        </div>
+                        {expandedCategory === item.label && (
+                          <div className="bg-secondary/20 flex flex-col">
+                            <Link
+                              to={item.path}
+                              onClick={() => { setMenuOpen(false); setExpandedCategory(null); }}
+                              className="px-8 py-2.5 text-sm text-foreground hover:bg-secondary/50 transition-colors border-b border-border/50"
+                            >
+                              Ver Tudo em {item.label}
+                            </Link>
+                            {item.subcategories.map((sub) => (
+                              <Link
+                                key={sub.slug}
+                                to={sub.path}
+                                onClick={() => { setMenuOpen(false); setExpandedCategory(null); }}
+                                className="px-8 py-2.5 text-sm text-foreground hover:bg-secondary/50 transition-colors last:border-0 border-b border-border/50"
+                              >
+                                {sub.name}
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </>
+                    ) : (
+                      <Link
+                        to={item.path}
+                        onClick={() => setMenuOpen(false)}
+                        className="flex items-center justify-between px-4 py-3.5 text-sm font-medium text-foreground hover:bg-secondary/50 transition-colors"
+                      >
+                        {item.label}
+                        <ChevronRight className="w-4 h-4 text-muted-foreground" />
+                      </Link>
+                    )}
+                  </div>
                 ))}
               </nav>
             </div>
@@ -156,13 +205,36 @@ const Header = () => {
             <nav className="flex items-center gap-1 overflow-x-auto">
               <Menu className="w-4 h-4 text-muted-foreground shrink-0 mr-1" />
               {navItems.map((item) => (
-                <Link
-                  key={item.label}
-                  to={item.path}
-                  className="whitespace-nowrap text-sm text-foreground hover:text-primary transition-colors px-2 py-1"
-                >
-                  {item.label}
-                </Link>
+                item.subcategories ? (
+                  <DropdownMenu key={item.label}>
+                    <DropdownMenuTrigger className="flex items-center gap-1 whitespace-nowrap text-sm text-foreground hover:text-primary transition-colors px-2 py-1 outline-none">
+                      {item.label}
+                      <ChevronDown className="w-3.5 h-3.5" />
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="start" className="w-48">
+                      <DropdownMenuItem asChild>
+                        <Link to={item.path} className="w-full cursor-pointer">
+                          Ver Tudo
+                        </Link>
+                      </DropdownMenuItem>
+                      {item.subcategories.map((sub) => (
+                        <DropdownMenuItem key={sub.slug} asChild>
+                          <Link to={sub.path} className="w-full cursor-pointer">
+                            {sub.name}
+                          </Link>
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                ) : (
+                  <Link
+                    key={item.label}
+                    to={item.path}
+                    className="whitespace-nowrap text-sm text-foreground hover:text-primary transition-colors px-2 py-1"
+                  >
+                    {item.label}
+                  </Link>
+                )
               ))}
             </nav>
           </div>

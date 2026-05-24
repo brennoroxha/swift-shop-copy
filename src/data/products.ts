@@ -370,8 +370,8 @@ export const allProducts: Product[] = [
   },
 ];
 
-export const getProductsByCategory = (slug: CategorySlug): Product[] => {
-  return allProducts.filter((p) => p.categories.includes(slug));
+export const getProductsByCategory = (slug: CategorySlug | SubCategorySlug): Product[] => {
+  return allProducts.filter((p) => (p.categories as (CategorySlug | SubCategorySlug)[]).includes(slug));
 };
 
 export const bestSellers: Product[] = allProducts.filter((p) =>
@@ -382,8 +382,20 @@ export const lastUnits: Product[] = allProducts.filter((p) =>
   ["4", "17", "2", "7", "9"].includes(p.id)
 );
 
-export const categories: { slug: CategorySlug; name: string; path: string }[] = [
+export const categories: { 
+  slug: CategorySlug; 
+  name: string; 
+  path: string;
+  subcategories?: { slug: SubCategorySlug; name: string; path: string }[]
+}[] = [
   { slug: "escadas", name: "Escadas", path: "/categoria/escadas" },
   { slug: "caixa-dagua", name: "Caixa d'água", path: "/categoria/caixa-dagua" },
-  { slug: "banheiro", name: "Banheiro", path: "/categoria/banheiro" },
+  { 
+    slug: "banheiro", 
+    name: "Banheiro", 
+    path: "/categoria/banheiro",
+    subcategories: [
+      { slug: "chuveiro", name: "Chuveiro", path: "/categoria/chuveiro" }
+    ]
+  },
 ];

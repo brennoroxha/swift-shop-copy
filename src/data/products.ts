@@ -1,6 +1,6 @@
 import escadaCapa from "@/assets/escada-5-degraus-capa.png";
 
-export type CategorySlug = "escadas" | "caixa-dagua";
+export type CategorySlug = "escadas" | "caixa-dagua" | "banheiro" | "chuveiro";
 
 export interface Product {
   id: string;
@@ -285,4 +285,6 @@ export const lastUnits: Product[] = allProducts.filter((p) =>
 export const categories: { slug: CategorySlug; name: string; path: string }[] = [
   { slug: "escadas", name: "Escadas", path: "/categoria/escadas" },
   { slug: "caixa-dagua", name: "Caixa d'água", path: "/categoria/caixa-dagua" },
+  { slug: "banheiro", name: "Banheiro", path: "/categoria/banheiro" },
+  { slug: "chuveiro", name: "Chuveiro", path: "/categoria/chuveiro" },
 ];

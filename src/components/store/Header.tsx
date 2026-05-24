@@ -20,7 +20,12 @@ const Header = () => {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
 
-  const navItems = [
+  const navItems: { 
+    label: string; 
+    path: string; 
+    slug?: string; 
+    subcategories?: { slug: string; name: string; path: string }[] 
+  }[] = [
     { label: "Ver tudo", path: "/categoria/ver-tudo" },
     ...categories.map((c) => ({ 
       label: c.name, 

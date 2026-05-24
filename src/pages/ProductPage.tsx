@@ -123,7 +123,7 @@ const ProductPage = () => {
     },
   };
 
-  const mainCategory = product.categories[1] || product.categories[1];
+  const mainCategory = product.categories[0];
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",

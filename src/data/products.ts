@@ -97,7 +97,7 @@ export const allProducts: Product[] = [
     name: "Escada Articulada 4x3 De Alumínio 12 Degraus 3,50 Metros de Altura",
     brand: "Multiuso",
     ean: "",
-    image: "https://carrefourbr.vtexassets.com/arquivos/ids/186863800/image-0.jpg?v=638784229006270000",
+    image: "https://m.media-amazon.com/images/I/61q3HSJ8zAL._AC_SL1500_.jpg",
     originalPrice: 359.90,
     salePrice: 284.42,
     installments: 10,

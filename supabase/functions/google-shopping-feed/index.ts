@@ -1,5 +1,6 @@
 // Public Google Shopping XML feed (RSS 2.0 + g: namespace)
 // URL: https://ihnvrnatzfzdcwdjscec.supabase.co/functions/v1/google-shopping-feed
+// Compatível com as políticas do Google Merchant Center.
 
 const SITE_URL = "https://kompletaferragens.shop";
 
@@ -46,24 +47,62 @@ const xmlEscape = (s: string) =>
 
 const cdata = (s: string) => `<![CDATA[${s.replace(/]]>/g, "]]]]><![CDATA[>")}]]>`;
 
-const buildMpn = (brand: string, id: string) =>
-  `${brand.toUpperCase().replace(/[^A-Z0-9]/g, "")}-${id.padStart(4, "0")}`;
+// Extrai número de degraus do nome (ex: "5 Degraus" -> 5)
+const extractDegraus = (name: string): number => {
+  const m = name.match(/(\d+)\s*degraus/i);
+  return m ? parseInt(m[1], 10) : 0;
+};
 
-const buildDescription = (name: string, brand: string) =>
-  `${name} da marca ${brand}. Produto original, novo, com nota fiscal e garantia. Frete grátis para todo o Brasil. Pagamento via Pix com 10% de desconto.`;
+// Extrai altura em centímetros a partir do nome (ex: "1,53m" -> 153, "0,65m" -> 65)
+const extractAlturaCm = (name: string): number => {
+  const m = name.match(/(\d+)[\.,](\d{1,2})\s*m(?![a-z])/i);
+  if (!m) return 0;
+  const meters = parseFloat(`${m[1]}.${m[2].padEnd(2, "0")}`);
+  return Math.round(meters * 100);
+};
+
+// Tipo curto para MPN (BAN = banqueta, ESC = escada)
+const extractTipo = (name: string): string => {
+  return /banqueta/i.test(name) ? "BAN" : "ESC";
+};
+
+// Subcategoria detalhada para g:product_type
+const extractSubcategoria = (name: string): string => {
+  if (/banqueta/i.test(name)) return "Banqueta Escada";
+  if (/articulada/i.test(name)) return "Escada Articulada";
+  if (/extens[íi]vel/i.test(name)) return "Escada Extensível";
+  if (/dupla/i.test(name)) return "Escada Dupla";
+  if (/tesoura/i.test(name)) return "Escada Tesoura";
+  if (/dom[ée]stica/i.test(name)) return "Escada Doméstica";
+  return "Escada de Alumínio";
+};
+
+// MPN no padrão MARCA-TIPO-NDEGRAUS-ALTURA (ex: REISAM-ESC-005-153)
+const buildMpn = (brand: string, name: string): string => {
+  const marca = brand.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^A-Z0-9]/g, "");
+  const tipo = extractTipo(name);
+  const degraus = String(extractDegraus(name)).padStart(3, "0");
+  const altura = String(extractAlturaCm(name)).padStart(3, "0");
+  return `${marca}-${tipo}-${degraus}-${altura}`;
+};
+
+const buildDescription = (name: string, brand: string, subcat: string) =>
+  `${name}. ${subcat} da marca ${brand}, fabricada em alumínio de alta resistência. Produto original, novo, com nota fiscal e garantia do fabricante. Frete grátis para todo o Brasil. Ideal para uso doméstico e profissional.`;
 
 const generateXML = () => {
-  const today = new Date();
-  const validUntil = new Date(today.getFullYear() + 1, today.getMonth(), today.getDate())
-    .toISOString().slice(0, 10);
-  const todayStr = today.toISOString().slice(0, 10);
-
   const items = products.map((p) => {
     const slug = slugify(p.name);
     const link = `${SITE_URL}/produto/${slug}`;
-    const hasEan = p.ean && p.ean.trim().length > 0;
-    const mpn = buildMpn(p.brand, p.id);
-    const description = buildDescription(p.name, p.brand);
+    const hasEan = !!p.ean && p.ean.trim().length > 0;
+    const subcat = extractSubcategoria(p.name);
+    const mpn = buildMpn(p.brand, p.name);
+    const description = buildDescription(p.name, p.brand, subcat);
+    const productType = `Ferramentas e Construção > Escadas > ${subcat}`;
+
+    const identifierBlock = hasEan
+      ? `      <g:gtin>${xmlEscape(p.ean)}</g:gtin>`
+      : `      <g:mpn>${xmlEscape(mpn)}</g:mpn>
+      <g:identifier_exists>no</g:identifier_exists>`;
 
     return `    <item>
       <g:id>${xmlEscape(p.id)}</g:id>
@@ -72,30 +111,17 @@ const generateXML = () => {
       <link>${xmlEscape(link)}</link>
       <g:image_link>${xmlEscape(p.image)}</g:image_link>
       <g:availability>in_stock</g:availability>
-      <g:availability_date>${todayStr}T00:00-03:00</g:availability_date>
-      <g:price>${p.originalPrice.toFixed(2)} BRL</g:price>
-      <g:sale_price>${p.salePrice.toFixed(2)} BRL</g:sale_price>
-      <g:sale_price_effective_date>${todayStr}T00:00-03:00/${validUntil}T23:59-03:00</g:sale_price_effective_date>
+      <g:price>${p.salePrice.toFixed(2)} BRL</g:price>
       <g:brand>${cdata(p.brand)}</g:brand>
-      <g:mpn>${xmlEscape(mpn)}</g:mpn>
       <g:condition>new</g:condition>
-      <g:adult>no</g:adult>
-      <g:age_group>adult</g:age_group>
-      ${hasEan ? `<g:gtin>${xmlEscape(p.ean)}</g:gtin>` : `<g:identifier_exists>no</g:identifier_exists>`}
+${identifierBlock}
       <g:google_product_category>632</g:google_product_category>
-      <g:product_type>${cdata("Ferramentas > Escadas")}</g:product_type>
-      <g:item_group_id>${xmlEscape(p.brand.toLowerCase().replace(/\s+/g, "-"))}-escadas</g:item_group_id>
+      <g:product_type>${cdata(productType)}</g:product_type>
       <g:shipping>
         <g:country>BR</g:country>
-        <g:service>Padrão</g:service>
+        <g:service>Frete Padrão</g:service>
         <g:price>0.00 BRL</g:price>
       </g:shipping>
-      <g:shipping_weight>5.0 kg</g:shipping_weight>
-      <g:tax>
-        <g:country>BR</g:country>
-        <g:rate>0.00</g:rate>
-        <g:tax_ship>no</g:tax_ship>
-      </g:tax>
     </item>`;
   });
 

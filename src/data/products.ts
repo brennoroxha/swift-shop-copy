@@ -1,7 +1,7 @@
 import escadaCapa from "@/assets/escada-5-degraus-capa.png";
 
 export type CategorySlug = "escadas" | "caixa-dagua" | "banheiro";
-export type SubCategorySlug = "chuveiro";
+export type SubCategorySlug = "chuveiro" | "vaso-sanitario";
 
 export interface Product {
   id: string;
@@ -377,7 +377,7 @@ export const allProducts: Product[] = [
     originalPrice: 1549.90,
     salePrice: 1239.92,
     installments: 10,
-    categories: ["banheiro"],
+    categories: ["banheiro", "vaso-sanitario"],
   },
   {
     id: "34",
@@ -388,7 +388,7 @@ export const allProducts: Product[] = [
     originalPrice: 1299.90,
     salePrice: 1039.92,
     installments: 10,
-    categories: ["banheiro"],
+    categories: ["banheiro", "vaso-sanitario"],
   },
 ];
 
@@ -417,7 +417,8 @@ export const categories: {
     name: "Banheiro", 
     path: "/categoria/banheiro",
     subcategories: [
-      { slug: "chuveiro", name: "Chuveiro", path: "/categoria/chuveiro" }
+      { slug: "chuveiro", name: "Chuveiro", path: "/categoria/chuveiro" },
+      { slug: "vaso-sanitario", name: "Vaso Sanitário", path: "/categoria/vaso-sanitario" }
     ]
   },
 ];

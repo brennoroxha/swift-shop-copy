@@ -450,7 +450,7 @@ export const allProducts: Product[] = [
     name: "Cadeira Ratan Preto e Marrom Just Home Collection",
     brand: "Just Home Collection",
     ean: "",
-    image: "/produtos/produto-46-0.jpg",
+    image: "/produtos/produto-46-3.jpg",
     originalPrice: 119.00,
     salePrice: 95.20,
     installments: 10,

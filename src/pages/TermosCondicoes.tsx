@@ -18,7 +18,7 @@ const TermosCondicoes = () => {
           <ul className="list-none space-y-1">
             <li><strong className="text-foreground">Razão Social:</strong> Kompleta Ferragens Construcao e Moveis LTDA</li>
             <li><strong className="text-foreground">CNPJ:</strong> 30.063.962/0001-50</li>
-            <li><strong className="text-foreground">Endereço:</strong> Rua Nelson Viana, 180 – Loja 10, Centro, Três Rios – RJ, CEP 25805-290</li>
+            <li><strong className="text-foreground">Endereço:</strong> Avenida Ruy Barbosa, 626 – Loja 01, Cantagalo, Três Rios – RJ, CEP 25805-000</li>
             <li><strong className="text-foreground">Contato:</strong> (24) 2251-2189 | contato@kompletaferragen.com.br</li>
           </ul>
 

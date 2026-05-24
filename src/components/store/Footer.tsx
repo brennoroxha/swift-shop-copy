@@ -59,7 +59,7 @@ const Footer = () => {
           <div className="text-xs text-muted-foreground space-y-1 leading-relaxed">
             <p><strong className="text-foreground">Kompleta Ferragens Construcao e Moveis LTDA</strong></p>
             <p>CNPJ: 30.063.962/0001-50</p>
-            <p>Rua Nelson Viana, 180 – Loja 10 – Centro – Três Rios – RJ – CEP 25805-290</p>
+            <p>Avenida Ruy Barbosa, 626 – Loja 01 – Bairro Cantagalo – Três Rios – RJ – CEP 25805-000</p>
             <p>Telefone: (24) 2251-2189 · E-mail: contato@kompletaferragen.com.br</p>
             <p>Horário de atendimento: Segunda a Sexta, 8h às 18h</p>
           </div>

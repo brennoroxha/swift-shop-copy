@@ -148,5 +148,13 @@ export const productGalleryImages: Record<string, string[]> = {
   "67": ["/produtos/produto-67-1.jpg", "/produtos/produto-67-2.jpg"],
   "68": ["/produtos/produto-68-1.jpg", "/produtos/produto-68-2.jpg"],
   "69": ["/produtos/produto-69-1.jpg", "/produtos/produto-69-2.jpg", "/produtos/produto-69-3.jpg", "/produtos/produto-69-4.jpg"],
-  
+  "70": ["/produtos/produto-70-1.jpg", "/produtos/produto-70-2.jpg", "/produtos/produto-70-3.jpg"],
+  "71": ["/produtos/produto-71-1.jpg", "/produtos/produto-71-2.jpg", "/produtos/produto-71-3.jpg"],
+  "72": ["/produtos/produto-72-1.jpg", "/produtos/produto-72-2.jpg", "/produtos/produto-72-3.jpg"],
+  "73": ["/produtos/produto-73-1.jpg", "/produtos/produto-73-2.jpg", "/produtos/produto-73-3.jpg"],
+  "74": ["/produtos/produto-74-1.jpg", "/produtos/produto-74-2.jpg", "/produtos/produto-74-3.jpg"],
+  "75": ["/produtos/produto-75-1.jpg", "/produtos/produto-75-2.jpg", "/produtos/produto-75-3.jpg"],
+  "76": ["/produtos/produto-76-1.jpg", "/produtos/produto-76-2.jpg", "/produtos/produto-76-3.jpg"],
+  "77": ["/produtos/produto-77-1.jpg", "/produtos/produto-77-2.jpg", "/produtos/produto-77-3.jpg"],
+  "78": ["/produtos/produto-78-1.jpg", "/produtos/produto-78-2.jpg", "/produtos/produto-78-3.jpg"],
 };

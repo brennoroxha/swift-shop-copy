@@ -250,7 +250,7 @@
   {
     "id": "86",
     "name": "Soprador de Folhas Elétrico Garthen GSF2000 2000W 110V",
-    "brand": "Vonder",
+    "brand": "Garthen",
     "ean": "7897545300107",
     "image": "/produtos/produto-86-0.jpg",
     "gallery": [
@@ -328,7 +328,7 @@
   {
     "id": "89",
     "name": "Bomba de Água Submersa 900 450W 220V Anauger",
-    "brand": "Vonder",
+    "brand": "Anauger",
     "ean": "7892201605909",
     "image": "/produtos/produto-89-0.jpg",
     "gallery": [
@@ -354,7 +354,7 @@
   {
     "id": "90",
     "name": "Bomba de Água Submersa Sapeca 127V 280 Watts Rayma",
-    "brand": "Vonder",
+    "brand": "Rayma",
     "ean": "7898214272183",
     "image": "/produtos/produto-90-0.jpg",
     "gallery": [
@@ -405,7 +405,7 @@
   {
     "id": "92",
     "name": "Ventilador de Teto com Controle Remoto Arno Ultimate VX13 3 Pás 105 cm Branco Bivolt",
-    "brand": "Vonder",
+    "brand": "Arno",
     "ean": "7895500763073",
     "image": "/produtos/produto-92-0.jpg",
     "gallery": [
@@ -429,7 +429,7 @@
   {
     "id": "93",
     "name": "Serra Mármore Makita 4100 NH2Z 125mm 1450W 220V",
-    "brand": "Vonder",
+    "brand": "Makita",
     "ean": "88381633451",
     "image": "/produtos/produto-93-0.jpg",
     "gallery": [
@@ -440,7 +440,8 @@
     "originalPrice": 517.38,
     "salePrice": 413.9,
     "categories": [
-      "area-externa"
+      "ferramentas",
+      "ferramentas-eletricas"
     ],
     "intro": "Serra Mármore Makita 4100 NH2Z Elétrica: Cortes Precisos e Eficientes! A ferramenta ideal para cortes em diversos materiais com alta performance e durabilidade! Potência e Desempenho Superior: Com um potente motor de 1450W, a Serra Mármore Makita 4100 NH2Z garante cortes rápidos e precisos em madeira, metal e revestimentos.",
     "details": "Produto: Serra Mármore \n Marca: Makita \n Alimentação: Elétrica \n Tensão Elétrica: 220V \n Potência: 1450 W \n Frequência: 60 Hz \n Material a ser Trabalhado: Madeira, Metal e Revestimento \n Tipo do Motor: com Escovas de Carvão \n Rotação: 12200,00 rpm \n Corte em Ângulo: Sim \n Ajuste de Ângulo: De 90° a 45° \n Diâmetro do Disco em Milímetro: 125,00 mm \n Profundidade do Corte em Milímetros: 40,00 mm \n Observações sobre Profundidade do Corte em Milímetros: 90° - 40 mm /  45° - 21,5 mm \n Ajuste de Profundidade: Sim \n Intensidade de Uso: Uso frequente até 8hs/dia \n Kit Refrigeração: Sem Kit Refrigeração \n Modelo: 4100 NH2Z \n Referência do Produto: 4100NH2Z-220V \n Peso do Produto: 3,00 Kg \n Acompanha Maleta: Não \n Garantia do Fabricante: 12 mes(es)",

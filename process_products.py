@@ -1,5 +1,4 @@
 import os
-import csv
 import json
 import requests
 from PIL import Image
@@ -31,17 +30,27 @@ def process():
     start_id = 24
     
     with open(input_file, 'r', encoding='utf-8') as f:
-        reader = csv.DictReader(f, delimiter='\t')
-        for i, row in enumerate(reader):
-            p_id = start_id + i
-            name = row['Nome do Produto'].strip()
+        lines = f.readlines()
+        if not lines: return
+        headers = [h.strip() for h in lines[0].split('\t')]
+        
+        for i, line in enumerate(lines[1:]):
+            if not line.strip(): continue
+            vals = line.split('\t')
+            row = {}
+            for j, h in enumerate(headers):
+                row[h] = vals[j].strip() if j < len(vals) else ""
             
-            brand = "Lorenzetti" # Default for these products based on the list
+            p_id = start_id + i
+            name = row.get('Nome do Produto', '').strip()
+            if not name: continue
+            
+            brand = "Lorenzetti"
             if "Lorenzetti" in name:
                 name = name.replace(" Lorenzetti", "").strip()
             
-            ean = row['EAN/GTIN'].strip()
-            sale_price = parse_price(row['Preço'])
+            ean = row.get('EAN/GTIN', '').strip()
+            sale_price = parse_price(row.get('Preço', '0'))
             original_price = round(sale_price * 1.25, 2)
             
             # Extract images
@@ -50,24 +59,18 @@ def process():
                 raw_images = [img.strip() for img in raw_images_str.split('|')]
             else:
                 raw_images = []
-                for j in range(1, 6):
-                    img_val = row.get(f'Imagem {j}', '').strip()
-                    if img_val:
-                        raw_images.append(img_val)
             
-            # Deduplicate by URL first (ignoring query params if they are just resolution)
-            # but we want to keep high res.
-            # Group by base name (without _1, _2 and without params)
+            for j in range(1, 6):
+                img_val = row.get(f'Imagem {j}', '').strip()
+                if img_val and img_val not in raw_images:
+                    raw_images.append(img_val)
             
             unique_images = []
             seen_hashes = []
             
-            # Group URLs by their "view" ID (e.g. 686669004, 686669004_1, etc.)
             view_groups = {}
             for url in raw_images:
                 if not url or 'http' not in url: continue
-                # Extract view ID
-                # https://media.falabella.com/sodimacBR/686669004_1/w=76... -> 686669004_1
                 match = re.search(r'sodimacBR/([^/]+)', url)
                 if match:
                     view_id = match.group(1).split('/')[0]
@@ -75,7 +78,6 @@ def process():
                         view_groups[view_id] = []
                     view_groups[view_id].append(url)
             
-            # For each view group, pick the best URL
             best_urls = []
             for view_id, urls in view_groups.items():
                 def url_priority(u):
@@ -88,8 +90,8 @@ def process():
                 urls.sort(key=url_priority, reverse=True)
                 best_urls.append(urls[0])
             
-            # Sort best_urls so that the main one (usually without _N) is first
             def main_sort(u):
+                # Prefer URLs without underscores or with _0
                 match = re.search(r'sodimacBR/([^/_]+)', u)
                 if match and '_' not in match.group(1):
                     return 0
@@ -122,7 +124,7 @@ def process():
                             unique_images.append(f"/produtos/{filename}")
                             img_count += 1
                 except Exception as e:
-                    print(f"Error processing image {img_url}: {e}")
+                    print(f"Error processing image {img_url}: {e}", file=os.sys.stderr)
             
             if not unique_images:
                 continue

@@ -16,11 +16,12 @@ type Product = {
   ean: string;
   image: string;
   /**
-   * Imagens adicionais (máx. 2 serão incluídas no feed como g:additional_image_link).
-   * Ordem sugerida: [lateral/3-4, detalhe/uso].
-   * Devem seguir as regras: 800x800+ px, fundo branco/neutro, sem texto/watermark/selos.
+   * Galeria completa do produto. imagens[0] = principal (g:image_link),
+   * imagens[1] e imagens[2] = adicionais (g:additional_image_link, máx. 2).
+   * Regras: 800x800+ px, fundo branco/neutro, sem texto/watermark/selos.
+   * Se vazio/undefined, usa `image` como única imagem.
    */
-  additionalImages?: string[];
+  imagens?: string[];
   originalPrice: number;
   salePrice: number;
 };

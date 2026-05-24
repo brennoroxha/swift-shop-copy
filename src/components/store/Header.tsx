@@ -1,13 +1,20 @@
-import { Search, User, ShoppingCart, Menu, X, ChevronRight, MapPin } from "lucide-react";
+import { Search, User, ShoppingCart, Menu, X, ChevronRight, MapPin, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "@/assets/logo-kompleta.png";
 import { useCart } from "@/contexts/CartContext";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { categories } from "@/data/products";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const { totalItems, setIsOpen } = useCart();
   const isMobile = useIsMobile();
@@ -15,7 +22,12 @@ const Header = () => {
 
   const navItems = [
     { label: "Ver tudo", path: "/categoria/ver-tudo" },
-    ...categories.map((c) => ({ label: c.name, path: c.path })),
+    ...categories.map((c) => ({ 
+      label: c.name, 
+      path: c.path, 
+      slug: c.slug,
+      subcategories: c.subcategories 
+    })),
   ];
 
   const handleSearch = (e: React.FormEvent) => {

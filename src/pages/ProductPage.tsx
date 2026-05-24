@@ -157,12 +157,12 @@ const ProductPage = () => {
         {/* Breadcrumb */}
         <div className="bg-secondary/30 border-b border-border">
           <div className="container py-3">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <Link to="/" className="hover:text-primary transition-colors">Início</Link>
-              <ChevronRight className="w-3 h-3" />
-              <Link to={`/categoria/${product.categories[0]}`} className="hover:text-primary transition-colors capitalize">{product.categories[0]}</Link>
-              <ChevronRight className="w-3 h-3" />
-              <span className="text-foreground font-medium line-clamp-1">{product.name}</span>
+            <div className="flex items-center gap-2 text-sm text-muted-foreground whitespace-nowrap overflow-hidden">
+              <Link to="/" className="hover:text-primary transition-colors shrink-0">Início</Link>
+              <ChevronRight className="w-3 h-3 shrink-0" />
+              <Link to={`/categoria/${product.categories[0]}`} className="hover:text-primary transition-colors capitalize shrink-0 hidden sm:inline">{product.categories[0]}</Link>
+              <ChevronRight className="w-3 h-3 shrink-0 hidden sm:inline" />
+              <span className="text-foreground font-medium truncate">{product.name}</span>
             </div>
           </div>
         </div>

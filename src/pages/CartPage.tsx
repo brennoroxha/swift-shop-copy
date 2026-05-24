@@ -155,9 +155,6 @@ const CartPage = () => {
                   </span>
                 </div>
 
-                <p className="text-xs text-muted-foreground">
-                  ou até 3x de R${formatPrice(totalPrice / 3)} sem juros
-                </p>
 
                 <Link
                   to="/checkout"

@@ -11,7 +11,7 @@ import { allProducts, type Product } from "@/data/products";
 import { productDescriptions } from "@/data/productDescriptions";
 import { productGalleryImages } from "@/data/productImages";
 import { getProductReviews } from "@/data/productReviews";
-import { ShieldCheck, Truck, ChevronRight, RefreshCw } from "lucide-react";
+import { ShieldCheck, Truck, ChevronRight, RefreshCw, Home } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import pixIcon from "@/assets/pix-icon.png";
 

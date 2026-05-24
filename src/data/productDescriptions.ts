@@ -688,4 +688,132 @@ export const productDescriptions: Record<string, ProductDescription> = {
       "Garantia de 9 meses do fabricante",
     ],
   },
+  "70": {
+    intro: "O purificador de água pure 4x possui tecnologia powerjet que enche seu copo até 4x mais rápido comparado a outro modelo de purificador. Além disso pensando em proporcionar água limpa para toda sua família desenvolvemos a tecnologia de filtragem acqua pure.",
+    details: "Com design compacto e inovador esse purificador de água electrolux é ideal para casas compactas pode ser instalado em bancadas e possui 4 cores diferentes para modernizar o ambiente. O painel touch possui iluminação de led para sinalizar a saturação do filtro e facilitar a escolha de uma das três temperaturas de água: natural fresca ou gelada. A troca de refil é fácil e simples a cada 3 000 litros ou 6 meses de uso. O alerta de troca de filtro sinaliza a hora certa de substituir. O purificador também conta com bandeja removível e pés de borracha antiderrapante facilitando a limpeza sem comprometer a estabilidade e boa performance. *comparado com o modelo pe11b/x electrolux e utilizando filtro novo. Características: powerjet: encha seu copo até 4x mais rápido. comparado com o modelo pe11b/x e utilizando filtro novo. acqua pure - tecnologia de filtragem: equipamento com tecnologia de carvão ativado e polipropileno que garante redução de partículas conforme o inmetro. design compacto e in",
+    benefits: [
+      "Produto: Purificador de Água",
+      "Temperatura da Água: Natural e Gelada",
+      "Tensão Elétrica: Bivolt",
+      "Cor: Branco",
+      "Modelo: PE12B",
+      "Altura: 33,00 cm",
+      "Largura: 16,00 cm",
+      "Profundidade: 33,00 cm"
+    ],
+  },
+  "71": {
+    intro: "Purificador de Água Electrolux Gelada PE12G Água fresca e livre de impurezas. .container-item { margin-top: 8px; width: 100%; padding-left: 8px; padding-right: 8px; } .banner-box { width: 100%; display: flex; justify-content: center; align-items: center; } .banner-box img { width: 100%; height: auto; /* mantém proporção original */ max-width: 100%; /* impede distorção */ object-fit: contain; /* mantém proporção mesmo em containers menores */ disp",
+    details: "- Reduz, no mínimo, 75% de cloro livre na água. - Controle de nível microbiológico, garantindo água segura para o consumo. Design compacto e inovador Se encaixa perfeitamente em qualquer ambiente, maximizando o espaço na sua cozinha. Altura ideal Facilidade para encher copos, panelas ou jarras. Para uma água pura e saudável! Fluxo de água contínuoBasta um clique e o fluxo de água é acionado sem necessidade de segurar botões. Tecnologia Pure 4XPotente pressurizador que enche seu copo até 4x mais rápido. Gela muito!Até 220ml de água por hora. .three-columns-with-images { display: flex; justify-content: space-between; gap: 50px; } .three-columns-with-images div { display: flex; flex-direction: column; align-items: center; text-align: center; flex: 1; } .three-columns-with-images div img { width: 100%; max-width: 300px; height: auto; object-fit: cover; } .three-columns-with-images div p { text-align: center; } @media screen and (max-width: 1024px) { .three-columns-with-images { flex-direct",
+    benefits: [
+      "Produto: Purificador de Água",
+      "Temperatura da Água: Fria e Natural e Gelada",
+      "Tensão Elétrica: Bivolt",
+      "Refis Compatíveis: FWEBR05",
+      "Sistema de Refrigeração: Placa Eletrônica",
+      "Capacidade de Refrigeração: 0,24 L/h",
+      "Consumo de Energia: 8,00 kWh/mês",
+      "Modo de Filtração: PP + Carvão Ativado com Íons de Prata",
+      "Retenção de Partículas: Classe C",
+      "Eficiência Bacteriológica: sem Eficiência"
+    ],
+  },
+  "72": {
+    intro: "O purificador eletrônico colormaq tem design moderno e compacto. Com capacidade para 0,8l de água gelada, filtro de troca fácil e, mesmo sem energia, oferece água purificada e natural.",
+    details: "Possui 2 níveis de temperatura (natural e gelado), sendo ideal para ambientes compactos, alicerçando praticidade e estilo.capacidade: 0,8l de água geladasistema de refrigeração: eletrônicotemperaturas: 2 níveis (natural e gelado)tipo de filtro: carvão ativadovida útil do filtro: 4000l ou 6 meses de usobandeja removível: simtipo de instalação: parede / mesa / gabinetecertificação inmetro: simdimensões (sem embalagem): 36 x 28 x 36cm (a x l x p)peso total: 3,8kgfrequência: 60hzamperagem tomada: 10agarantia: 12 mesesconteúdo da embalagem: 1 purificador com filtro, manual de instruções e certificado de garantia.",
+    benefits: [
+      "Produto: Purificador de Água",
+      "Temperatura da Água: Natural e Gelada",
+      "Tensão Elétrica: Bivolt",
+      "Capacidade de Refrigeração: 2,00 L/h",
+      "Consumo de Energia: 4,29 kWh/mês",
+      "Retenção de Partículas: Classe C",
+      "Redução de Cloro Livre: com Redução",
+      "LED Indicativo para Troca de Refil: sem LED Indicativo",
+      "Cor: Grafite",
+      "Tonalidade: Cinza"
+    ],
+  },
+  "73": {
+    intro: "Purificador de água eletrônico bivolt colormaq branco. O aparelho possui design moderno, além de contar com eficiente sistema eletrônico de refrigeração que permite selecionar duas temperaturas, natural e gelada.",
+    details: "O filtro tem duração de seis meses, e sabe o que é ainda melhor? O produto é bivolt! Peso (kg): 5 garantia: 12 meses potência: 618 voltagem: bivolt altura (cm): 36 largura (cm): 27 vazão (l/min): 60 funcionamento: energia elétrica profundidade (cm): 35 refrigera a água: sim modo de filtragem: carvão ativado origem do produto: nacional vida útil do refil: 6 tipo de purificador: de mesa eficiência energética: classe c ligado à rede de água: sim acompanha ficha técnica: sim possui bandeja coletora: sim possui bica articulável: sim quantidade de torneiras: 2 bandeja coletora removível: sim capacidade do reservatório (l): 8 acompanha manual de instrução: sim consumo de energia aproximado: 60 possui seletor de temperatura: não material principal eletroportáteis: alumínio eficiência de redução de cloro livre: c1 possui alerta para a troca de filtro: sim fabricante: colormaq marca: colormaq tonalidade: branco cor: branco cor do produto: branco itens inclusos: 1 purificador eletrônico modelo do",
+    benefits: [
+      "Produto: Purificador de Água",
+      "Temperatura da Água: Natural",
+      "Tensão Elétrica: Bivolt",
+      "Cor: Branco",
+      "Altura: 36,00 cm",
+      "Largura: 27,00 cm"
+    ],
+  },
+  "74": {
+    intro: "Purificador de água compressor colormaq purificador de água colormaq, com baixo consumo de energia e super vazão, o purificador possui triplo processo de filtragem, que aumenta ainda mais o poder de limpeza da água, retirando impurezas, reduzindo odores e gostos estranhos. Por isso, o purificador é capaz de oferecer água pura, de qualidade e gelada para você e sua família.",
+    details: "Ideal para todo tipo de ambiente, sem ocupar muito espaço. Fica fácil deixar sua cozinha bonita e prática. características: marca: colormaq frequência: 60 hz potência nominal: 82w vida útil do filtro: 4000 litros eficiência de redução de cloro livre: com redução eficiência de retenção de partículas: c grau de proteção: ambiente interno - ipxo temperatura de operação: 5 a 40 graus celsius vazão nominal: 60 l/h vazão mínima: 30 l/h vazão máxima: 61,8 l/h pressão de operação: 39,2 a 392 kpa volume reservatório água gelada: 1,4 l sistema de refrigeração: hermétrico fixar na parede: sim bandeja para água: sim bandeja removível para limpeza: sim temperaturas: 8 - 1 natural / 7 gelada níveis de água gelada: 7 painel: português tampografia termostato: numérica - 0 a 7 material do gabinete: plástico material do aplique do bico: plástico cromado material da pingadeira e painel: plástico material do filtro: plástico troca do refil: gira fácil composição do filtro: componentes - carvão ativado e d",
+    benefits: [
+      "Produto: Purificador de Água",
+      "Temperatura da Água: Natural e Gelada",
+      "Tensão Elétrica: 127V (110V)",
+      "Cor: Branco",
+      "Modelo: CPUHEVABAN",
+      "Altura: 42,10 cm",
+      "Largura: 28,30 cm",
+      "Dimensão: 36 x 28 x 36 cm"
+    ],
+  },
+  "75": {
+    intro: "O purificador de água ibbl viváx possui um sistema exclusivo de purificação da água certificado pelo inmetro capaz de deixar sua água pura e cristalinajá pensou nos benefícios de ter água pura de verdade 24hs por dia na sua casa ou no seu escritório de forma fácil e econômica?com o purificador de água ibbl você terá água pura e livre de bactérias de um jeito simples e descomplicado.não dispõe de água gelada, apenas naturalfácil instalação e muita",
+    details: "É tem mais.onde instalar o purificador de água ibbl?na bancada ou na parede da sua casa, do seu escritório ou da sua empresa.também pode ser instalado em bares, restaurantes e condomínios.como instalar o purificador de água ibbl?não precisa de um ponto de água exclusivo, através dos conectores de engates rápidos e mangueira que acompanha o produto a instalação será simples e fácil.sistema de filtragem da águao sistema exclusivo de filtragem do filtro ibbl é capaz de eliminar impurezas sólidas como barro, ferrugem, fungos e algas, além de eliminar odores e sabores indesejáveis da água.vida útil: 06 meses ou 2.000 litrosretenção de partículas: classe credução de cloro livre: aprovadoeficiência bacteriológica: não se aplicarefil troca fácil e econômicosua instalação pode ser feita por qualquer pessoa sem complicações e sem precisar da ajuda de um técnico.o uso de filtros e purificadores de água pode ser 100x mais barato que usar água engarrafadas. Além de ser prático e econômico, contribu",
+    benefits: [
+      "Produto: Purificador",
+      "Temperatura da Água: Natural",
+      "Tensão Elétrica: Sem Tensão Elétrica",
+      "Cor: Branco",
+      "Modelo: Viváx",
+      "Altura: 28,00 cm",
+      "Largura: 16,00 cm"
+    ],
+  },
+  "76": {
+    intro: "Purificador de Água Natural Prata Vivax IBBL Quer tornar a sua água do cano pronta para o consumo, para cozinhar e até mesmo para tomar? Isso é possível com o Purificador de Água Natural Prata Vivax IBBL.",
+    details: "Características do Purificador de Água Natural Prata Vivax IBBL Compacto, o aparelho fabricado pela IBBL funciona com ligação direta em seu encanamento. Você recebe a água e ela passa por seu filtro – são três etapas de filtragem. Pesando 1,1 kg, o aparelho tem 29,8 centímetros de altura, 15 centímetros de largura e 18,7 centímetros de profundidade. Pode ser instalado no balcão de cozinha, em sua lavanderia ou onde tiver saída de água disponível. Vantagens do Purificador de Água Natural Prata Vivax IBBL O filtro é um refil trocável. Tem uma vida útil média de seis meses e você pode trocar a qualquer momento, sozinho, sem a necessidade de levar para a assistência técnica. A instalação em casa poder ser feita sem a necessidade de mão de obra especializada. Fácil de usar, é só apertar um botão para encher um copo, uma garrafa ou panela. Há um apoio na parte debaixo do aparelho para deixar o copo enchendo, se assim preferir. Informações extras Produto possui garantia para defeitos relacion",
+    benefits: [
+      "Produto: Purificador de Água",
+      "Temperatura da Água: Natural",
+      "Refis Compatíveis: Avanti",
+      "Modo de Filtração: 3 Etapas de filtração",
+      "Retenção de Partículas: Classe C",
+      "Eficiência Bacteriológica: sem Eficiência",
+      "Redução de Cloro Livre: com Redução",
+      "Vida Útil: 6",
+      "Cor: Prata",
+      "Tonalidade: Cinza"
+    ],
+  },
+  "77": {
+    intro: "O viváx max ibbl é sinônimo de conforto e bem-estar. Com ele, o refil dura mais tempo, são 9 a 12 meses de água pura, proporcionando mais saúde ao seu dia a dia.",
+    details: "Com design exclusivo da família viváx ibbl, o viváx max une leveza, purificação e refrigeração para famílias de até 5 pessoas. Seu refil original ibbl c+3 max de duração prolongada retém as impurezas da água, reduz o cloro livre e elimina sabores e odores indesejados, além de controlar a proliferação de bactérias. Além disso, conta também com visor transparente do refil e bandeja removível com indicador de nível, detalhes que fazem toda diferença. Design e proteção em perfeita harmonia. O viváx agora é mais: mais versátil, mais água gelada e água pura por mais tempo.maior vida útil do refil: com refil c+3 max, que garante de 9 a 12 meses de água pura. refil girou, trocou: troque seu refil sem fechar o registro e sem ajuda técnica. visor transparente: fácil saber quando trocar seu refil. água nas temperaturas natural, gelada e misturada;design viváx: leve, moderno e compacto;maior vida útil do refil: refil c+3 max de até 12 meses ou 4500l de duração;nanotecnologia: tratamento especial a",
+    benefits: [
+      "Produto: Purificador de Água",
+      "Temperatura da Água: Natural e Gelada",
+      "Tensão Elétrica: 127V (110V)",
+      "Cor: Prata",
+      "Tonalidade: Prata",
+      "Modelo: Vivax Max",
+      "Altura: 39,00 cm",
+      "Largura: 39,00 cm"
+    ],
+  },
+  "78": {
+    intro: "Purificador de água ibbl vivax defense prata o purificador de água viváx defense é a escolha perfeita para quem procura por uma hidratação segura e prioriza o design clean em sua casa. Com água natural e gelada, refrigeração por eco compressor e tamanho versátil, se adapta até aos ambientes com menos espaço, tornando-o ideal para apartamentos e casas produto em conformidade com regulamentação do inmetro.",
+    details: "Todas as informações técnicas divulgadas são de responsabilidade exclusiva do fabricante/fornecedor. A cor do produto pode variar de acordo com as configurações do seu monitor.",
+    benefits: [
+      "Produto: Purificador de Água",
+      "Temperatura da Água: Natural e Gelada",
+      "Tensão Elétrica: 220V",
+      "Cor: Prata",
+      "Modelo: Defense",
+      "Altura: 37,00 cm",
+      "Largura: 28,00 cm"
+    ],
+  },
 };

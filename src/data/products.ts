@@ -1,7 +1,7 @@
 import escadaCapa from "@/assets/escada-5-degraus-capa.png";
 
-export type CategorySlug = "escadas" | "caixa-dagua" | "banheiro" | "area-externa";
-export type SubCategorySlug = "chuveiro" | "vaso-sanitario";
+export type CategorySlug = "escadas" | "caixa-dagua" | "banheiro" | "area-externa" | "materiais-eletricos";
+export type SubCategorySlug = "chuveiro" | "vaso-sanitario" | "cabos-eletricos";
 
 export interface Product {
   id: string;
@@ -500,6 +500,17 @@ export const allProducts: Product[] = [
     installments: 10,
     categories: ["area-externa"],
   },
+  {
+    id: "52",
+    name: "Cabo Flexível 2,5mm 100 Metros Branco",
+    brand: "Geral",
+    ean: "7890000000000",
+    image: "/produtos/produto-52-0.png",
+    originalPrice: 159.90,
+    salePrice: 129.90,
+    installments: 10,
+    categories: ["materiais-eletricos", "cabos-eletricos"],
+  },
 ];
 
 export const getProductsByCategory = (slug: CategorySlug | SubCategorySlug): Product[] => {
@@ -529,6 +540,14 @@ export const categories: {
     subcategories: [
       { slug: "chuveiro", name: "Chuveiro", path: "/categoria/chuveiro" },
       { slug: "vaso-sanitario", name: "Vaso Sanitário", path: "/categoria/vaso-sanitario" }
+    ]
+  },
+  { 
+    slug: "materiais-eletricos", 
+    name: "Materiais Elétricos", 
+    path: "/categoria/materiais-eletricos",
+    subcategories: [
+      { slug: "cabos-eletricos", name: "Cabos Elétricos", path: "/categoria/cabos-eletricos" }
     ]
   },
   { slug: "area-externa", name: "Área Externa", path: "/categoria/area-externa" },

@@ -111,10 +111,12 @@ const generateXML = () => {
       : `      <g:mpn>${xmlEscape(mpn)}</g:mpn>
       <g:identifier_exists>no</g:identifier_exists>`;
 
-    // Imagens adicionais (máx. 2), seguindo regra: 800x800+, fundo neutro, sem texto/selos
-    const additionalLinks = (p.additionalImages ?? [])
-      .filter((u) => typeof u === "string" && u.trim().length > 0)
-      .slice(0, 2)
+    // Galeria: imagens[0] é a principal; imagens[1] e [2] viram g:additional_image_link.
+    // Fallback: se `imagens` estiver vazio, usa `image` como única imagem principal.
+    const gallery = (p.imagens ?? []).filter((u) => typeof u === "string" && u.trim().length > 0);
+    const mainImage = gallery[0] ?? p.image;
+    const additionalLinks = gallery
+      .slice(1, 3)
       .map((u) => `      <g:additional_image_link>${xmlEscape(u)}</g:additional_image_link>`)
       .join("\n");
 
@@ -123,7 +125,7 @@ const generateXML = () => {
       <title>${cdata(p.name)}</title>
       <description>${cdata(description)}</description>
       <link>${xmlEscape(link)}</link>
-      <g:image_link>${xmlEscape(p.image)}</g:image_link>
+      <g:image_link>${xmlEscape(mainImage)}</g:image_link>
 ${additionalLinks ? additionalLinks + "\n" : ""}      <g:availability>in_stock</g:availability>
       <g:price>${p.salePrice.toFixed(2)} BRL</g:price>
       <g:brand>${cdata(p.brand)}</g:brand>

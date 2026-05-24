@@ -28,7 +28,7 @@ const PoliticaReembolso = () => {
             Para solicitar o reembolso, entre em contato conosco informando o número do pedido e o motivo da solicitação:
           </p>
           <ul className="list-none space-y-1">
-            <li><strong className="text-foreground">E-mail:</strong> contato@kompletaferragen.com.br</li>
+            <li><strong className="text-foreground">E-mail:</strong> sac@kompletaferragens.shop</li>
             <li><strong className="text-foreground">Telefone:</strong> (24) 2251-2189</li>
           </ul>
 

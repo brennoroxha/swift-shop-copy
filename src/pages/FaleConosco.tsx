@@ -46,7 +46,7 @@ const FaleConosco = () => {
                 <Mail className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                 <div>
                   <h4 className="font-heading font-bold text-sm text-foreground">E-mail</h4>
-                  <p className="text-sm text-muted-foreground">contato@kompletaferragen.com.br</p>
+                  <p className="text-sm text-muted-foreground">sac@kompletaferragens.shop</p>
                 </div>
               </div>
 

@@ -40,7 +40,7 @@ const PoliticaTrocas = () => {
             <li>Fotos do produto (em caso de defeito ou dano)</li>
           </ul>
           <ul className="list-none space-y-1 mt-3">
-            <li><strong className="text-foreground">E-mail:</strong> contato@kompletaferragen.com.br</li>
+            <li><strong className="text-foreground">E-mail:</strong> sac@kompletaferragens.shop</li>
             <li><strong className="text-foreground">Telefone:</strong> (24) 2251-2189</li>
           </ul>
 

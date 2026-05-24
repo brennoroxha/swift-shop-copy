@@ -35,7 +35,7 @@ const SobreNos = () => {
           <h2 className="font-heading text-lg font-bold text-foreground mt-8 mb-3">Contato</h2>
           <ul className="list-none space-y-1">
             <li><strong className="text-foreground">Telefone:</strong> (24) 2251-2189</li>
-            <li><strong className="text-foreground">E-mail:</strong> contato@kompletaferragen.com.br</li>
+            <li><strong className="text-foreground">E-mail:</strong> sac@kompletaferragens.shop</li>
           </ul>
         </div>
       </main>

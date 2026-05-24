@@ -31,7 +31,7 @@ const Index = () => {
       "@type": "ContactPoint",
       telephone: "+55-24-2251-2189",
       contactType: "customer service",
-      email: "contato@kompletaferragen.com.br",
+      email: "sac@kompletaferragens.shop",
       areaServed: "BR",
       availableLanguage: ["Portuguese"],
     }],

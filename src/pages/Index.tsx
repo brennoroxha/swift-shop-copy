@@ -61,7 +61,7 @@ const Index = () => {
       <main className="flex-1">
         <HeroBanner />
         {allProducts.length > 0 ? (
-          <ProductSection title="Escadas" products={allProducts} />
+          <ProductSection title="Escadas" products={allProducts.slice(0, 4)} />
         ) : (
           <div className="container py-20 text-center">
             <p className="text-muted-foreground text-lg">Nenhum produto cadastrado ainda.</p>

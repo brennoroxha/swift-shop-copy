@@ -901,4 +901,13 @@ export const categories: {
     ]
   },
   { slug: "area-externa", name: "Área Externa", path: "/categoria/area-externa" },
+  { 
+    slug: "ferramentas", 
+    name: "Ferramentas", 
+    path: "/categoria/ferramentas",
+    subcategories: [
+      { slug: "ferramentas-manuais", name: "Ferramentas Manuais", path: "/categoria/ferramentas-manuais" },
+      { slug: "ferramentas-eletricas", name: "Ferramentas Elétricas", path: "/categoria/ferramentas-eletricas" }
+    ]
+  },
 ];

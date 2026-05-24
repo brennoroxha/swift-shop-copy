@@ -201,6 +201,16 @@ export const allProducts: Product[] = [
     salePrice: 583.92,
     installments: 10,
     categories: ["escadas"],
+  {
+    id: "18",
+    name: "Caixa De Água 1.000L Polietileno Tampa Encaixe Azul Fortlev",
+    brand: "Fortlev",
+    ean: "7898911343063",
+    image: "/produtos/produto-18.jpg",
+    originalPrice: 439.90,
+    salePrice: 351.92,
+    installments: 10,
+    categories: ["caixa-dagua"],
   },
 ];
 

@@ -5,7 +5,7 @@ import Header from "@/components/store/Header";
 import Footer from "@/components/store/Footer";
 import ProductCard from "@/components/store/ProductCard";
 import SEO, { SITE_NAME, SITE_URL } from "@/components/SEO";
-import { getProductsByCategory, categories, allProducts, type CategorySlug } from "@/data/products";
+import { getProductsByCategory, categories, allProducts, type CategorySlug, type SubCategorySlug } from "@/data/products";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 type SortOption = "relevancia" | "maior-preco" | "menor-preco" | "nome-az" | "nome-za" | "desconto";
@@ -23,12 +23,28 @@ const CategoryPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const [sort, setSort] = useState<SortOption>("relevancia");
   const isVerTudo = slug === "ver-tudo";
-  const category = isVerTudo
-    ? { slug: "ver-tudo", name: "Ver Tudo", path: "/categoria/ver-tudo" }
-    : categories.find((c) => c.slug === slug);
-  const rawProducts = isVerTudo
-    ? allProducts
-    : slug ? getProductsByCategory(slug as CategorySlug) : [];
+
+  const category = useMemo(() => {
+    if (isVerTudo) return { slug: "ver-tudo", name: "Ver Tudo", path: "/categoria/ver-tudo" };
+    
+    // Check main categories
+    const mainCat = categories.find((c) => c.slug === slug);
+    if (mainCat) return mainCat;
+
+    // Check subcategories
+    for (const cat of categories) {
+      const subCat = cat.subcategories?.find((s) => s.slug === slug);
+      if (subCat) return subCat;
+    }
+
+    return null;
+  }, [slug, isVerTudo]);
+
+  const rawProducts = useMemo(() => {
+    if (isVerTudo) return allProducts;
+    if (!slug) return [];
+    return getProductsByCategory(slug as CategorySlug | SubCategorySlug);
+  }, [slug, isVerTudo]);
 
   const products = useMemo(() => {
     const sorted = [...rawProducts];

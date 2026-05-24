@@ -54,7 +54,7 @@ const PoliticaPrivacidade = () => {
             <li>Revogar o consentimento para uso dos dados</li>
           </ul>
           <p>
-            Para exercer seus direitos, entre em contato pelo e-mail <strong className="text-foreground">contato@kompletaferragen.com.br</strong> ou pelo telefone <strong className="text-foreground">(24) 2251-2189</strong>.
+            Para exercer seus direitos, entre em contato pelo e-mail <strong className="text-foreground">sac@kompletaferragens.shop</strong> ou pelo telefone <strong className="text-foreground">(24) 2251-2189</strong>.
           </p>
 
           <h2 className="font-heading text-lg font-bold text-foreground mt-8 mb-3">6. Cookies</h2>

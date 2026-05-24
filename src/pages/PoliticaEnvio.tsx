@@ -53,7 +53,7 @@ const PoliticaEnvio = () => {
 
           <h2 className="font-heading text-lg font-bold text-foreground mt-8 mb-3">6. Dúvidas</h2>
           <p>
-            Para dúvidas sobre envio e entrega, entre em contato pelo e-mail <strong className="text-foreground">contato@kompletaferragen.com.br</strong> ou pelo telefone <strong className="text-foreground">(24) 2251-2189</strong>.
+            Para dúvidas sobre envio e entrega, entre em contato pelo e-mail <strong className="text-foreground">sac@kompletaferragens.shop</strong> ou pelo telefone <strong className="text-foreground">(24) 2251-2189</strong>.
           </p>
         </div>
       </main>

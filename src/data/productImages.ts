@@ -42,11 +42,8 @@ export const productGalleryImages: Record<string, string[]> = {
     "https://cdn.leroymerlin.com.br/products/escada_articulada_4x3_12_degraus_em_aluminio_3,4m_reisam_90927774_b6f6_1800x1800.jpeg",
   ],
   "8": [
-    "https://carrefourbr.vtexassets.com/arquivos/ids/186863800/image-0.jpg?v=638784229006270000",
-    "https://carrefourbr.vtexassets.com/arquivos/ids/186863803/image-1.jpg?v=638784229007670000",
-    "https://carrefourbr.vtexassets.com/arquivos/ids/186863805/image-2.jpg?v=638784229010330000",
-    "https://carrefourbr.vtexassets.com/arquivos/ids/186863807/image-3.jpg?v=638787090199600000",
-    "https://carrefourbr.vtexassets.com/arquivos/ids/186863808/image-4.jpg?v=638784229013900000",
+    "https://m.media-amazon.com/images/I/61q3HSJ8zAL._AC_SL1500_.jpg",
+    "https://m.media-amazon.com/images/I/51F7t1CdQ+L._AC_SL1000_.jpg",
   ],
   "9": [
     "https://cdn.leroymerlin.com.br/products/escada_articulada_4x4_degraus_13_89961683_0001_1800x1800.jpg",

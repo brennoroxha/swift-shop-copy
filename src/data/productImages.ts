@@ -141,5 +141,11 @@ export const productGalleryImages: Record<string, string[]> = {
   "60": ["/produtos/produto-60-1.jpg", "/produtos/produto-60-2.jpg"],
   "61": ["/produtos/produto-61-1.jpg", "/produtos/produto-61-2.jpg"],
   "62": ["/produtos/produto-62-1.jpg", "/produtos/produto-62-2.jpg"],
+  "63": ["/produtos/produto-63-1.jpg", "/produtos/produto-63-2.jpg"],
+  "64": ["/produtos/produto-64-1.jpg", "/produtos/produto-64-2.jpg"],
+  "65": ["/produtos/produto-65-1.jpg", "/produtos/produto-65-2.jpg"],
+  "66": ["/produtos/produto-66-1.jpg", "/produtos/produto-66-2.jpg"],
+  "67": ["/produtos/produto-67-1.jpg", "/produtos/produto-67-2.jpg"],
+  "68": ["/produtos/produto-68-1.jpg", "/produtos/produto-68-2.jpg"],
   
 };

@@ -687,6 +687,17 @@ export const allProducts: Product[] = [
     installments: 10,
     categories: ["materiais-eletricos", "cabos-eletricos"],
   },
+  {
+    id: "69",
+    name: "Refil Filtro Consul CIX01AX para Purificador de Água CPC30, CPB35, CPB36, CBP34 e CPC31 Consul",
+    brand: "Consul",
+    ean: "7891129255821",
+    image: "/produtos/produto-69-0.jpg",
+    originalPrice: 104.14,
+    salePrice: 83.31,
+    installments: 10,
+    categories: ["cozinhas-areas-servico", "filtros-purificadores"],
+  },
 ];
 
 export const getProductsByCategory = (slug: CategorySlug | SubCategorySlug): Product[] => {

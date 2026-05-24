@@ -133,9 +133,17 @@ def process():
             if "Carrinho de Mão" in name: cat = ["area-externa"]
             elif "Bomba" in name: cat = ["caixa-dagua"]
             elif "Lavadora" in name: cat = ["area-externa"]
-            elif "Furadeira" in name or "Jogo de Ferramentas" in name: cat = ["ferramentas", "ferramentas-manuais" if "Jogo" in name else "ferramentas-eletricas"]
+            elif any(k in name for k in ["Furadeira", "Jogo de Ferramentas", "Serra", "Parafusadeira", "Martelete", "Chave"]):
+                cat = ["ferramentas", "ferramentas-manuais" if "Jogo" in name or "Chave" in name else "ferramentas-eletricas"]
+            elif "Ventilador" in name: cat = ["area-externa"]
             
-            brand = "Tramontina" if "Tramontina" in name else ("Kärcher" if "Kärcher" in name else ("Bosch" if "Bosch" in name else "Vonder"))
+            brand = "Tramontina" if "Tramontina" in name else ("Kärcher" if "Kärcher" in name else ("Bosch" if "Bosch" in name or "Makita" in name or "Skil" in name else "Vonder"))
+            if "Makita" in name: brand = "Makita"
+            if "Arno" in name: brand = "Arno"
+            if "Garthen" in name: brand = "Garthen"
+            if "Anauger" in name: brand = "Anauger"
+            if "Rayma" in name: brand = "Rayma"
+
             
             all_final_products.append({
                 "id": str(p_id),

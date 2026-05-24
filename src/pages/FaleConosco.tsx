@@ -27,9 +27,9 @@ const FaleConosco = () => {
                 <div>
                   <h4 className="font-heading font-bold text-sm text-foreground">Endereço</h4>
                   <p className="text-sm text-muted-foreground">
-                    Rua Nelson Viana, 180 – Loja 10<br />
-                    Centro, Três Rios – RJ<br />
-                    CEP: 25805-290
+                    Avenida Ruy Barbosa, 626 – Loja 01<br />
+                    Cantagalo, Três Rios – RJ<br />
+                    CEP: 25805-000
                   </p>
                 </div>
               </div>

@@ -26,10 +26,10 @@ const SobreNos = () => {
 
           <h2 className="font-heading text-lg font-bold text-foreground mt-8 mb-3">Localização</h2>
           <ul className="list-none space-y-1">
-            <li><strong className="text-foreground">Endereço:</strong> Rua Nelson Viana, 180 – Loja 10</li>
-            <li><strong className="text-foreground">Bairro:</strong> Centro</li>
+            <li><strong className="text-foreground">Endereço:</strong> Avenida Ruy Barbosa, 626 – Loja 01</li>
+            <li><strong className="text-foreground">Bairro:</strong> Cantagalo</li>
             <li><strong className="text-foreground">Município:</strong> Três Rios – RJ</li>
-            <li><strong className="text-foreground">CEP:</strong> 25805-290</li>
+            <li><strong className="text-foreground">CEP:</strong> 25805-000</li>
           </ul>
 
           <h2 className="font-heading text-lg font-bold text-foreground mt-8 mb-3">Contato</h2>

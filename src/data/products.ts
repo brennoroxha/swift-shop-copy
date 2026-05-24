@@ -1,6 +1,6 @@
 import escadaCapa from "@/assets/escada-5-degraus-capa.png";
 
-export type CategorySlug = "escadas" | "caixa-dagua" | "banheiro";
+export type CategorySlug = "escadas" | "caixa-dagua" | "banheiro" | "area-externa";
 export type SubCategorySlug = "chuveiro" | "vaso-sanitario";
 
 export interface Product {
@@ -423,6 +423,83 @@ export const allProducts: Product[] = [
     installments: 10,
     categories: ["banheiro", "vaso-sanitario"],
   },
+  {
+    id: "44",
+    name: "Gazebo Dobrável 247x300x300cm Marrom Just Home Collection",
+    brand: "Just Home Collection",
+    ean: "",
+    image: "/produtos/produto-44-0.jpg",
+    originalPrice: 549.00,
+    salePrice: 439.20,
+    installments: 10,
+    categories: ["area-externa"],
+  },
+  {
+    id: "45",
+    name: "Mesa Dobrável Tipo Maleta 244cm Branco",
+    brand: "Just Home Collection",
+    ean: "",
+    image: "/produtos/produto-45-0.jpg",
+    originalPrice: 449.00,
+    salePrice: 359.20,
+    installments: 10,
+    categories: ["area-externa"],
+  },
+  {
+    id: "46",
+    name: "Cadeira Ratan Preto e Marrom Just Home Collection",
+    brand: "Just Home Collection",
+    ean: "",
+    image: "/produtos/produto-46-0.jpg",
+    originalPrice: 119.00,
+    salePrice: 95.20,
+    installments: 10,
+    categories: ["area-externa"],
+  },
+  {
+    id: "47",
+    name: "Cadeira Ratan Preto e Natural Just Home Collection",
+    brand: "Just Home Collection",
+    ean: "",
+    image: "/produtos/produto-47-0.jpg",
+    originalPrice: 119.00,
+    salePrice: 95.20,
+    installments: 10,
+    categories: ["area-externa"],
+  },
+  {
+    id: "48",
+    name: "Conjunto Menorca Varanda Quadrado 6 Peças Marrom",
+    brand: "Just Home Collection",
+    ean: "",
+    image: "/produtos/produto-48-0.jpg",
+    originalPrice: 750.00,
+    salePrice: 600.00,
+    installments: 10,
+    categories: ["area-externa"],
+  },
+  {
+    id: "49",
+    name: "Mesa Dobrável Tipo Maleta 122cm Branco",
+    brand: "Just Home Collection",
+    ean: "",
+    image: "/produtos/produto-49-0.jpg",
+    originalPrice: 249.00,
+    salePrice: 199.20,
+    installments: 10,
+    categories: ["area-externa"],
+  },
+  {
+    id: "50",
+    name: "Espreguiçadeira Leblon Branca Tramontina",
+    brand: "Tramontina",
+    ean: "",
+    image: "/produtos/produto-50-0.jpg",
+    originalPrice: 459.90,
+    salePrice: 367.92,
+    installments: 10,
+    categories: ["area-externa"],
+  },
 ];
 
 export const getProductsByCategory = (slug: CategorySlug | SubCategorySlug): Product[] => {
@@ -454,4 +531,5 @@ export const categories: {
       { slug: "vaso-sanitario", name: "Vaso Sanitário", path: "/categoria/vaso-sanitario" }
     ]
   },
+  { slug: "area-externa", name: "Área Externa", path: "/categoria/area-externa" },
 ];

@@ -548,5 +548,37 @@
         <g:tax_ship>no</g:tax_ship>
       </g:tax>
     </item>
+    <item>
+      <g:id>18</g:id>
+      <title><![CDATA[Caixa De Água 1.000L Polietileno Tampa Encaixe Azul Fortlev]]></title>
+      <description><![CDATA[A Caixa D'água 1.000L Polietileno Tampa Encaixe Azul da Fortlev é a solução ideal para armazenar água com segurança e praticidade. Fabricada em polietileno 100% virgem, garante água potável e livre de impurezas para sua casa ou negócio. Com capacidade de 1000 litros, atende com folga as necessidades de uma família. Sua tampa de encaixe exclusivo proporciona vedação perfeita, evitando perdas, contaminação e mantendo a água sempre fresca e limpa. Fabricada sem emendas em polietileno de alta qualidade, é resistente a variações climáticas, raios UV e impactos, atendendo a todas as normas de fabricação exigidas pelo mercado. Formato redondo com design moderno que se adapta a qualquer ambiente. Dimensões: 152 cm de largura x 97 cm de altura. Peso: 18,8 kg. Benefícios: Capacidade de 1.000 litros; Polietileno 100% virgem, sem emendas; Tampa de encaixe com vedação perfeita; Resistente a variações climáticas e raios UV; Preserva a qualidade da água potável; Formato redondo, fácil instalação; Marca Fortlev — referência nacional.]]></description>
+      <link>https://kompletaferragens.shop/produto/caixa-de-agua-1-000l-polietileno-tampa-encaixe-azul-fortlev</link>
+      <g:image_link>https://kompletaferragens.shop/produtos/produto-18.jpg</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:availability_date>2026-05-24T00:00-03:00</g:availability_date>
+      <g:price>439.90 BRL</g:price>
+      <g:sale_price>351.92 BRL</g:sale_price>
+      <g:sale_price_effective_date>2026-05-24T00:00-03:00/2027-05-24T23:59-03:00</g:sale_price_effective_date>
+      <g:brand><![CDATA[Fortlev]]></g:brand>
+      <g:mpn>FORTLEV-0018</g:mpn>
+      <g:condition>new</g:condition>
+      <g:adult>no</g:adult>
+      <g:age_group>adult</g:age_group>
+      <g:gtin>7898911343063</g:gtin>
+      <g:google_product_category>632</g:google_product_category>
+      <g:product_type><![CDATA[Ferramentas > Escadas]]></g:product_type>
+      <g:item_group_id>fortlev-escadas</g:item_group_id>
+      <g:shipping>
+        <g:country>BR</g:country>
+        <g:service>Padrão</g:service>
+        <g:price>0.00 BRL</g:price>
+      </g:shipping>
+      <g:shipping_weight>5.0 kg</g:shipping_weight>
+      <g:tax>
+        <g:country>BR</g:country>
+        <g:rate>0.00</g:rate>
+        <g:tax_ship>no</g:tax_ship>
+      </g:tax>
+    </item>
   </channel>
 </rss>

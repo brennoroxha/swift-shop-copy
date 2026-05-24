@@ -123,12 +123,13 @@ const ProductPage = () => {
     },
   };
 
+  const mainCategory = product.categories[0];
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Início", item: SITE_URL },
-      { "@type": "ListItem", position: 2, name: product.categories[0], item: `${SITE_URL}/categoria/${product.categories[0]}` },
+      { "@type": "ListItem", position: 2, name: mainCategory, item: `${SITE_URL}/categoria/${mainCategory}` },
       { "@type": "ListItem", position: 3, name: product.name, item: `${SITE_URL}${productPath}` },
     ],
   };

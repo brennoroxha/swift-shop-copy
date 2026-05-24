@@ -64,7 +64,7 @@ const Index = () => {
           <>
             <ProductSection title="Escadas" products={getProductsByCategory("escadas").slice(0, 4)} />
             <ProductSection title="Caixa d'Água" products={getProductsByCategory("caixa-dagua").slice(0, 4)} />
-            <ProductSection title="Chuveiros" products={getProductsByCategory("chuveiro").slice(0, 4)} />
+            <ProductSection title="Banheiro" products={getProductsByCategory("banheiro").slice(0, 4)} />
           </>
         ) : (
           <div className="container py-20 text-center">

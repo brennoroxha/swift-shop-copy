@@ -1,0 +1,43 @@
+[
+  {
+    "id": "94",
+    "name": "Bomba D'água Periférica 1/2HP BP500 Intech Machine 127V",
+    "brand": "Intech Machine",
+    "ean": "7898632330137",
+    "salePrice": 197.91,
+    "urls": [
+      "https://cdn.leroymerlin.com.br/products/bomba_dagua_periferica_de_1_2hp_bp500_intech_machine_127v_1566845948_df89_600x600.png",
+      "https://cdn.leroymerlin.com.br/products/bomba_dagua_periferica_de_1_2hp_bp500_intech_machine_127v_1566845948_bccb_600x600.jpg",
+      "https://cdn.leroymerlin.com.br/products/bomba_dagua_periferica_de_1_2hp_bp500_intech_machine_127v_1566845948_35a2_600x600.jpg",
+      "https://cdn.leroymerlin.com.br/products/bomba_dagua_periferica_de_1_2hp_bp500_intech_machine_127v_1566845948_39f1_600x600.jpg",
+      "https://cdn.leroymerlin.com.br/products/bomba_dagua_periferica_de_1_2hp_bp500_intech_machine_127v_1566845948_0ae3_600x600.jpg",
+      "https://cdn.leroymerlin.com.br/products/bomba_dagua_periferica_de_1_2hp_bp500_intech_machine_127v_1566845948_d49c_600x600.jpg"
+    ],
+    "gallery": [
+      "/produtos/produto-94-0.jpg",
+      "/produtos/produto-94-1.jpg",
+      "/produtos/produto-94-2.jpg",
+      "/produtos/produto-94-3.jpg"
+    ]
+  },
+  {
+    "id": "95",
+    "name": "Bomba D'água Periférica 1/2HP BP500 Intech Machine 220V",
+    "brand": "Intech Machine",
+    "ean": "7898632330144",
+    "salePrice": 159.9,
+    "urls": [
+      "https://cdn.leroymerlin.com.br/products/bomba_periferica_bp500_220v_1566845949_ab87_600x600.jpg",
+      "https://cdn.leroymerlin.com.br/products/bomba_periferica_bp500_220v_1566845949_ec96_600x600.jpg",
+      "https://cdn.leroymerlin.com.br/products/bomba_periferica_bp500_220v_1566845949_8f19_600x600.jpg",
+      "https://cdn.leroymerlin.com.br/products/bomba_periferica_bp500_220v_1566845949_7e92_600x600.jpg",
+      "https://cdn.leroymerlin.com.br/products/bomba_periferica_bp500_220v_1566845949_c589_600x600.jpg"
+    ],
+    "gallery": [
+      "/produtos/produto-95-0.jpg",
+      "/produtos/produto-95-1.jpg",
+      "/produtos/produto-95-2.jpg",
+      "/produtos/produto-95-3.jpg"
+    ]
+  }
+]

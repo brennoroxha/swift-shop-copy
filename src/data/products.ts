@@ -500,17 +500,6 @@ export const allProducts: Product[] = [
     installments: 10,
     categories: ["area-externa"],
   },
-  {
-    id: "51",
-    name: "Chaise Daybed Redonda Alumínio e Fibra Sintética 110cm",
-    brand: "Sarah Móveis",
-    ean: "",
-    image: "/produtos/produto-51-0.jpg",
-    originalPrice: 2305.20,
-    salePrice: 1844.16,
-    installments: 10,
-    categories: ["area-externa"],
-  },
 ];
 
 export const getProductsByCategory = (slug: CategorySlug | SubCategorySlug): Product[] => {

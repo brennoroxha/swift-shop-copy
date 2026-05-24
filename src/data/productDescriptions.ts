@@ -672,4 +672,20 @@ export const productDescriptions: Record<string, ProductDescription> = {
       "Garantia do Fabricante: 3 mes(es)",
     ],
   },
+  "69": {
+    title: "Refil Filtro Consul CIX01AX para Purificador de Água",
+    intro: "Refil original Consul CIX01AX, desenvolvido para garantir água pura, fresca e segura em sua residência. Compatível com os purificadores Consul CPC30, CPB35, CPB36, CPB34 e CPC31, oferece eficiência bacteriológica comprovada e excelente redução de cloro livre, mantendo o sabor natural da água.",
+    details: "Fabricado em polipropileno de alta qualidade, o refil CIX01AX possui retenção de partículas Classe A, eliminando impurezas, sedimentos e resíduos presentes na água tratada. Sua tecnologia de filtragem assegura água cristalina, sem odor e sabor de cloro, ideal para o consumo diário de toda a família. A vida útil do refil é de até 9 meses ou 2.200 litros de água filtrada, dependendo da qualidade da água e da frequência de uso. A substituição é simples, rápida e não exige ferramentas, mantendo a performance do seu purificador sempre em alto nível.",
+    benefits: [
+      "Original Consul — qualidade e segurança garantidas",
+      "Compatível com CPC30, CPB35, CPB36, CPB34 e CPC31",
+      "Retenção de partículas Classe A",
+      "Eficiência bacteriológica comprovada",
+      "Redução de cloro livre e melhora do sabor da água",
+      "Vida útil de até 9 meses ou 2.200 litros",
+      "Troca simples e prática, sem necessidade de ferramentas",
+      "Material em polipropileno atóxico",
+      "Garantia de 9 meses do fabricante",
+    ],
+  },
 };

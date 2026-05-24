@@ -55,9 +55,9 @@ const items = allProducts.map((p) => {
       <g:adult>no</g:adult>
       <g:age_group>adult</g:age_group>
       ${hasEan ? `<g:gtin>${xmlEscape(p.ean!)}</g:gtin>` : `<g:identifier_exists>no</g:identifier_exists>`}
-      <g:google_product_category>632</g:google_product_category>
-      <g:product_type>${cdata("Ferramentas > Escadas")}</g:product_type>
-      <g:item_group_id>${xmlEscape(p.brand.toLowerCase().replace(/\s+/g, "-"))}-escadas</g:item_group_id>
+      <g:google_product_category>${p.categories.includes("caixa-dagua") ? "680" : "632"}</g:google_product_category>
+      <g:product_type>${cdata(p.categories.includes("caixa-dagua") ? "Casa e Jardim > Suprimentos Domésticos > Armazenamento de Água > Caixas d'Água" : "Ferramentas > Escadas")}</g:product_type>
+      <g:item_group_id>${xmlEscape(p.brand.toLowerCase().replace(/\s+/g, "-"))}-${p.categories.includes("caixa-dagua") ? "caixas-dagua" : "escadas"}</g:item_group_id>
       <g:shipping>
         <g:country>BR</g:country>
         <g:service>Padrão</g:service>

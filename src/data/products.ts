@@ -213,6 +213,17 @@ export const allProducts: Product[] = [
     installments: 10,
     categories: ["caixa-dagua"],
   },
+  {
+    id: "19",
+    name: "Caixa d'Água 500L Polietileno Tampa Encaixe Azul Fortlev",
+    brand: "Fortlev",
+    ean: "7898911343056",
+    image: "/produtos/produto-19.jpg",
+    originalPrice: 389.90,
+    salePrice: 247.90,
+    installments: 10,
+    categories: ["caixa-dagua"],
+  },
 ];
 
 export const getProductsByCategory = (slug: CategorySlug): Product[] => {

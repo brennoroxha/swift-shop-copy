@@ -261,4 +261,18 @@ export const productDescriptions: Record<string, ProductDescription> = {
       "Marca Fortlev — referência nacional",
     ],
   },
+  "19": {
+    title: "Caixa de Água 500L Fortlev",
+    intro: "A Caixa d'Água 500L Fortlev oferece praticidade e segurança para o armazenamento de água em sua residência. Produzida em polietileno, é leve, resistente e fácil de instalar, garantindo a qualidade da água armazenada.",
+    details: "Reservatório compacto e eficiente, perfeito para casas menores ou como suporte adicional. A tampa de encaixe proporciona uma vedação segura, protegendo a água de agentes externos. Sua fabricação em material 100% virgem garante que não haverá alteração no sabor ou odor da água. Além disso, a facilidade de instalação e o baixo custo de manutenção tornam esta caixa de água um excelente investimento para sua casa.",
+    benefits: [
+      "Capacidade de 500 litros",
+      "Material: Polietileno resistente",
+      "Veda perfeitamente com tampa de encaixe",
+      "Superfície interna lisa para limpeza rápida",
+      "Design compacto que facilita o transporte",
+      "Resistente a variações climáticas",
+      "Garantia de 5 anos do fabricante",
+    ],
+  },
 };

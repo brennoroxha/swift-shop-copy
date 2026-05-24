@@ -1,6 +1,6 @@
 import escadaCapa from "@/assets/escada-5-degraus-capa.png";
 
-export type CategorySlug = "escadas";
+export type CategorySlug = "escadas" | "caixa-dagua";
 
 export interface Product {
   id: string;
@@ -202,6 +202,17 @@ export const allProducts: Product[] = [
     installments: 10,
     categories: ["escadas"],
   },
+  {
+    id: "18",
+    name: "Caixa De Água 1.000L Polietileno Tampa Encaixe Azul Fortlev",
+    brand: "Fortlev",
+    ean: "7898911343063",
+    image: "/produtos/produto-18.jpg",
+    originalPrice: 439.90,
+    salePrice: 351.92,
+    installments: 10,
+    categories: ["caixa-dagua"],
+  },
 ];
 
 export const getProductsByCategory = (slug: CategorySlug): Product[] => {
@@ -218,4 +229,5 @@ export const lastUnits: Product[] = allProducts.filter((p) =>
 
 export const categories: { slug: CategorySlug; name: string; path: string }[] = [
   { slug: "escadas", name: "Escadas", path: "/categoria/escadas" },
+  { slug: "caixa-dagua", name: "Caixa d'água", path: "/categoria/caixa-dagua" },
 ];

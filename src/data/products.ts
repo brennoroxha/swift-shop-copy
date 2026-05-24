@@ -962,6 +962,28 @@ export const allProducts: Product[] = [
     installments: 10,
     categories: ["ferramentas","ferramentas-eletricas"],
   },
+  {
+    id: "94",
+    name: "Bomba D'água Periférica 1/2HP BP500 Intech Machine 127V",
+    brand: "Intech Machine",
+    ean: "7898632330137",
+    image: "/produtos/produto-94-0.jpg",
+    originalPrice: 247.39,
+    salePrice: 197.91,
+    installments: 10,
+    categories: ["caixa-dagua"],
+  },
+  {
+    id: "95",
+    name: "Bomba D'água Periférica 1/2HP BP500 Intech Machine 220V",
+    brand: "Intech Machine",
+    ean: "7898632330144",
+    image: "/produtos/produto-95-0.jpg",
+    originalPrice: 199.88,
+    salePrice: 159.90,
+    installments: 10,
+    categories: ["caixa-dagua"],
+  },
 ];
 
 export const getProductsByCategory = (slug: CategorySlug | SubCategorySlug): Product[] => {

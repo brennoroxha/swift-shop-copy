@@ -1004,15 +1004,13 @@ export const categories: {
   path: string;
   subcategories?: { slug: SubCategorySlug; name: string; path: string }[]
 }[] = [
-  { slug: "escadas", name: "Escadas", path: "/categoria/escadas" },
-  { slug: "caixa-dagua", name: "Caixa d'água", path: "/categoria/caixa-dagua" },
   { 
-    slug: "banheiro", 
-    name: "Banheiro", 
-    path: "/categoria/banheiro",
+    slug: "ferramentas", 
+    name: "Ferramentas", 
+    path: "/categoria/ferramentas",
     subcategories: [
-      { slug: "chuveiro", name: "Chuveiro", path: "/categoria/chuveiro" },
-      { slug: "vaso-sanitario", name: "Vaso Sanitário", path: "/categoria/vaso-sanitario" }
+      { slug: "ferramentas-eletricas", name: "Ferramentas Elétricas", path: "/categoria/ferramentas-eletricas" },
+      { slug: "ferramentas-manuais", name: "Ferramentas Manuais", path: "/categoria/ferramentas-manuais" }
     ]
   },
   { 
@@ -1024,22 +1022,25 @@ export const categories: {
     ]
   },
   { 
+    slug: "banheiro", 
+    name: "Banheiro", 
+    path: "/categoria/banheiro",
+    subcategories: [
+      { slug: "chuveiro", name: "Chuveiro", path: "/categoria/chuveiro" },
+      { slug: "vaso-sanitario", name: "Vaso Sanitário", path: "/categoria/vaso-sanitario" }
+    ]
+  },
+  { 
     slug: "cozinhas-areas-servico", 
     name: "Cozinhas e Áreas de Serviço", 
     path: "/categoria/cozinhas-areas-servico",
     subcategories: [
-      { slug: "filtros-purificadores", name: "Filtros e Purificadores", path: "/categoria/filtros-purificadores" },
-      { slug: "cooktop", name: "Cooktop", path: "/categoria/cooktop" }
+      { slug: "cooktop", name: "Cooktop", path: "/categoria/cooktop" },
+      { slug: "filtros-purificadores", name: "Filtros e Purificadores", path: "/categoria/filtros-purificadores" }
     ]
   },
+  { slug: "caixa-dagua", name: "Caixa d'água", path: "/categoria/caixa-dagua" },
+  { slug: "escadas", name: "Escadas", path: "/categoria/escadas" },
   { slug: "area-externa", name: "Área Externa", path: "/categoria/area-externa" },
-  { 
-    slug: "ferramentas", 
-    name: "Ferramentas", 
-    path: "/categoria/ferramentas",
-    subcategories: [
-      { slug: "ferramentas-manuais", name: "Ferramentas Manuais", path: "/categoria/ferramentas-manuais" },
-      { slug: "ferramentas-eletricas", name: "Ferramentas Elétricas", path: "/categoria/ferramentas-eletricas" }
-    ]
-  },
 ];
+

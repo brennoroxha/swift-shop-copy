@@ -331,4 +331,94 @@ export const productDescriptions: Record<string, ProductDescription> = {
       "Marca Fortlev — referência nacional",
     ],
   },
+  "24": {
+    title: "Chuveiro Bello Banho 127V 5500W Branco Lorenzetti",
+    intro: "O Chuveiro Bello Banho 127V 5500W Branco oferece conforto e eficiência para o seu banho.",
+    benefits: [
+      "Design moderno e funcional",
+      "Fácil instalação",
+      "Economia de energia",
+      "Alta durabilidade",
+    ],
+  },
+  "25": {
+    title: "Chuveiro Elétrico Bella Ducha 4T 220V 6800W Branco Lorenzetti",
+    intro: "O Chuveiro Elétrico Bella Ducha 4T 220V 6800W Branco oferece conforto e eficiência para o seu banho.",
+    benefits: [
+      "Design moderno e funcional",
+      "Fácil instalação",
+      "Economia de energia",
+      "Alta durabilidade",
+    ],
+  },
+  "26": {
+    title: "Ducha Top Jet Eletrônico 220V 7500W Branco Lorenzetti",
+    intro: "O Ducha Top Jet Eletrônico 220V 7500W Branco oferece conforto e eficiência para o seu banho.",
+    benefits: [
+      "Design moderno e funcional",
+      "Fácil instalação",
+      "Economia de energia",
+      "Alta durabilidade",
+    ],
+  },
+  "27": {
+    title: "Ducha Multitemperatura Advanced 4 Temperaturas 220V 7500W Branco Lorenzetti",
+    intro: "O Ducha Multitemperatura Advanced 4 Temperaturas 220V 7500W Branco oferece conforto e eficiência para o seu banho.",
+    benefits: [
+      "Design moderno e funcional",
+      "Fácil instalação",
+      "Economia de energia",
+      "Alta durabilidade",
+    ],
+  },
+  "28": {
+    title: "Ducha Advanced Multitemperatura 127V 5500W Branco Lorenzetti",
+    intro: "O Ducha Advanced Multitemperatura 127V 5500W Branco oferece conforto e eficiência para o seu banho.",
+    benefits: [
+      "Design moderno e funcional",
+      "Fácil instalação",
+      "Economia de energia",
+      "Alta durabilidade",
+    ],
+  },
+  "29": {
+    title: "Ducha Advanced Multitemperatura 7500W 220V Branco Lorenzetti",
+    intro: "O Ducha Advanced Multitemperatura 7500W 220V Branco oferece conforto e eficiência para o seu banho.",
+    benefits: [
+      "Design moderno e funcional",
+      "Fácil instalação",
+      "Economia de energia",
+      "Alta durabilidade",
+    ],
+  },
+  "30": {
+    title: "Chuveiro Eletrônico Ducha Loren Shower Ultra Eletrônica 220V 7500w Lorenzetti",
+    intro: "O Chuveiro Eletrônico Ducha Loren Shower Ultra Eletrônica 220V 7500w oferece conforto e eficiência para o seu banho.",
+    benefits: [
+      "Design moderno e funcional",
+      "Fácil instalação",
+      "Economia de energia",
+      "Alta durabilidade",
+    ],
+  },
+  "31": {
+    title: "Chuveiro Elétrico Acqua Duo 6800W 220V Branco Lorenzetti",
+    intro: "O Chuveiro Elétrico Acqua Duo 6800W 220V Branco oferece conforto e eficiência para o seu banho.",
+    benefits: [
+      "Design moderno e funcional",
+      "Fácil instalação",
+      "Economia de energia",
+      "Alta durabilidade",
+    ],
+  },
+  "32": {
+    title: "Chuveiro Acqua Duo 220V 7800W Preto e Cromado Lorenzetti",
+    intro: "O Chuveiro Acqua Duo 220V 7800W Preto e Cromado oferece conforto e eficiência para o seu banho.",
+    benefits: [
+      "Design moderno e funcional",
+      "Fácil instalação",
+      "Economia de energia",
+      "Alta durabilidade",
+    ],
+  },
 };

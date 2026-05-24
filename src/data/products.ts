@@ -1,6 +1,6 @@
 import escadaCapa from "@/assets/escada-5-degraus-capa.png";
 
-export type CategorySlug = "escadas" | "caixa-dagua";
+export type CategorySlug = "escadas" | "caixa-dagua" | "banheiro" | "chuveiro";
 
 export interface Product {
   id: string;
@@ -268,6 +268,105 @@ export const allProducts: Product[] = [
     installments: 10,
     categories: ["caixa-dagua"],
   },
+  {
+    id: "24",
+    name: "Chuveiro Bello Banho 127V 5500W Branco",
+    brand: "Lorenzetti",
+    ean: "7896451859617",
+    image: "/produtos/produto-24-0.jpg",
+    originalPrice: 158.75,
+    salePrice: 127.0,
+    installments: 10,
+    categories: ["banheiro", "chuveiro"],
+  },
+  {
+    id: "25",
+    name: "Chuveiro Elétrico Bella Ducha 4T 220V 6800W Branco",
+    brand: "Lorenzetti",
+    ean: "",
+    image: "/produtos/produto-25-0.jpg",
+    originalPrice: 112.38,
+    salePrice: 89.9,
+    installments: 10,
+    categories: ["banheiro", "chuveiro"],
+  },
+  {
+    id: "26",
+    name: "Ducha Top Jet Eletrônico 220V 7500W Branco",
+    brand: "Lorenzetti",
+    ean: "7896451852489",
+    image: "/produtos/produto-26-0.jpg",
+    originalPrice: 258.2,
+    salePrice: 206.56,
+    installments: 10,
+    categories: ["banheiro", "chuveiro"],
+  },
+  {
+    id: "27",
+    name: "Ducha Multitemperatura Advanced 4 Temperaturas 220V 7500W Branco",
+    brand: "Lorenzetti",
+    ean: "7896451837813",
+    image: "/produtos/produto-27-0.jpg",
+    originalPrice: 436.25,
+    salePrice: 349.0,
+    installments: 10,
+    categories: ["banheiro", "chuveiro"],
+  },
+  {
+    id: "28",
+    name: "Ducha Advanced Multitemperatura 127V 5500W Branco",
+    brand: "Lorenzetti",
+    ean: "",
+    image: "/produtos/produto-28-0.jpg",
+    originalPrice: 273.75,
+    salePrice: 219.0,
+    installments: 10,
+    categories: ["banheiro", "chuveiro"],
+  },
+  {
+    id: "29",
+    name: "Ducha Advanced Multitemperatura 7500W 220V Branco",
+    brand: "Lorenzetti",
+    ean: "7896451837318",
+    image: "/produtos/produto-29-0.jpg",
+    originalPrice: 236.25,
+    salePrice: 189.0,
+    installments: 10,
+    categories: ["banheiro", "chuveiro"],
+  },
+  {
+    id: "30",
+    name: "Chuveiro Eletrônico Ducha Loren Shower Ultra Eletrônica 220V 7500w",
+    brand: "Lorenzetti",
+    ean: "",
+    image: "/produtos/produto-30-0.jpg",
+    originalPrice: 166.25,
+    salePrice: 133.0,
+    installments: 10,
+    categories: ["banheiro", "chuveiro"],
+  },
+  {
+    id: "31",
+    name: "Chuveiro Elétrico Acqua Duo 6800W 220V Branco",
+    brand: "Lorenzetti",
+    ean: "7896451869968",
+    image: "/produtos/produto-31-0.jpg",
+    originalPrice: 800.0,
+    salePrice: 640.0,
+    installments: 10,
+    categories: ["banheiro", "chuveiro"],
+  },
+  {
+    id: "32",
+    name: "Chuveiro Acqua Duo 220V 7800W Preto e Cromado",
+    brand: "Lorenzetti",
+    ean: "",
+    image: "/produtos/produto-32-0.jpg",
+    originalPrice: 143.62,
+    salePrice: 114.9,
+    installments: 10,
+    categories: ["banheiro", "chuveiro"],
+  },
 ];
 
 export const getProductsByCategory = (slug: CategorySlug): Product[] => {
@@ -285,4 +384,6 @@ export const lastUnits: Product[] = allProducts.filter((p) =>
 export const categories: { slug: CategorySlug; name: string; path: string }[] = [
   { slug: "escadas", name: "Escadas", path: "/categoria/escadas" },
   { slug: "caixa-dagua", name: "Caixa d'água", path: "/categoria/caixa-dagua" },
+  { slug: "banheiro", name: "Banheiro", path: "/categoria/banheiro" },
+  { slug: "chuveiro", name: "Chuveiro", path: "/categoria/chuveiro" },
 ];

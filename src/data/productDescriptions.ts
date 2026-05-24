@@ -247,4 +247,18 @@ export const productDescriptions: Record<string, ProductDescription> = {
       "Garantia de 12 meses do fabricante",
     ],
   },
+  "18": {
+    title: "Caixa D'água 1.000L Fortlev Tampa Encaixe",
+    intro: "A Caixa D'água 1.000L Polietileno Tampa Encaixe Azul da Fortlev é a solução ideal para armazenar água com segurança e praticidade. Fabricada em polietileno 100% virgem, garante água potável e livre de impurezas para sua casa ou negócio.",
+    details: "Com capacidade de 1000 litros, atende com folga as necessidades de uma família. Sua tampa de encaixe exclusivo proporciona vedação perfeita, evitando perdas, contaminação e mantendo a água sempre fresca e limpa. Fabricada sem emendas em polietileno de alta qualidade, é resistente a variações climáticas, raios UV e impactos, atendendo a todas as normas de fabricação exigidas pelo mercado. Formato redondo com design moderno que se adapta a qualquer ambiente. Dimensões: 152 cm de largura x 97 cm de altura. Peso: 18,8 kg.",
+    benefits: [
+      "Capacidade de 1.000 litros",
+      "Polietileno 100% virgem, sem emendas",
+      "Tampa de encaixe com vedação perfeita",
+      "Resistente a variações climáticas e raios UV",
+      "Preserva a qualidade da água potável",
+      "Formato redondo, fácil instalação",
+      "Marca Fortlev — referência nacional",
+    ],
+  },
 };

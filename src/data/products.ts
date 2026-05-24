@@ -1,7 +1,7 @@
 import escadaCapa from "@/assets/escada-5-degraus-capa.png";
 
-export type CategorySlug = "escadas" | "caixa-dagua" | "banheiro" | "area-externa" | "materiais-eletricos" | "cozinhas-areas-servico";
-export type SubCategorySlug = "chuveiro" | "vaso-sanitario" | "cabos-eletricos" | "filtros-purificadores" | "cooktop";
+export type CategorySlug = "escadas" | "caixa-dagua" | "banheiro" | "area-externa" | "materiais-eletricos" | "cozinhas-areas-servico" | "ferramentas";
+export type SubCategorySlug = "chuveiro" | "vaso-sanitario" | "cabos-eletricos" | "filtros-purificadores" | "cooktop" | "ferramentas-manuais" | "ferramentas-eletricas";
 
 export interface Product {
   id: string;

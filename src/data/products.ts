@@ -1,7 +1,7 @@
 import escadaCapa from "@/assets/escada-5-degraus-capa.png";
 
-export type CategorySlug = "escadas" | "caixa-dagua" | "banheiro" | "area-externa" | "materiais-eletricos";
-export type SubCategorySlug = "chuveiro" | "vaso-sanitario" | "cabos-eletricos";
+export type CategorySlug = "escadas" | "caixa-dagua" | "banheiro" | "area-externa" | "materiais-eletricos" | "cozinhas-areas-servico";
+export type SubCategorySlug = "chuveiro" | "vaso-sanitario" | "cabos-eletricos" | "filtros-purificadores";
 
 export interface Product {
   id: string;
@@ -687,6 +687,17 @@ export const allProducts: Product[] = [
     installments: 10,
     categories: ["materiais-eletricos", "cabos-eletricos"],
   },
+  {
+    id: "69",
+    name: "Refil Filtro Consul CIX01AX para Purificador de Água CPC30, CPB35, CPB36, CBP34 e CPC31 Consul",
+    brand: "Consul",
+    ean: "7891129255821",
+    image: "/produtos/produto-69-0.jpg",
+    originalPrice: 104.14,
+    salePrice: 83.31,
+    installments: 10,
+    categories: ["cozinhas-areas-servico", "filtros-purificadores"],
+  },
 ];
 
 export const getProductsByCategory = (slug: CategorySlug | SubCategorySlug): Product[] => {
@@ -724,6 +735,14 @@ export const categories: {
     path: "/categoria/materiais-eletricos",
     subcategories: [
       { slug: "cabos-eletricos", name: "Cabos Elétricos", path: "/categoria/cabos-eletricos" }
+    ]
+  },
+  { 
+    slug: "cozinhas-areas-servico", 
+    name: "Cozinhas e Áreas de Serviço", 
+    path: "/categoria/cozinhas-areas-servico",
+    subcategories: [
+      { slug: "filtros-purificadores", name: "Filtros e Purificadores", path: "/categoria/filtros-purificadores" }
     ]
   },
   { slug: "area-externa", name: "Área Externa", path: "/categoria/area-externa" },

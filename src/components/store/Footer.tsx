@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import metodospag from "@/assets/metodospag.png";
 import correios from "@/assets/correios.png";
 import totalexpress from "@/assets/totalexpress.png";
+import { ShieldCheck, Lock } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -62,6 +63,46 @@ const Footer = () => {
             <p>Avenida Ruy Barbosa, 626 – Loja 01 – Bairro Cantagalo – Três Rios – RJ – CEP 25805-000</p>
             <p>Telefone: (24) 2251-2189 · E-mail: sac@kompletaferragens.shop</p>
             <p>Horário de atendimento: Segunda a Sexta, 8h às 18h</p>
+          </div>
+        </div>
+
+        {/* Compre com Segurança */}
+        <div className="border-t border-border pt-6 mb-4">
+          <h4 className="font-heading font-bold text-sm mb-1">Compre com Segurança</h4>
+          <div className="w-8 h-0.5 bg-primary mb-4" />
+          <div className="flex flex-wrap items-center gap-6">
+            <a 
+              href="https://transparencyreport.google.com/safe-browsing/search?url=https://kompletaferragens.shop" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+            >
+              <img 
+                src="/assets/badges/google-transparency.png" 
+                alt="Site Verificado pelo Google" 
+                className="h-10 object-contain"
+              />
+              <div className="flex flex-col">
+                <span className="text-[10px] text-muted-foreground leading-none">Status do Site</span>
+                <span className="text-xs font-semibold text-foreground">Verificado pelo Google</span>
+              </div>
+            </a>
+
+            <div className="flex items-center gap-2">
+              <div className="bg-primary/10 p-2 rounded-full">
+                <Lock className="w-4 h-4 text-primary" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xs font-semibold text-foreground uppercase tracking-wider">Compra 100% Segura</span>
+                <span className="text-[10px] text-muted-foreground leading-none">Certificado SSL Seguro</span>
+              </div>
+            </div>
+
+            <img 
+              src="/assets/badges/google-reviews.png" 
+              alt="Google Reviews" 
+              className="h-10 object-contain"
+            />
           </div>
         </div>
 

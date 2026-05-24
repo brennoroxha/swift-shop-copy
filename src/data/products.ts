@@ -370,8 +370,8 @@ export const allProducts: Product[] = [
   },
 ];
 
-export const getProductsByCategory = (slug: CategorySlug): Product[] => {
-  return allProducts.filter((p) => p.categories.includes(slug));
+export const getProductsByCategory = (slug: CategorySlug | SubCategorySlug): Product[] => {
+  return allProducts.filter((p) => (p.categories as (CategorySlug | SubCategorySlug)[]).includes(slug));
 };
 
 export const bestSellers: Product[] = allProducts.filter((p) =>

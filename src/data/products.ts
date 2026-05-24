@@ -368,6 +368,28 @@ export const allProducts: Product[] = [
     installments: 10,
     categories: ["banheiro", "chuveiro"],
   },
+  {
+    id: "33",
+    name: "Kit Completo Vaso Sanitário com Caixa Acoplada e Assento Gap Branco",
+    brand: "Roca",
+    ean: "",
+    image: "/produtos/produto-33-0.png",
+    originalPrice: 1549.90,
+    salePrice: 1239.92,
+    installments: 10,
+    categories: ["banheiro"],
+  },
+  {
+    id: "34",
+    name: "Kit Bacia com Caixa Acoplada Liss Branco Docol",
+    brand: "Docol",
+    ean: "",
+    image: "/produtos/produto-34-0.jpg",
+    originalPrice: 1299.90,
+    salePrice: 1039.92,
+    installments: 10,
+    categories: ["banheiro"],
+  },
 ];
 
 export const getProductsByCategory = (slug: CategorySlug | SubCategorySlug): Product[] => {

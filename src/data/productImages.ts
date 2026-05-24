@@ -118,4 +118,6 @@ export const productGalleryImages: Record<string, string[]> = {
   "32": [
     "/produtos/produto-32-1.jpg",
   ],
+  "33": [],
+  "34": [],
 };

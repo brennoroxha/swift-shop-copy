@@ -7,7 +7,6 @@ from io import BytesIO
 import re
 
 def parse_price(price_str):
-    # R$ 127,00 -> 127.00
     cleaned = re.sub(r'[^\d,]', '', price_str).replace(',', '.')
     try:
         return float(cleaned)
@@ -46,7 +45,7 @@ def process():
             if not name: continue
             
             brand = "Lorenzetti"
-            if "Lorenzetti" in name:
+            if " Lorenzetti" in name:
                 name = name.replace(" Lorenzetti", "").strip()
             
             ean = row.get('EAN/GTIN', '').strip()
@@ -71,9 +70,14 @@ def process():
             view_groups = {}
             for url in raw_images:
                 if not url or 'http' not in url: continue
-                match = re.search(r'sodimacBR/([^/]+)', url)
+                match = re.search(r'sodimacBR/([^/_?]+)', url)
                 if match:
-                    view_id = match.group(1).split('/')[0]
+                    view_id = match.group(1)
+                    # Handle _1, _2, etc.
+                    match_suffix = re.search(r'sodimacBR/([^/?]+)', url)
+                    if match_suffix:
+                        view_id = match_suffix.group(1)
+                    
                     if view_id not in view_groups:
                         view_groups[view_id] = []
                     view_groups[view_id].append(url)
@@ -91,9 +95,9 @@ def process():
                 best_urls.append(urls[0])
             
             def main_sort(u):
-                # Prefer URLs without underscores or with _0
-                match = re.search(r'sodimacBR/([^/_]+)', u)
-                if match and '_' not in match.group(1):
+                # Prefer URLs without underscores
+                match = re.search(r'sodimacBR/([^/_?]+)(_|\/|$)', u)
+                if match and match.group(2) != '_':
                     return 0
                 return 1
             best_urls.sort(key=main_sort)
@@ -124,11 +128,19 @@ def process():
                             unique_images.append(f"/produtos/{filename}")
                             img_count += 1
                 except Exception as e:
-                    print(f"Error processing image {img_url}: {e}", file=os.sys.stderr)
+                    pass
             
             if not unique_images:
                 continue
                 
+            intro = f"O {name} oferece conforto e eficiência para o seu banho."
+            benefits = [
+                "Design moderno e funcional",
+                "Fácil instalação",
+                "Economia de energia",
+                "Alta durabilidade"
+            ]
+            
             products.append({
                 "id": str(p_id),
                 "name": name,
@@ -140,16 +152,47 @@ def process():
                 "salePrice": sale_price,
                 "installments": 10,
                 "categories": ["banheiro", "chuveiro"],
-                "intro": f"O {name} oferece conforto e eficiência para o seu banho.",
-                "benefits": [
-                    "Design moderno e funcional",
-                    "Fácil instalação",
-                    "Economia de energia",
-                    "Alta durabilidade"
-                ]
+                "intro": intro,
+                "benefits": benefits
             })
             
-    print(json.dumps(products, ensure_ascii=False, indent=2))
+    # Output JSON for the report
+    with open('report.json', 'w', encoding='utf-8') as f:
+        json.dump(products, f, ensure_ascii=False, indent=2)
+    
+    # Output TS snippets
+    with open('ts_products.txt', 'w', encoding='utf-8') as f:
+        for p in products:
+            f.write(f'  {{\n')
+            f.write(f'    id: "{p["id"]}",\n')
+            f.write(f'    name: "{p["name"]}",\n')
+            f.write(f'    brand: "{p["brand"]}",\n')
+            f.write(f'    ean: "{p["ean"]}",\n')
+            f.write(f'    image: "{p["image"]}",\n')
+            f.write(f'    originalPrice: {p["originalPrice"]},\n')
+            f.write(f'    salePrice: {p["salePrice"]},\n')
+            f.write(f'    installments: 10,\n')
+            f.write(f'    categories: ["banheiro", "chuveiro"],\n')
+            f.write(f'  }},\n')
+
+    with open('ts_images.txt', 'w', encoding='utf-8') as f:
+        for p in products:
+            imgs = ", ".join([f'"{img}"' for img in p["gallery"]])
+            f.write(f'  "{p["id"]}": [\n')
+            for img in p["gallery"]:
+                f.write(f'    "{img}",\n')
+            f.write(f'  ],\n')
+
+    with open('ts_descriptions.txt', 'w', encoding='utf-8') as f:
+        for p in products:
+            f.write(f'  "{p["id"]}": {{\n')
+            f.write(f'    title: "{p["name"]} {p["brand"]}",\n')
+            f.write(f'    intro: "{p["intro"]}",\n')
+            f.write(f'    benefits: [\n')
+            for b in p["benefits"]:
+                f.write(f'      "{b}",\n')
+            f.write(f'    ],\n')
+            f.write(f'  }},\n')
 
 if __name__ == "__main__":
     process()

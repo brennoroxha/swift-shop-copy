@@ -1,7 +1,7 @@
 import escadaCapa from "@/assets/escada-5-degraus-capa.png";
 
 export type CategorySlug = "escadas" | "caixa-dagua" | "banheiro" | "area-externa" | "materiais-eletricos" | "cozinhas-areas-servico";
-export type SubCategorySlug = "chuveiro" | "vaso-sanitario" | "cabos-eletricos" | "filtros-purificadores";
+export type SubCategorySlug = "chuveiro" | "vaso-sanitario" | "cabos-eletricos" | "filtros-purificadores" | "cooktop";
 
 export interface Product {
   id: string;
@@ -841,7 +841,8 @@ export const categories: {
     name: "Cozinhas e Áreas de Serviço", 
     path: "/categoria/cozinhas-areas-servico",
     subcategories: [
-      { slug: "filtros-purificadores", name: "Filtros e Purificadores", path: "/categoria/filtros-purificadores" }
+      { slug: "filtros-purificadores", name: "Filtros e Purificadores", path: "/categoria/filtros-purificadores" },
+      { slug: "cooktop", name: "Cooktop", path: "/categoria/cooktop" }
     ]
   },
   { slug: "area-externa", name: "Área Externa", path: "/categoria/area-externa" },

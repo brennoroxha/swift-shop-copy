@@ -110,13 +110,20 @@ const generateXML = () => {
       : `      <g:mpn>${xmlEscape(mpn)}</g:mpn>
       <g:identifier_exists>no</g:identifier_exists>`;
 
+    // Imagens adicionais (máx. 2), seguindo regra: 800x800+, fundo neutro, sem texto/selos
+    const additionalLinks = (p.additionalImages ?? [])
+      .filter((u) => typeof u === "string" && u.trim().length > 0)
+      .slice(0, 2)
+      .map((u) => `      <g:additional_image_link>${xmlEscape(u)}</g:additional_image_link>`)
+      .join("\n");
+
     return `    <item>
       <g:id>${xmlEscape(p.id)}</g:id>
       <title>${cdata(p.name)}</title>
       <description>${cdata(description)}</description>
       <link>${xmlEscape(link)}</link>
       <g:image_link>${xmlEscape(p.image)}</g:image_link>
-      <g:availability>in_stock</g:availability>
+${additionalLinks ? additionalLinks + "\n" : ""}      <g:availability>in_stock</g:availability>
       <g:price>${p.salePrice.toFixed(2)} BRL</g:price>
       <g:brand>${cdata(p.brand)}</g:brand>
       <g:condition>new</g:condition>

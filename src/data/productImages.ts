@@ -130,6 +130,16 @@ export const productGalleryImages: Record<string, string[]> = {
   "48": ["/produtos/produto-48-1.jpg", "/produtos/produto-48-2.jpg", "/produtos/produto-48-3.jpg", "/produtos/produto-48-4.jpg"],
   "49": ["/produtos/produto-49-1.jpg", "/produtos/produto-49-2.jpg"],
   "50": [],
-  "52": [],
+  "52": ["/produtos/produto-52-1.jpg", "/produtos/produto-52-2.jpg"],
+  "53": ["/produtos/produto-53-1.jpg", "/produtos/produto-53-2.jpg"],
+  "54": ["/produtos/produto-54-1.jpg", "/produtos/produto-54-2.jpg"],
+  "55": ["/produtos/produto-55-1.jpg", "/produtos/produto-55-2.jpg"],
+  "56": ["/produtos/produto-56-1.jpg", "/produtos/produto-56-2.jpg"],
+  "57": ["/produtos/produto-57-1.jpg", "/produtos/produto-57-2.jpg"],
+  "58": ["/produtos/produto-58-1.jpg", "/produtos/produto-58-2.jpg"],
+  "59": ["/produtos/produto-59-1.jpg", "/produtos/produto-59-2.jpg"],
+  "60": ["/produtos/produto-60-1.jpg", "/produtos/produto-60-2.jpg"],
+  "61": ["/produtos/produto-61-1.jpg", "/produtos/produto-61-2.jpg"],
+  "62": ["/produtos/produto-62-1.jpg", "/produtos/produto-62-2.jpg"],
   
 };

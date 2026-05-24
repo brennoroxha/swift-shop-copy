@@ -75,28 +75,14 @@ const Footer = () => {
               href="https://transparencyreport.google.com/safe-browsing/search?url=https://kompletaferragens.shop" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+              className="hover:opacity-80 transition-opacity"
             >
               <img 
                 src="/assets/badges/google-transparency.png" 
                 alt="Site Verificado pelo Google" 
                 className="h-10 object-contain"
               />
-              <div className="flex flex-col">
-                <span className="text-[10px] text-muted-foreground leading-none">Status do Site</span>
-                <span className="text-xs font-semibold text-foreground">Verificado pelo Google</span>
-              </div>
             </a>
-
-            <div className="flex items-center gap-2">
-              <div className="bg-primary/10 p-2 rounded-full">
-                <Lock className="w-4 h-4 text-primary" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xs font-semibold text-foreground uppercase tracking-wider">Compra 100% Segura</span>
-                <span className="text-[10px] text-muted-foreground leading-none">Certificado SSL Seguro</span>
-              </div>
-            </div>
 
             <img 
               src="/assets/badges/google-reviews.png" 

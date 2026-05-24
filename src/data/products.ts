@@ -737,5 +737,13 @@ export const categories: {
       { slug: "cabos-eletricos", name: "Cabos Elétricos", path: "/categoria/cabos-eletricos" }
     ]
   },
+  { 
+    slug: "cozinhas-areas-servico", 
+    name: "Cozinhas e Áreas de Serviço", 
+    path: "/categoria/cozinhas-areas-servico",
+    subcategories: [
+      { slug: "filtros-purificadores", name: "Filtros e Purificadores", path: "/categoria/filtros-purificadores" }
+    ]
+  },
   { slug: "area-externa", name: "Área Externa", path: "/categoria/area-externa" },
 ];

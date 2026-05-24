@@ -106,20 +106,16 @@ export const productGalleryImages: Record<string, string[]> = {
   "19": [
     "/produtos/produto-19-0.jpg",
     "/produtos/produto-19-1.jpg",
-    "/produtos/produto-19-2.jpg",
-    "/produtos/produto-19-3.jpg",
   ],
   "20": [
     "/produtos/produto-20-0.jpg",
     "/produtos/produto-20-1.jpg",
     "/produtos/produto-20-2.jpg",
-    "/produtos/produto-20-3.jpg",
   ],
   "21": [
     "/produtos/produto-21-0.jpg",
     "/produtos/produto-21-1.jpg",
     "/produtos/produto-21-2.jpg",
-    "/produtos/produto-21-3.jpg",
   ],
   "22": [
     "/produtos/produto-22-0.jpg",

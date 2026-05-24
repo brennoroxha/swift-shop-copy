@@ -229,4 +229,5 @@ export const lastUnits: Product[] = allProducts.filter((p) =>
 
 export const categories: { slug: CategorySlug; name: string; path: string }[] = [
   { slug: "escadas", name: "Escadas", path: "/categoria/escadas" },
+  { slug: "caixa-dagua", name: "Caixa d'água", path: "/categoria/caixa-dagua" },
 ];

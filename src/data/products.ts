@@ -1,7 +1,7 @@
 import escadaCapa from "@/assets/escada-5-degraus-capa.png";
 
-export type CategorySlug = "escadas" | "caixa-dagua" | "banheiro" | "area-externa" | "materiais-eletricos" | "cozinhas-areas-servico";
-export type SubCategorySlug = "chuveiro" | "vaso-sanitario" | "cabos-eletricos" | "filtros-purificadores" | "cooktop";
+export type CategorySlug = "escadas" | "caixa-dagua" | "banheiro" | "area-externa" | "materiais-eletricos" | "cozinhas-areas-servico" | "ferramentas";
+export type SubCategorySlug = "chuveiro" | "vaso-sanitario" | "cabos-eletricos" | "filtros-purificadores" | "cooktop" | "ferramentas-manuais" | "ferramentas-eletricas";
 
 export interface Product {
   id: string;
@@ -269,18 +269,18 @@ export const allProducts: Product[] = [
     installments: 10,
     categories: ["caixa-dagua"],
   },
-  {
+      {
     id: "24",
     name: "Chuveiro Bello Banho 127V 5500W Branco",
-    brand: "Lorenzetti",
+    brand: "Genérico",
     ean: "7896451859617",
     image: "/produtos/produto-24-0.jpg",
     originalPrice: 158.75,
-    salePrice: 127.0,
+    salePrice: 127,
     installments: 10,
-    categories: ["banheiro", "chuveiro"],
+    categories: ["banheiro","chuveiro"],
   },
-  {
+      {
     id: "25",
     name: "Chuveiro Elétrico Bella Ducha 4T 220V 6800W Branco",
     brand: "Lorenzetti",
@@ -289,9 +289,9 @@ export const allProducts: Product[] = [
     originalPrice: 112.38,
     salePrice: 89.9,
     installments: 10,
-    categories: ["banheiro", "chuveiro"],
+    categories: ["banheiro","chuveiro"],
   },
-  {
+      {
     id: "26",
     name: "Ducha Top Jet Eletrônico 220V 7500W Branco",
     brand: "Lorenzetti",
@@ -300,18 +300,18 @@ export const allProducts: Product[] = [
     originalPrice: 258.2,
     salePrice: 206.56,
     installments: 10,
-    categories: ["banheiro", "chuveiro"],
+    categories: ["banheiro","chuveiro"],
   },
-  {
+      {
     id: "27",
     name: "Ducha Multitemperatura Advanced 4 Temperaturas 220V 7500W Branco",
     brand: "Lorenzetti",
     ean: "7896451837813",
     image: "/produtos/produto-27-0.jpg",
     originalPrice: 436.25,
-    salePrice: 349.0,
+    salePrice: 349,
     installments: 10,
-    categories: ["banheiro", "chuveiro"],
+    categories: ["banheiro","chuveiro"],
   },
   {
     id: "28",
@@ -324,40 +324,40 @@ export const allProducts: Product[] = [
     installments: 10,
     categories: ["banheiro", "chuveiro"],
   },
-  {
+      {
     id: "29",
     name: "Ducha Advanced Multitemperatura 7500W 220V Branco",
     brand: "Lorenzetti",
     ean: "7896451837318",
     image: "/produtos/produto-29-0.jpg",
     originalPrice: 236.25,
-    salePrice: 189.0,
+    salePrice: 189,
     installments: 10,
-    categories: ["banheiro", "chuveiro"],
+    categories: ["banheiro","chuveiro"],
   },
-  {
+      {
     id: "30",
     name: "Chuveiro Eletrônico Ducha Loren Shower Ultra Eletrônica 220V 7500w",
     brand: "Lorenzetti",
     ean: "",
     image: "/produtos/produto-30-0.jpg",
     originalPrice: 166.25,
-    salePrice: 133.0,
+    salePrice: 133,
     installments: 10,
-    categories: ["banheiro", "chuveiro"],
+    categories: ["banheiro","chuveiro"],
   },
-  {
+      {
     id: "31",
     name: "Chuveiro Elétrico Acqua Duo 6800W 220V Branco",
     brand: "Lorenzetti",
     ean: "7896451869968",
     image: "/produtos/produto-31-0.jpg",
-    originalPrice: 800.0,
-    salePrice: 640.0,
+    originalPrice: 800,
+    salePrice: 640,
     installments: 10,
-    categories: ["banheiro", "chuveiro"],
+    categories: ["banheiro","chuveiro"],
   },
-  {
+      {
     id: "32",
     name: "Chuveiro Acqua Duo 220V 7800W Preto e Cromado",
     brand: "Lorenzetti",
@@ -366,7 +366,7 @@ export const allProducts: Product[] = [
     originalPrice: 143.62,
     salePrice: 114.9,
     installments: 10,
-    categories: ["banheiro", "chuveiro"],
+    categories: ["banheiro","chuveiro"],
   },
   {
     id: "36",
@@ -852,6 +852,116 @@ export const allProducts: Product[] = [
     installments: 10,
     categories: ["cozinhas-areas-servico", "cooktop"],
   },
+    {
+    id: "84",
+    name: "Carrinho de Mão 50L até 100kg Azulão Aço Carbono Tramontina",
+    brand: "Tramontina",
+    ean: "7891117076193",
+    image: "/produtos/produto-84-0.jpg",
+    originalPrice: 274.88,
+    salePrice: 219.9,
+    installments: 10,
+    categories: ["area-externa"],
+  },
+    {
+    id: "85",
+    name: "Carrinho de Mão 65L até 120kg Extraforte Aço Carbono Tramontina",
+    brand: "Tramontina",
+    ean: "7891117065395",
+    image: "/produtos/produto-85-0.jpg",
+    originalPrice: 493.62,
+    salePrice: 394.9,
+    installments: 10,
+    categories: ["area-externa"],
+  },
+    {
+    id: "86",
+    name: "Soprador de Folhas Elétrico Garthen GSF2000 2000W 110V",
+    brand: "Garthen",
+    ean: "7897545300107",
+    image: "/produtos/produto-86-0.jpg",
+    originalPrice: 246.12,
+    salePrice: 196.9,
+    installments: 10,
+    categories: ["area-externa"],
+  },
+    {
+    id: "87",
+    name: "Aparador de Grama Elétrico Tramontina AP1500T 1500W 110V Corte de 28cm",
+    brand: "Tramontina",
+    ean: "7891117092711",
+    image: "/produtos/produto-87-0.jpg",
+    originalPrice: 324.88,
+    salePrice: 259.9,
+    installments: 10,
+    categories: ["area-externa"],
+  },
+    {
+    id: "88",
+    name: "Cortador de Grama Elétrico Tramontina CE35P 1300W 110V Corte de 35cm e Recolhedor de Grama",
+    brand: "Tramontina",
+    ean: "7891117060086",
+    image: "/produtos/produto-88-0.jpg",
+    originalPrice: 749.88,
+    salePrice: 599.9,
+    installments: 10,
+    categories: ["area-externa"],
+  },
+    {
+    id: "89",
+    name: "Bomba de Água Submersa 900 450W 220V Anauger",
+    brand: "Anauger",
+    ean: "7892201605909",
+    image: "/produtos/produto-89-0.jpg",
+    originalPrice: 502.38,
+    salePrice: 401.9,
+    installments: 10,
+    categories: ["caixa-dagua"],
+  },
+    {
+    id: "90",
+    name: "Bomba de Água Submersa Sapeca 127V 280 Watts Rayma",
+    brand: "Rayma",
+    ean: "7898214272183",
+    image: "/produtos/produto-90-0.jpg",
+    originalPrice: 368.62,
+    salePrice: 294.9,
+    installments: 10,
+    categories: ["caixa-dagua"],
+  },
+    {
+    id: "91",
+    name: "Ventilador de Teto com Controle Remoto Inspire Nano Eco 3 Pás 83 cm Branco Bivolt",
+    brand: "Vonder",
+    ean: "7894422010821",
+    image: "/produtos/produto-91-0.jpg",
+    originalPrice: 687.38,
+    salePrice: 549.9,
+    installments: 10,
+    categories: ["area-externa"],
+  },
+    {
+    id: "92",
+    name: "Ventilador de Teto com Controle Remoto Arno Ultimate VX13 3 Pás 105 cm Branco Bivolt",
+    brand: "Arno",
+    ean: "7895500763073",
+    image: "/produtos/produto-92-0.jpg",
+    originalPrice: 824.88,
+    salePrice: 659.9,
+    installments: 10,
+    categories: ["area-externa"],
+  },
+    {
+    id: "93",
+    name: "Serra Mármore Makita 4100 NH2Z 125mm 1450W 220V",
+    brand: "Makita",
+    ean: "88381633451",
+    image: "/produtos/produto-93-0.jpg",
+    originalPrice: 517.38,
+    salePrice: 413.9,
+    installments: 10,
+    categories: ["ferramentas","ferramentas-eletricas"],
+  },
 ];
 
 export const getProductsByCategory = (slug: CategorySlug | SubCategorySlug): Product[] => {
@@ -901,4 +1011,13 @@ export const categories: {
     ]
   },
   { slug: "area-externa", name: "Área Externa", path: "/categoria/area-externa" },
+  { 
+    slug: "ferramentas", 
+    name: "Ferramentas", 
+    path: "/categoria/ferramentas",
+    subcategories: [
+      { slug: "ferramentas-manuais", name: "Ferramentas Manuais", path: "/categoria/ferramentas-manuais" },
+      { slug: "ferramentas-eletricas", name: "Ferramentas Elétricas", path: "/categoria/ferramentas-eletricas" }
+    ]
+  },
 ];

@@ -21,10 +21,10 @@ const Index = () => {
     vatID: "30.063.962/0001-50",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Rua Nelson Viana, 180 - Loja 10",
+      streetAddress: "Avenida Ruy Barbosa, 626 - Loja 01",
       addressLocality: "Três Rios",
       addressRegion: "RJ",
-      postalCode: "25805-290",
+      postalCode: "25805-000",
       addressCountry: "BR",
     },
     contactPoint: [{

@@ -11,7 +11,7 @@ const PoliticaPrivacidade = () => {
         <h1 className="font-heading text-2xl font-bold text-foreground mb-6">Política de Privacidade</h1>
         <div className="prose prose-sm max-w-none text-muted-foreground space-y-4">
           <p>
-            A <strong className="text-foreground">Kompleta Ferragens Construcao e Moveis LTDA</strong> (CNPJ: 30.063.962/0001-50), com sede na Rua Nelson Viana, 180 – Loja 10, Centro, Três Rios – RJ, CEP 25805-290, está comprometida com a proteção da privacidade e dos dados pessoais de seus clientes e visitantes, em conformidade com a Lei Geral de Proteção de Dados (LGPD – Lei nº 13.709/2018).
+            A <strong className="text-foreground">Kompleta Ferragens Construcao e Moveis LTDA</strong> (CNPJ: 30.063.962/0001-50), com sede na Avenida Ruy Barbosa, 626 – Loja 01, Bairro Cantagalo, Três Rios – RJ, CEP 25805-000, está comprometida com a proteção da privacidade e dos dados pessoais de seus clientes e visitantes, em conformidade com a Lei Geral de Proteção de Dados (LGPD – Lei nº 13.709/2018).
           </p>
 
           <h2 className="font-heading text-lg font-bold text-foreground mt-8 mb-3">1. Dados Coletados</h2>

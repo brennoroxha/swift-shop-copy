@@ -80,28 +80,41 @@ Deno.serve(async (req) => {
     const phone = body.customer.phone.replace(/\D/g, "");
     const documentNumber = body.customer.document.replace(/\D/g, "");
 
+    const cart = body.items.map((it) => ({
+      product_hash: IRONPAY_PRODUCT_HASH,
+      offer_hash: IRONPAY_OFFER_HASH,
+      title: it.title,
+      price: it.unit_price,
+      quantity: it.quantity,
+      operation_type: 1,
+      tangible: it.tangible ?? true,
+      cover: null,
+    }));
+
     const payload = {
       api_token: API_TOKEN,
       amount: body.amount,
-      payment_method: "pix",
-      postback_url: webhookUrl,
       offer_hash: IRONPAY_OFFER_HASH,
       product_hash: IRONPAY_PRODUCT_HASH,
+      payment_method: "pix",
+      postback_url: webhookUrl,
       customer: {
         name: body.customer.name,
         email: body.customer.email,
-        phone,
+        phone_number: phone,
         document: documentNumber,
         document_type: "cpf",
+        street_name: "Rua Teste",
+        number: "100",
+        complement: "",
+        neighborhood: "Centro",
+        city: "São Paulo",
+        state: "SP",
+        zip_code: "01001000",
+        country: "BR",
       },
-      items: body.items.map((it) => ({
-        title: it.title,
-        unit_price: it.unit_price,
-        quantity: it.quantity,
-        tangible: it.tangible ?? true,
-        offer_hash: IRONPAY_OFFER_HASH,
-        product_hash: IRONPAY_PRODUCT_HASH,
-      })),
+      cart,
+      installments: 1,
       pix: { expires_in_days: 1 },
       metadata: body.metadata ?? { source: "lovable-checkout" },
     };
@@ -140,23 +153,26 @@ Deno.serve(async (req) => {
       );
     }
 
-    // Resposta pode vir como { data: {...} } ou plana
-    const tx: any = data?.data ?? data?.transaction ?? data;
-    const pix: any = tx?.pix ?? tx?.pix_qr_code ?? tx;
+    // Resposta pode vir como { data: {...} } ou plana. `transaction` pode ser uma string id.
+    const tx: any =
+      (data && typeof data.data === "object" && data.data) ||
+      (data && typeof data.transaction === "object" && data.transaction) ||
+      data;
+    const pix: any = tx?.pix ?? {};
     const qrCode: string =
+      pix?.pix_qr_code ??
       pix?.qr_code ??
       pix?.qrcode ??
       pix?.emv ??
-      pix?.pix_qr_code ??
       tx?.qr_code ??
       "";
     const expiration: string =
       pix?.expiration_date ?? pix?.expires_at ?? tx?.expires_at ?? "";
     const txId: string = String(
-      tx?.hash ?? tx?.transaction_hash ?? tx?.id ?? tx?.transaction_id ?? "",
+      tx?.hash ?? tx?.transaction_hash ?? tx?.id ?? tx?.transaction ?? "",
     );
     const amount: number = Number(tx?.amount ?? body.amount);
-    const status: string = String(tx?.status ?? "pending");
+    const status: string = String(tx?.payment_status ?? tx?.status ?? "pending");
 
     if (!qrCode || !txId) {
       console.error("IronPay resposta inesperada:", raw);

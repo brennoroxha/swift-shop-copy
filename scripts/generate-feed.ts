@@ -57,9 +57,7 @@ const items = allProducts.map((p) => {
       <link>${xmlEscape(link)}</link>
       <g:image_link>${xmlEscape(imageUrl)}</g:image_link>
       <g:availability>in_stock</g:availability>
-      <g:price>${p.originalPrice.toFixed(2)} BRL</g:price>
-      <g:sale_price>${p.salePrice.toFixed(2)} BRL</g:sale_price>
-      <g:sale_price_effective_date>${today.toISOString().slice(0, 10)}T00:00-03:00/${validUntil}T23:59-03:00</g:sale_price_effective_date>
+      <g:price>${p.salePrice.toFixed(2)} BRL</g:price>
       <g:brand>${cdata(p.brand)}</g:brand>
       <g:mpn>${xmlEscape(mpn)}</g:mpn>
 ${gtinTag}      <g:condition>new</g:condition>

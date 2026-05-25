@@ -362,7 +362,7 @@ export const allProducts: Product[] = [
     name: "Chuveiro Acqua Duo 220V 7800W Preto e Cromado",
     brand: "Lorenzetti",
     ean: "",
-    image: "/produtos/produto-32-0.jpg",
+    image: "/produtos/produto-32-2.jpg",
     originalPrice: 709.75,
     salePrice: 567.80,
     installments: 10,

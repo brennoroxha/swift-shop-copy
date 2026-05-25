@@ -67,7 +67,7 @@ ${gtinTag}      <g:condition>new</g:condition>
       <g:age_group>adult</g:age_group>
 ${identifierTag}      <g:google_product_category>${p.categories.includes("caixa-dagua") ? "680" : "632"}</g:google_product_category>
       <g:product_type>${cdata(p.categories.includes("caixa-dagua") ? "Casa e Jardim > Suprimentos Domésticos > Armazenamento de Água > Caixas d'Água" : "Ferramentas > Escadas")}</g:product_type>
-      <g:item_group_id>${xmlEscape(p.brand.toLowerCase().replace(/\s+/g, "-"))}-${p.categories.includes("caixa-dagua") ? "caixas-dagua" : "escadas"}</g:item_group_id>
+      
       <g:shipping>
         <g:country>BR</g:country>
         <g:service>Padrão</g:service>

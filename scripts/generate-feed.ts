@@ -92,5 +92,6 @@ ${items.join("\n")}
 
 import { writeFileSync } from "fs";
 import { resolve } from "path";
-writeFileSync(resolve("public/google-shopping-feed.xml"), xml);
-console.log(`google-shopping-feed.xml gerado com ${allProducts.length} produtos`);
+const outputPath = resolve("google-shopping-feed.xml");
+writeFileSync(outputPath, xml);
+console.log(`google-shopping-feed.xml gerado com ${allProducts.length} produtos em ${outputPath}`);

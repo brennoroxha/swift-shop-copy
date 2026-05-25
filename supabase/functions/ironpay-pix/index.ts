@@ -80,28 +80,41 @@ Deno.serve(async (req) => {
     const phone = body.customer.phone.replace(/\D/g, "");
     const documentNumber = body.customer.document.replace(/\D/g, "");
 
+    const cart = body.items.map((it) => ({
+      product_hash: IRONPAY_PRODUCT_HASH,
+      offer_hash: IRONPAY_OFFER_HASH,
+      title: it.title,
+      price: it.unit_price,
+      quantity: it.quantity,
+      operation_type: 1,
+      tangible: it.tangible ?? true,
+      cover: null,
+    }));
+
     const payload = {
       api_token: API_TOKEN,
       amount: body.amount,
-      payment_method: "pix",
-      postback_url: webhookUrl,
       offer_hash: IRONPAY_OFFER_HASH,
       product_hash: IRONPAY_PRODUCT_HASH,
+      payment_method: "pix",
+      postback_url: webhookUrl,
       customer: {
         name: body.customer.name,
         email: body.customer.email,
-        phone,
+        phone_number: phone,
         document: documentNumber,
         document_type: "cpf",
+        street_name: "Rua Teste",
+        number: "100",
+        complement: "",
+        neighborhood: "Centro",
+        city: "São Paulo",
+        state: "SP",
+        zip_code: "01001000",
+        country: "BR",
       },
-      items: body.items.map((it) => ({
-        title: it.title,
-        unit_price: it.unit_price,
-        quantity: it.quantity,
-        tangible: it.tangible ?? true,
-        offer_hash: IRONPAY_OFFER_HASH,
-        product_hash: IRONPAY_PRODUCT_HASH,
-      })),
+      cart,
+      installments: 1,
       pix: { expires_in_days: 1 },
       metadata: body.metadata ?? { source: "lovable-checkout" },
     };

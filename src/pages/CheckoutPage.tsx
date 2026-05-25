@@ -172,7 +172,7 @@ const CheckoutPage = () => {
         tangible: true,
       }));
 
-      const { data, error } = await supabase.functions.invoke("freepay-pix", {
+      const { data, error } = await supabase.functions.invoke("ironpay-pix", {
         body: {
           amount: amountInCents,
           customer: {

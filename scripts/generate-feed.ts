@@ -38,6 +38,18 @@ const items = allProducts.map((p) => {
   const mpn = buildMpn(p.brand, p.id);
   const description = buildDescription(p.id, p.name, p.brand);
 
+  // Regra Google: se houver brand + (gtin OU mpn), identifier_exists é redundante.
+  // Só emite <g:identifier_exists>no</g:identifier_exists> quando NÃO há brand
+  // nem códigos (gtin/mpn). Como sempre geramos um MPN previsível, na prática
+  // a tag identifier_exists não é emitida.
+  const hasBrand = !!p.brand && p.brand.trim().length > 0;
+  const hasMpn = !!mpn && mpn.trim().length > 0;
+  const hasValidIdentifier = hasBrand && (hasEan || hasMpn);
+  const identifierTag = hasValidIdentifier
+    ? ""
+    : `      <g:identifier_exists>no</g:identifier_exists>\n`;
+  const gtinTag = hasEan ? `      <g:gtin>${xmlEscape(p.ean!)}</g:gtin>\n` : "";
+
   return `    <item>
       <g:id>${xmlEscape(p.id)}</g:id>
       <title>${cdata(p.name)}</title>
@@ -45,17 +57,15 @@ const items = allProducts.map((p) => {
       <link>${xmlEscape(link)}</link>
       <g:image_link>${xmlEscape(imageUrl)}</g:image_link>
       <g:availability>in_stock</g:availability>
-      <g:availability_date>${today.toISOString().slice(0, 10)}T00:00-03:00</g:availability_date>
       <g:price>${p.originalPrice.toFixed(2)} BRL</g:price>
       <g:sale_price>${p.salePrice.toFixed(2)} BRL</g:sale_price>
       <g:sale_price_effective_date>${today.toISOString().slice(0, 10)}T00:00-03:00/${validUntil}T23:59-03:00</g:sale_price_effective_date>
       <g:brand>${cdata(p.brand)}</g:brand>
       <g:mpn>${xmlEscape(mpn)}</g:mpn>
-      <g:condition>new</g:condition>
+${gtinTag}      <g:condition>new</g:condition>
       <g:adult>no</g:adult>
       <g:age_group>adult</g:age_group>
-      ${hasEan ? `<g:gtin>${xmlEscape(p.ean!)}</g:gtin>` : `<g:identifier_exists>no</g:identifier_exists>`}
-      <g:google_product_category>${p.categories.includes("caixa-dagua") ? "680" : "632"}</g:google_product_category>
+${identifierTag}      <g:google_product_category>${p.categories.includes("caixa-dagua") ? "680" : "632"}</g:google_product_category>
       <g:product_type>${cdata(p.categories.includes("caixa-dagua") ? "Casa e Jardim > Suprimentos Domésticos > Armazenamento de Água > Caixas d'Água" : "Ferramentas > Escadas")}</g:product_type>
       <g:item_group_id>${xmlEscape(p.brand.toLowerCase().replace(/\s+/g, "-"))}-${p.categories.includes("caixa-dagua") ? "caixas-dagua" : "escadas"}</g:item_group_id>
       <g:shipping>

@@ -343,10 +343,18 @@ const generateXML = () => {
     const description = buildDescription(p.name, p.brand, subcat);
     const productType = `Ferramentas e Construção > Escadas > ${subcat}`;
 
-    const identifierBlock = hasEan
-      ? `      <g:gtin>${xmlEscape(p.ean)}</g:gtin>`
-      : `      <g:mpn>${xmlEscape(mpn)}</g:mpn>
-      <g:identifier_exists>no</g:identifier_exists>`;
+    // Regra Google: se houver brand + (gtin OU mpn), não enviar identifier_exists.
+    // Como sempre geramos um MPN previsível e há brand, na prática só emitimos
+    // <g:gtin> quando existir; identifier_exists só sai se faltar brand e mpn.
+    const hasBrand = !!p.brand && p.brand.trim().length > 0;
+    const hasMpn = !!mpn && mpn.trim().length > 0;
+    const gtinLine = hasEan ? `      <g:gtin>${xmlEscape(p.ean)}</g:gtin>\n` : "";
+    const mpnLine = hasMpn ? `      <g:mpn>${xmlEscape(mpn)}</g:mpn>\n` : "";
+    const identifierExistsLine =
+      hasBrand && (hasEan || hasMpn)
+        ? ""
+        : `      <g:identifier_exists>no</g:identifier_exists>\n`;
+    const identifierBlock = `${gtinLine}${mpnLine}${identifierExistsLine}`.replace(/\n$/, "");
 
     // Galeria: imagens[0] é a principal; imagens[1] e [2] viram g:additional_image_link.
     // Fallback: se `imagens` estiver vazio, usa `image` como única imagem principal.

@@ -172,7 +172,16 @@ const CheckoutPage = () => {
         tangible: true,
       }));
 
-      const { data, error } = await supabase.functions.invoke("ironpay-pix", {
+      // Lê gateway ativo no admin (fallback: ironpay)
+      const { data: gatewaySetting } = await supabase
+        .from("app_settings")
+        .select("value")
+        .eq("key", "payment_gateway")
+        .maybeSingle();
+      const gatewayFn =
+        gatewaySetting?.value === "freepay" ? "freepay-pix" : "ironpay-pix";
+
+      const { data, error } = await supabase.functions.invoke(gatewayFn, {
         body: {
           amount: amountInCents,
           customer: {

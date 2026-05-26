@@ -5,6 +5,7 @@ import {
   AlertTriangle,
   CheckCircle2,
   Clock,
+  CreditCard,
   Image as ImageIcon,
   LogOut,
   RefreshCw,
@@ -12,6 +13,7 @@ import {
   ShieldAlert,
   Calendar as CalendarIcon,
 } from "lucide-react";
+import { toast } from "sonner";
 import logo from "@/assets/logo-kompleta.png";
 
 type Order = {
@@ -83,6 +85,8 @@ const AdminPedidos = () => {
   const [dateFilter, setDateFilter] = useState<DateFilter>("all");
   const [customDate, setCustomDate] = useState<string>("");
   const [authChecked, setAuthChecked] = useState(false);
+  const [gateway, setGateway] = useState<"ironpay" | "freepay">("ironpay");
+  const [savingGateway, setSavingGateway] = useState(false);
 
   // Checa sessão + role admin
   useEffect(() => {
@@ -132,9 +136,35 @@ const AdminPedidos = () => {
   useEffect(() => {
     if (!authChecked) return;
     fetchOrders();
+    // carrega gateway atual
+    supabase
+      .from("app_settings")
+      .select("value")
+      .eq("key", "payment_gateway")
+      .maybeSingle()
+      .then(({ data }) => {
+        if (data?.value === "freepay" || data?.value === "ironpay") {
+          setGateway(data.value);
+        }
+      });
     const t = setInterval(fetchOrders, 15000);
     return () => clearInterval(t);
   }, [authChecked]);
+
+  const handleChangeGateway = async (next: "ironpay" | "freepay") => {
+    if (next === gateway) return;
+    setSavingGateway(true);
+    const { error } = await supabase
+      .from("app_settings")
+      .upsert({ key: "payment_gateway", value: next, updated_at: new Date().toISOString() });
+    setSavingGateway(false);
+    if (error) {
+      toast.error("Erro ao salvar gateway: " + error.message);
+      return;
+    }
+    setGateway(next);
+    toast.success(`Gateway alterado para ${next === "ironpay" ? "IronPay" : "FreePay"}`);
+  };
 
   const counts = useMemo(() => {
     const paidStatuses = ["paid", "approved", "succeeded", "completed"];
@@ -268,6 +298,41 @@ const AdminPedidos = () => {
             tone="danger"
             icon={<ShieldAlert className="w-4 h-4" />}
           />
+        </div>
+
+        {/* Gateway de pagamento */}
+        <div className="bg-white rounded-lg border border-border p-4 flex flex-wrap items-center gap-3">
+          <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
+            <CreditCard className="w-4 h-4 text-primary" />
+            Gateway de pagamento:
+          </div>
+          <div className="flex gap-2">
+            <button
+              disabled={savingGateway}
+              onClick={() => handleChangeGateway("ironpay")}
+              className={`text-xs font-bold uppercase tracking-wide px-4 py-2 rounded-full border transition-colors disabled:opacity-50 ${
+                gateway === "ironpay"
+                  ? "bg-primary text-primary-foreground border-primary"
+                  : "bg-white text-foreground border-border hover:bg-muted"
+              }`}
+            >
+              IronPay
+            </button>
+            <button
+              disabled={savingGateway}
+              onClick={() => handleChangeGateway("freepay")}
+              className={`text-xs font-bold uppercase tracking-wide px-4 py-2 rounded-full border transition-colors disabled:opacity-50 ${
+                gateway === "freepay"
+                  ? "bg-primary text-primary-foreground border-primary"
+                  : "bg-white text-foreground border-border hover:bg-muted"
+              }`}
+            >
+              FreePay
+            </button>
+          </div>
+          <span className="text-xs text-muted-foreground ml-auto">
+            Ativo: <strong className="text-foreground">{gateway === "ironpay" ? "IronPay" : "FreePay"}</strong>
+          </span>
         </div>
 
         {/* Filters */}

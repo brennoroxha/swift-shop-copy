@@ -83,8 +83,11 @@ Deno.serve(async (req) => {
     const cart = body.items.map((it) => ({
       name: it.title,
       quantity: it.quantity,
+      price: it.unit_price,
       unit_price: it.unit_price,
       product_code: KLIVOPAY_PRODUCT_CODE,
+      product_hash: KLIVOPAY_PRODUCT_CODE,
+      offer_hash: KLIVOPAY_OFFER_HASH,
       tangible: it.tangible ?? true,
     }));
 

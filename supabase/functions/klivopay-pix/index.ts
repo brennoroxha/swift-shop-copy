@@ -81,14 +81,16 @@ Deno.serve(async (req) => {
     const documentNumber = body.customer.document.replace(/\D/g, "");
 
     const cart = body.items.map((it) => ({
-      name: it.title,
-      quantity: it.quantity,
-      price: it.unit_price,
-      unit_price: it.unit_price,
-      product_code: KLIVOPAY_PRODUCT_CODE,
       product_hash: KLIVOPAY_PRODUCT_CODE,
       offer_hash: KLIVOPAY_OFFER_HASH,
+      title: it.title,
+      name: it.title,
+      price: it.unit_price,
+      unit_price: it.unit_price,
+      quantity: it.quantity,
+      operation_type: 1,
       tangible: it.tangible ?? true,
+      cover: null,
     }));
 
     const payload = {

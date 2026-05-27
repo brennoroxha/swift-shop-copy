@@ -179,7 +179,11 @@ const CheckoutPage = () => {
         .eq("key", "payment_gateway")
         .maybeSingle();
       const gatewayFn =
-        gatewaySetting?.value === "freepay" ? "freepay-pix" : "ironpay-pix";
+        gatewaySetting?.value === "freepay"
+          ? "freepay-pix"
+          : gatewaySetting?.value === "klivopay"
+          ? "klivopay-pix"
+          : "ironpay-pix";
 
       const { data, error } = await supabase.functions.invoke(gatewayFn, {
         body: {

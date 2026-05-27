@@ -85,8 +85,11 @@ const AdminPedidos = () => {
   const [dateFilter, setDateFilter] = useState<DateFilter>("all");
   const [customDate, setCustomDate] = useState<string>("");
   const [authChecked, setAuthChecked] = useState(false);
-  const [gateway, setGateway] = useState<"ironpay" | "freepay">("ironpay");
+  const [gateway, setGateway] = useState<"ironpay" | "freepay" | "klivopay">("ironpay");
   const [savingGateway, setSavingGateway] = useState(false);
+
+  const gatewayLabel = (g: string) =>
+    g === "ironpay" ? "IronPay" : g === "freepay" ? "FreePay" : "KlivoPay";
 
   // Checa sessão + role admin
   useEffect(() => {
@@ -143,7 +146,11 @@ const AdminPedidos = () => {
       .eq("key", "payment_gateway")
       .maybeSingle()
       .then(({ data }) => {
-        if (data?.value === "freepay" || data?.value === "ironpay") {
+        if (
+          data?.value === "freepay" ||
+          data?.value === "ironpay" ||
+          data?.value === "klivopay"
+        ) {
           setGateway(data.value);
         }
       });
@@ -151,7 +158,7 @@ const AdminPedidos = () => {
     return () => clearInterval(t);
   }, [authChecked]);
 
-  const handleChangeGateway = async (next: "ironpay" | "freepay") => {
+  const handleChangeGateway = async (next: "ironpay" | "freepay" | "klivopay") => {
     if (next === gateway) return;
     setSavingGateway(true);
     const { error } = await supabase
@@ -163,7 +170,7 @@ const AdminPedidos = () => {
       return;
     }
     setGateway(next);
-    toast.success(`Gateway alterado para ${next === "ironpay" ? "IronPay" : "FreePay"}`);
+    toast.success(`Gateway alterado para ${gatewayLabel(next)}`);
   };
 
   const counts = useMemo(() => {
@@ -306,32 +313,24 @@ const AdminPedidos = () => {
             <CreditCard className="w-4 h-4 text-primary" />
             Gateway de pagamento:
           </div>
-          <div className="flex gap-2">
-            <button
-              disabled={savingGateway}
-              onClick={() => handleChangeGateway("ironpay")}
-              className={`text-xs font-bold uppercase tracking-wide px-4 py-2 rounded-full border transition-colors disabled:opacity-50 ${
-                gateway === "ironpay"
-                  ? "bg-primary text-primary-foreground border-primary"
-                  : "bg-white text-foreground border-border hover:bg-muted"
-              }`}
-            >
-              IronPay
-            </button>
-            <button
-              disabled={savingGateway}
-              onClick={() => handleChangeGateway("freepay")}
-              className={`text-xs font-bold uppercase tracking-wide px-4 py-2 rounded-full border transition-colors disabled:opacity-50 ${
-                gateway === "freepay"
-                  ? "bg-primary text-primary-foreground border-primary"
-                  : "bg-white text-foreground border-border hover:bg-muted"
-              }`}
-            >
-              FreePay
-            </button>
+          <div className="flex gap-2 flex-wrap">
+            {(["ironpay", "freepay", "klivopay"] as const).map((g) => (
+              <button
+                key={g}
+                disabled={savingGateway}
+                onClick={() => handleChangeGateway(g)}
+                className={`text-xs font-bold uppercase tracking-wide px-4 py-2 rounded-full border transition-colors disabled:opacity-50 ${
+                  gateway === g
+                    ? "bg-primary text-primary-foreground border-primary"
+                    : "bg-white text-foreground border-border hover:bg-muted"
+                }`}
+              >
+                {gatewayLabel(g)}
+              </button>
+            ))}
           </div>
           <span className="text-xs text-muted-foreground ml-auto">
-            Ativo: <strong className="text-foreground">{gateway === "ironpay" ? "IronPay" : "FreePay"}</strong>
+            Ativo: <strong className="text-foreground">{gatewayLabel(gateway)}</strong>
           </span>
         </div>
 
